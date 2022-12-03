@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <Counter />
+  <div>123</div>
 </template>
 
 <style scoped></style>
