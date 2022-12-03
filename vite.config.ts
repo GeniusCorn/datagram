@@ -6,6 +6,7 @@ import Unocss from 'unocss/vite'
 import Vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import path from 'path'
+import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -50,7 +51,8 @@ export default defineConfig({
       }
     }),
     Components({
-      dts: true
+      dts: true,
+      resolvers: [PrimeVueResolver()]
     }),
     Pages(),
     Layouts(),

@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "pinia": "^2.0.27",
+    "primeicons": "^6.0.1",
+    "primevue": "^3",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -32,7 +34,7 @@
     "eslint-plugin-n": "^15.5.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.8.0",
-    "happy-dom": "^7.7.0",
+    "happy-dom": "^7.7.2",
     "prettier": "^2.8.0",
     "typescript": "*",
     "unocss": "^0.46.5",
