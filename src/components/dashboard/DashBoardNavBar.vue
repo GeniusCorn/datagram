@@ -4,7 +4,7 @@ import { ChevronLeft } from '@vicons/tabler'
 </script>
 
 <template>
-  <div flex="~ row" justify-between items-center border="b gray" h-48px px-32px>
+  <div flex="~ row" justify-between items-center border="b gray" h-47px px-32px>
     <div>
       <Icon>
         <ChevronLeft />
