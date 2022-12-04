@@ -1,34 +1,23 @@
 <script setup lang="ts">
-interface Item {
-  label: string
-  icon?: string
-  to?: string
-  items?: Item[]
-}
+import { Icon } from '@vicons/utils'
+import { ChevronLeft } from '@vicons/tabler'
 </script>
 
 <template>
-  <div>
-    <Menubar :model="[]">
-      <template #start>
-        <i class="pi pi-angle-left" />
-      </template>
-      <template #end>
-        <div flex gap-2>
-          <div>
-            <Button class="p-button-sm p-button-text">预览</Button>
-          </div>
-          <div>
-            <Button class="p-button-sm p-button-secondary p-button-raised"
-              >导出图片</Button
-            >
-          </div>
-          <div>
-            <Button class="p-button-sm p-button-raised">保存</Button>
-          </div>
-        </div>
-      </template>
-    </Menubar>
+  <div flex="~ row" justify-between items-center border="b gray" h-48px px-32px>
+    <div>
+      <Icon>
+        <ChevronLeft />
+      </Icon>
+    </div>
+
+    <div>
+      <n-space>
+        <n-button quaternary>预览</n-button>
+        <n-button type="info">导出</n-button>
+        <n-button type="primary">保存</n-button>
+      </n-space>
+    </div>
   </div>
 </template>
 

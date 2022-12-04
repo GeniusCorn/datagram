@@ -6,7 +6,7 @@ import Unocss from 'unocss/vite'
 import Vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import path from 'path'
-import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -33,6 +33,14 @@ export default defineConfig({
         'vue/macros',
         {
           axios: [['default', 'axios']]
+        },
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar'
+          ]
         }
       ],
 
@@ -52,7 +60,7 @@ export default defineConfig({
     }),
     Components({
       dts: true,
-      resolvers: [PrimeVueResolver()]
+      resolvers: [NaiveUiResolver()]
     }),
     Pages(),
     Layouts(),

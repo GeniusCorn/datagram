@@ -7,9 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Button: typeof import('primevue/button')['default']
+    DashBoardLeftBar: typeof import('./src/components/DashBoardLeftBar.vue')['default']
     DashBoardNavBar: typeof import('./src/components/DashBoardNavBar.vue')['default']
-    Menubar: typeof import('primevue/menubar')['default']
+    NButton: typeof import('naive-ui')['NButton']
+    NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
