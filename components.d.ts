@@ -8,14 +8,22 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ChartPanel: typeof import('./src/components/dashboard/ChartPanel.vue')['default']
+    ComponentPanel: typeof import('./src/components/dashboard/ComponentPanel.vue')['default']
+    CptText: typeof import('./src/components/dashboard/cpt/CptText.vue')['default']
+    CptWrapper: typeof import('./src/components/dashboard/CptWrapper.vue')['default']
+    DashBoardCanvas: typeof import('./src/components/dashboard/DashBoardCanvas.vue')['default']
     DashBoardLeftBar: typeof import('./src/components/dashboard/DashBoardLeftBar.vue')['default']
     DashBoardNavBar: typeof import('./src/components/dashboard/DashBoardNavBar.vue')['default']
+    DashBoardRightBar: typeof import('./src/components/dashboard/DashBoardRightBar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NDivider: typeof import('naive-ui')['NDivider']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NModal: typeof import('naive-ui')['NModal']
     NSpace: typeof import('naive-ui')['NSpace']
+    NTabPane: typeof import('naive-ui')['NTabPane']
+    NTabs: typeof import('naive-ui')['NTabs']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Text: typeof import('./src/components/dashboard/cpt/CptText.vue')['default']
   }
 }
