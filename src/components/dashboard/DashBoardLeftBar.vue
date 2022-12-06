@@ -62,7 +62,7 @@ function onSubmitComponent(component: string) {
       v-model:show="showComponentPanel"
       @submit="onSubmitComponent"
     />
-
+    
     <n-divider />
 
     <div flex="~ col" gap-1 items-center hover:text-gray cursor-pointer>
