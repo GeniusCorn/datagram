@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import { useDataStore } from '@/store/index'
+// @ts-ignore
+import VueDragResize from 'vue-drag-resize'
+import { Rect } from '@/types/Rect'
+
+const store = useDataStore()
+
+const canvas: HTMLElement | undefined = $ref()
+
+let clientWidth: number | undefined = $ref()
+let clientHeight: number | undefined = $ref()
+
+onMounted(() => {
+  clientWidth = canvas?.clientWidth
+  clientHeight = canvas?.clientHeight
+
+  window.addEventListener('resize', () => {
+    clientWidth = canvas?.clientWidth
+    clientHeight = canvas?.clientHeight
+  })
+})
+
+function changePosition(newRect: Rect, index: number): void {
+  store.changeElementPosition(newRect, index)
+}
+
+function changeSize(newRect: Rect, index: number): void {
+  store.changeElementSize(newRect, index)
+}
+</script>
+
+<template>
+  <div
+    ref="canvas"
+    absolute
+    top-12
+    left-20
+    right-68
+    h="[calc(100vh-3rem-1rem)]"
+  >
+    <VueDragResize
+      v-for="(element, index) in store.elementsList"
+      :key="index"
+      :x="element.x"
+      :y="element.y"
+      :w="element.width"
+      :h="element.height"
+      :is-active="element.isActive"
+      :parent-w="clientWidth"
+      :parent-h="clientHeight"
+      :parent-limitation="true"
+      @activated="store.setElementActive(index)"
+      @deactivated="store.unsetElementActive"
+      @resizing="changeSize($event, index)"
+      @dragging="changePosition($event, index)"
+    >
+      <component :is="element.cptType" :options="element.options" />
+    </VueDragResize>
+  </div>
+</template>
+
+<style scoped></style>

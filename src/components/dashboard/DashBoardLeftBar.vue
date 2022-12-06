@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { Icon } from '@vicons/utils'
 import { ChartPie, Map2, Components } from '@vicons/tabler'
+import { useDataStore } from '@/store/index'
+
+const store = useDataStore()
 
 let showChartPanel: boolean = $ref(false)
+let showComponentPanel: boolean = $ref(false)
 
-let selectedChart: string | undefined = $ref(undefined)
+let selected: string | undefined = $ref()
 
 function onSubmitChart(chart: string) {
   showChartPanel = false
-  selectedChart = chart
+  selected = chart
+}
+
+function onSubmitComponent(component: string) {
+  showComponentPanel = false
+  selected = component
+
+  store.addElement(component, { text: '123' })
 }
 </script>
 
@@ -33,12 +44,24 @@ function onSubmitChart(chart: string) {
 
     <n-divider />
 
-    <div flex="~ col" gap-1 items-center hover:text-gray cursor-pointer>
+    <div
+      flex="~ col"
+      gap-1
+      items-center
+      hover:text-gray
+      cursor-pointer
+      @click="showComponentPanel = true"
+    >
       <Icon size="25">
         <Components />
       </Icon>
       <div>组件</div>
     </div>
+
+    <ComponentPanel
+      v-model:show="showComponentPanel"
+      @submit="onSubmitComponent"
+    />
 
     <n-divider />
 
