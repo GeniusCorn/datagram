@@ -6,4 +6,9 @@
   </n-message-provider>
 </template>
 
-<style scoped></style>
+<style>
+html {
+  height: 100%;
+  overflow: hidden;
+}
+</style>
