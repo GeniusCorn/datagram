@@ -11,7 +11,8 @@ const data = $ref(JSON.stringify(store.elementsList[props.index].cpt.data))
 watch(
   () => data,
   () => {
-    store.elementsList[props.index].cpt.data = JSON.parse(data)
+    if (store.elementsList[props.index])
+      store.elementsList[props.index].cpt.data = JSON.parse(data)
   }
 )
 </script>

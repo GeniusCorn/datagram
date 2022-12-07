@@ -45,17 +45,25 @@ Object.assign(
 
 const container = $ref()
 
+let interval: any
+
+let line: Line
+
 onMounted(() => {
-  const line = new Line(container as HTMLElement, basicLineOptions)
+  line = new Line(container as HTMLElement, basicLineOptions)
 
   line.render()
 
-  watch(
-    () => store.elementsList[props.index].cpt.data,
-    () => {
-      line.changeData(store.elementsList[props.index].cpt.data)
-    }
-  )
+  if (!interval) {
+    setInterval(() => {
+      line.changeData(store.elementsList[props.index]?.cpt.data)
+    }, 700)
+  }
+})
+
+onBeforeUnmount(() => {
+  line.destroy()
+  interval = null
 })
 </script>
 
