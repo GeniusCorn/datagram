@@ -26,6 +26,7 @@ specifiers:
   unocss: ^0.46.5
   unplugin-auto-import: ^0.11.5
   unplugin-vue-components: ^0.22.11
+  uuid: ^9.0.0
   vfonts: ^0.0.3
   vite: ^3.2.5
   vite-plugin-pages: ^0.27.1
@@ -39,6 +40,7 @@ specifiers:
 
 dependencies:
   pinia: 2.0.27_mgnvym7yiazkylwwogi5r767ue
+  uuid: 9.0.0
   vue: 3.2.45
   vue-drag-resize: 2.0.3
   vue-router: 4.1.6_vue@3.2.45
@@ -4465,6 +4467,11 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /vdirs/0.1.8_vue@3.2.45:
     resolution: {integrity: sha512-H9V1zGRLQZg9b+GdMk8MXDN2Lva0zx72MPahDKc30v+DtwKjfyOSXWRIX4t2mhDubM1H09gPhWeth/BJWPHGUw==}

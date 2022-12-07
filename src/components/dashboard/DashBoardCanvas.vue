@@ -41,12 +41,12 @@ function changeSize(newRect: Rect, index: number): void {
   >
     <VueDragResize
       v-for="(element, index) in store.elementsList"
-      :key="index"
-      :x="element.x"
-      :y="element.y"
-      :w="element.width"
-      :h="element.height"
-      :is-active="element.isActive"
+      :key="element.id"
+      :x="element.drag.x"
+      :y="element.drag.y"
+      :w="element.drag.width"
+      :h="element.drag.height"
+      :is-active="element.drag.isActive"
       :parent-w="clientWidth"
       :parent-h="clientHeight"
       :parent-limitation="true"
@@ -55,7 +55,7 @@ function changeSize(newRect: Rect, index: number): void {
       @resizing="changeSize($event, index)"
       @dragging="changePosition($event, index)"
     >
-      <component :is="element.cptType" :options="element.options" />
+      <component :is="element.cpt.type" :index="index" />
     </VueDragResize>
   </div>
 </template>
