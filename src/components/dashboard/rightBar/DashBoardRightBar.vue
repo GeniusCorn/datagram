@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store/index'
+import CoordinateConfig from '@/components/dashboard/rightBar/CoordinateConfig.vue'
 
 const store = useDataStore()
 
@@ -23,7 +24,9 @@ watch(store.elementsList, () => {
         justify-content="space-evenly"
         type="line"
       >
-        <n-tab-pane name="coordinate" tab="坐标"> 坐标 </n-tab-pane>
+        <n-tab-pane name="coordinate" tab="坐标">
+          <component :is="CoordinateConfig" :index="index" />
+        </n-tab-pane>
 
         <n-tab-pane name="config" tab="属性">
           <component

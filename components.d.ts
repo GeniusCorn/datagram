@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ChartPanel: typeof import('./src/components/dashboard/ChartPanel.vue')['default']
     ComponentPanel: typeof import('./src/components/dashboard/ComponentPanel.vue')['default']
+    CoordinateConfig: typeof import('./src/components/dashboard/rightBar/CoordinateConfig.vue')['default']
+    CoridinatePanel: typeof import('../src/components/dashboard/rightBar/CoordinateConfig.vue)['default']
     CptText: typeof import('./src/components/dashboard/cpt/CptText.vue')['default']
     DashBoardCanvas: typeof import('./src/components/dashboard/DashBoardCanvas.vue')['default']
     DashBoardLeftBar: typeof import('./src/components/dashboard/DashBoardLeftBar.vue')['default']

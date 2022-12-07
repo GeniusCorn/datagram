@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-space>
+  <n-space vertical>
     <n-input
       v-model:value="store.elementsList[props.index].cpt.data.value"
       type="textarea"
