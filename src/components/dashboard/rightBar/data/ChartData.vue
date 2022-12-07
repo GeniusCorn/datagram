@@ -5,12 +5,24 @@ const store = useDataStore()
 const props = defineProps<{
   index: number
 }>()
+
+const data = $ref(JSON.stringify(store.elementsList[props.index].cpt.data))
+
+watch(
+  () => data,
+  () => {
+    store.elementsList[props.index].cpt.data = JSON.parse(data)
+  }
+)
 </script>
 
 <template>
   <n-space vertical>
     <n-input
-      v-model:value="store.elementsList[props.index].cpt.data"
+      v-model:value="data"
+      :autosize="{
+        minRows: 3
+      }"
       type="textarea"
       placeholder="文本内容"
     />

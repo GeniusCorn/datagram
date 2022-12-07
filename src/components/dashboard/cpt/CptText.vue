@@ -16,7 +16,7 @@ Object.assign(
   textOptions
 )
 
-store.elementsList[props.index].cpt.data.value = '新建文本'
+store.elementsList[props.index].cpt.data = '新建文本'
 </script>
 
 <template>
@@ -29,7 +29,7 @@ store.elementsList[props.index].cpt.data.value = '新建文本'
       textAlign: store.elementsList[index].cpt.options.textAlign
     }"
   >
-    {{ store.elementsList[index].cpt.data.value }}
+    {{ store.elementsList[index].cpt.data }}
   </div>
 </template>
 

@@ -30,10 +30,10 @@ function submitSelectedChart(chart: string | undefined) {
     <div flex="~" justify-around>
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'basicBarPlot' }"
-        @click="selectChart('basicBarPlot')"
+        :class="{ selected: selectedChart === 'BasicLine' }"
+        @click="selectChart('BasicLine')"
       >
-        柱状图
+        折线图
       </div>
       <div
         class="chartBlock"

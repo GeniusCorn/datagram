@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store/index'
 import CoordinateConfig from '@/components/dashboard/rightBar/CoordinateConfig.vue'
+import ChartData from '@/components/dashboard/rightBar/data/ChartData.vue'
 
 const store = useDataStore()
 
@@ -39,7 +40,9 @@ watch(store.elementsList, () => {
 
         <n-tab-pane name="data" tab="数据">
           <component
-            :is="cptTypeToData.get(store.elementsList[index].cpt.type)"
+            :is="
+              cptTypeToData.get(store.elementsList[index].cpt.type) || ChartData
+            "
             :index="index"
           />
         </n-tab-pane>

@@ -13,13 +13,15 @@ let selected: string | undefined = $ref()
 function onSubmitChart(chart: string) {
   showChartPanel = false
   selected = chart
+
+  store.addElement(chart)
 }
 
 function onSubmitComponent(component: string) {
   showComponentPanel = false
   selected = component
 
-  store.addElement(component, { text: '123' })
+  store.addElement(component)
 }
 </script>
 
@@ -62,7 +64,7 @@ function onSubmitComponent(component: string) {
       v-model:show="showComponentPanel"
       @submit="onSubmitComponent"
     />
-    
+
     <n-divider />
 
     <div flex="~ col" gap-1 items-center hover:text-gray cursor-pointer>
