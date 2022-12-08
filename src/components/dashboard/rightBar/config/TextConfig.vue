@@ -31,14 +31,12 @@ const textAlignOptions = $ref([
     <n-form-item label="字体大小">
       <n-input-number
         v-model:value="store.elementsList[props.index].cpt.options.fontSize"
-        clearable
       />
     </n-form-item>
 
     <n-form-item label="行高">
       <n-input-number
         v-model:value="store.elementsList[props.index].cpt.options.lineHeight"
-        clearable
       />
     </n-form-item>
 

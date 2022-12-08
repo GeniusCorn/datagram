@@ -26,7 +26,7 @@ function submitSelectedComponent(component: string | undefined) {
 </script>
 
 <template>
-  <n-modal w-600px preset="card" title="添加组件">
+  <n-modal w-600px preset="card" title="添加基础组件">
     <div flex="~" justify-around>
       <div
         class="chartBlock"

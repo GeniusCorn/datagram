@@ -57,7 +57,7 @@ function onSubmitComponent(component: string) {
       <Icon size="25">
         <Components />
       </Icon>
-      <div>组件</div>
+      <div>基础</div>
     </div>
 
     <ComponentPanel
