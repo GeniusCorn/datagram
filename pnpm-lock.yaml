@@ -4,6 +4,7 @@ specifiers:
   '@antv/g2plot': ^2.4.23
   '@iconify-json/tabler': ^1.1.50
   '@types/node': ^18.11.11
+  '@types/uuid': ^9.0.0
   '@typescript-eslint/eslint-plugin': ^5.45.1
   '@typescript-eslint/parser': ^5.45.1
   '@unocss/preset-uno': ^0.46.5
@@ -50,6 +51,7 @@ dependencies:
 devDependencies:
   '@iconify-json/tabler': 1.1.50
   '@types/node': 18.11.11
+  '@types/uuid': 9.0.0
   '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
   '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
   '@unocss/preset-uno': 0.46.5
@@ -790,6 +792,10 @@ packages:
 
   /@types/sizzle/2.3.3:
     resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
+    dev: true
+
+  /@types/uuid/9.0.0:
+    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
     dev: true
 
   /@types/yauzl/2.10.0:
