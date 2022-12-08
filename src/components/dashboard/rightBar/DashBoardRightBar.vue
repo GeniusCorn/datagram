@@ -17,6 +17,12 @@ watch(store.elementsList, () => {
     if (store.elementsList[i].drag.isActive === true) index = i
   }
 })
+
+const emit = defineEmits(['update'])
+
+function updateData() {
+  emit('update')
+}
 </script>
 
 <template>
@@ -46,6 +52,7 @@ watch(store.elementsList, () => {
               cptTypeToData.get(store.elementsList[index].cpt.type) || ChartData
             "
             :index="index"
+            @update="updateData"
           />
         </n-tab-pane>
       </n-tabs>

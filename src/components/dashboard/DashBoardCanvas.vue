@@ -28,6 +28,14 @@ function changePosition(newRect: Rect, index: number): void {
 function changeSize(newRect: Rect, index: number): void {
   store.changeElementSize(newRect, index)
 }
+
+const itemRefs: any[] = $ref([])
+
+function updateData() {
+  itemRefs.at(store.currentElement).updateData()
+}
+
+defineExpose({ updateData })
 </script>
 
 <template>
@@ -55,7 +63,7 @@ function changeSize(newRect: Rect, index: number): void {
       @resizing="changeSize($event, index)"
       @dragging="changePosition($event, index)"
     >
-      <component :is="element.cpt.type" :index="index" />
+      <component :is="element.cpt.type" ref="itemRefs" :index="index" />
     </VueDragResize>
   </div>
 </template>

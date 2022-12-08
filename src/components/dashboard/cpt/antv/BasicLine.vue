@@ -47,20 +47,12 @@ Object.assign(
 
 const container = $ref()
 
-let interval: any
-
 let line: Line
 
 onMounted(() => {
   line = new Line(container as HTMLElement, basicLineOptions)
 
   line.render()
-
-  if (interval !== null) {
-    setInterval(() => {
-      line.changeData(store.elementsList[props.index]?.cpt.data)
-    }, 700)
-  }
 
   watch(
     () => store.elementsList[props.index]?.cpt.options,
@@ -75,8 +67,13 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   line.destroy()
-  interval = null
 })
+
+function updateData() {
+  line.changeData(store.elementsList[props.index]?.cpt.data)
+}
+
+defineExpose({ updateData })
 </script>
 
 <template>
