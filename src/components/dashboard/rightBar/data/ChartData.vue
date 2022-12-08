@@ -6,13 +6,20 @@ const props = defineProps<{
   index: number
 }>()
 
-const data = $ref(JSON.stringify(store.elementsList[props.index].cpt.data))
+let data = $ref(JSON.stringify(store.elementsList[props.index].cpt.data))
 
 watch(
   () => data,
   () => {
     if (store.elementsList[props.index])
       store.elementsList[props.index].cpt.data = JSON.parse(data)
+  }
+)
+
+watch(
+  () => props.index,
+  () => {
+    data = JSON.stringify(store.elementsList[props.index].cpt.data)
   }
 )
 </script>
