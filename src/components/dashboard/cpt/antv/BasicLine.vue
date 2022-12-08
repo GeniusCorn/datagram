@@ -27,9 +27,11 @@ store.elementsList[props.index].cpt.data = data
 
 const basicLineOptions: LineOptions = {
   data: store.elementsList[props.index].cpt.data,
+  // animation: false,
   padding: 'auto',
   xField: 'Date',
   yField: 'scales',
+  smooth: false,
   xAxis: {
     title: {
       text: '123'
@@ -54,11 +56,21 @@ onMounted(() => {
 
   line.render()
 
-  if (!interval) {
+  if (interval !== null) {
     setInterval(() => {
       line.changeData(store.elementsList[props.index]?.cpt.data)
     }, 700)
   }
+
+  watch(
+    () => store.elementsList[props.index]?.cpt.options,
+    () => {
+      line.update(store.elementsList[props.index]?.cpt.options)
+    },
+    {
+      deep: true
+    }
+  )
 })
 
 onBeforeUnmount(() => {
