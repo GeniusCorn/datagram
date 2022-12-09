@@ -26,14 +26,28 @@ function updateData() {
 
 <template>
   <n-space vertical>
-    <n-input
-      v-model:value="data"
-      :autosize="{
-        minRows: 3
-      }"
-      type="textarea"
-      placeholder="文本内容"
-    />
+    <n-form-item label="x 方向字段">
+      <n-input
+        v-model:value="store.elementsList[props.index].cpt.options.xField"
+      />
+    </n-form-item>
+
+    <n-form-item label="y 方向字段">
+      <n-input
+        v-model:value="store.elementsList[props.index].cpt.options.yField"
+      />
+    </n-form-item>
+
+    <n-form-item label="数据内容">
+      <n-input
+        v-model:value="data"
+        :autosize="{
+          minRows: 3
+        }"
+        type="textarea"
+        placeholder="文本内容"
+      />
+    </n-form-item>
 
     <n-button ghost type="primary" float-right @click="updateData"
       >更新数据</n-button

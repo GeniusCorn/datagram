@@ -24,7 +24,7 @@ function handleNegativeClick(): void {}
     @negative-click="handleNegativeClick"
   >
     <template #trigger>
-      <n-button type="error">删除该组件</n-button>
+      <n-button float-right type="error">删除该组件</n-button>
     </template>
 
     确认删除该组件？

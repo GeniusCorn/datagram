@@ -27,7 +27,7 @@ const textAlignOptions = $ref([
 </script>
 
 <template>
-  <n-space vertical>
+  <n-form w-full label-placement="left" label-width="auto" size="large">
     <n-form-item label="字体大小">
       <n-input-number
         v-model:value="store.elementsList[props.index].cpt.options.fontSize"
@@ -46,7 +46,7 @@ const textAlignOptions = $ref([
         :options="textAlignOptions"
       />
     </n-form-item>
-  </n-space>
+  </n-form>
 </template>
 
 <style scoped></style>
