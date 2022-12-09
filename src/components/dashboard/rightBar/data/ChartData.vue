@@ -22,23 +22,16 @@ function updateData() {
   store.elementsList[props.index].cpt.options.data = JSON.parse(data)
   emit('update')
 }
+
+const cptTypeToData = new Map().set('BasicLine', 'BasicLineData')
 </script>
 
 <template>
   <n-space vertical>
-    <n-form w-full label-placement="left" label-width="auto" size="large">
-      <n-form-item label="x 方向字段">
-        <n-input
-          v-model:value="store.elementsList[props.index].cpt.options.xField"
-        />
-      </n-form-item>
-
-      <n-form-item label="y 方向字段">
-        <n-input
-          v-model:value="store.elementsList[props.index].cpt.options.yField"
-        />
-      </n-form-item>
-    </n-form>
+    <component
+      :is="cptTypeToData.get(store.elementsList[index].cpt.type)"
+      :index="props.index"
+    />
 
     <n-form-item label="数据内容">
       <n-input
