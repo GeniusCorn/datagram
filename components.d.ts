@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
     DashBoardRightBar: typeof import('./src/components/dashboard/rightBar/DashBoardRightBar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NDivider: typeof import('naive-ui')['NDivider']
+    NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NInput: typeof import('naive-ui')['NInput']
     NInputNumber: typeof import('naive-ui')['NInputNumber']

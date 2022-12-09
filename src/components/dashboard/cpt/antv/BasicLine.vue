@@ -27,16 +27,21 @@ store.elementsList[props.index].cpt.data = data
 
 const basicLineOptions: LineOptions = {
   data: store.elementsList[props.index].cpt.data,
-  // animation: false,
+
   padding: 'auto',
   xField: 'Date',
   yField: 'scales',
   smooth: false,
+  stepType: undefined,
   xAxis: {
+    position: 'top',
     title: {
-      text: '123'
-    },
-    tickCount: 5
+      text: '折线图标题',
+      position: 'center',
+      style: {
+        fontSize: 12
+      }
+    }
   }
 }
 
