@@ -26,17 +26,19 @@ function updateData() {
 
 <template>
   <n-space vertical>
-    <n-form-item label="x 方向字段">
-      <n-input
-        v-model:value="store.elementsList[props.index].cpt.options.xField"
-      />
-    </n-form-item>
+    <n-form w-full label-placement="left" label-width="auto" size="large">
+      <n-form-item label="x 方向字段">
+        <n-input
+          v-model:value="store.elementsList[props.index].cpt.options.xField"
+        />
+      </n-form-item>
 
-    <n-form-item label="y 方向字段">
-      <n-input
-        v-model:value="store.elementsList[props.index].cpt.options.yField"
-      />
-    </n-form-item>
+      <n-form-item label="y 方向字段">
+        <n-input
+          v-model:value="store.elementsList[props.index].cpt.options.yField"
+        />
+      </n-form-item>
+    </n-form>
 
     <n-form-item label="数据内容">
       <n-input
