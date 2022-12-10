@@ -37,8 +37,8 @@ function submitSelectedChart(chart: string | undefined) {
       </div>
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'basicPiePlot' }"
-        @click="selectChart('basicPiePlot')"
+        :class="{ selected: selectedChart === 'BasicPie' }"
+        @click="selectChart('BasicPie')"
       >
         饼图
       </div>

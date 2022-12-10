@@ -9,6 +9,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BasicLine: typeof import('./src/components/dashboard/cpt/antv/BasicLine.vue')['default']
     BasicLineConfig: typeof import('./src/components/dashboard/rightBar/config/antv/BasicLineConfig.vue')['default']
+    BasicLineData: typeof import('./src/components/dashboard/rightBar/data/BasicLineData.vue')['default']
+    BasicPie: typeof import('./src/components/dashboard/cpt/antv/BasicPie.vue')['default']
+    BasicPieConfig: typeof import('./src/components/dashboard/rightBar/config/antv/BasicPieConfig.vue')['default']
+    BasicPieData: typeof import('./src/components/dashboard/rightBar/data/BasicPieData.vue')['default']
     ChartData: typeof import('./src/components/dashboard/rightBar/data/ChartData.vue')['default']
     ChartPanel: typeof import('./src/components/dashboard/ChartPanel.vue')['default']
     ComponentPanel: typeof import('./src/components/dashboard/ComponentPanel.vue')['default']

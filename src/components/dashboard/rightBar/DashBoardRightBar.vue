@@ -10,6 +10,8 @@ let index: number = $ref(0)
 const cptTypeToConfig = new Map()
   .set('CptText', 'TextConfig')
   .set('BasicLine', 'BasicLineConfig')
+  .set('BasicPie', 'BasicPieConfig')
+
 const cptTypeToData = new Map().set('CptText', 'TextData')
 
 watch(store.elementsList, () => {

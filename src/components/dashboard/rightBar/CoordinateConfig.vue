@@ -13,14 +13,14 @@ const store = useDataStore()
     <n-form-item label="X 轴">
       <n-input-number
         v-model:value="store.elementsList[props.index].drag.x"
-        :validator="(x: number) => x > 0"
+        :validator="(x: number) => x > -1"
       />
     </n-form-item>
 
     <n-form-item label="Y 轴">
       <n-input-number
         v-model:value="store.elementsList[props.index].drag.y"
-        :validator="(x: number) => x > 0"
+        :validator="(x: number) => x > -1"
       />
     </n-form-item>
 
