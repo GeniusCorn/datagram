@@ -50,6 +50,8 @@ const cptTypeToData = new Map<string, string>()
     <n-button ghost type="primary" float-right @click="updateData"
       >更新数据</n-button
     >
+
+    <br />
   </n-space>
 </template>
 

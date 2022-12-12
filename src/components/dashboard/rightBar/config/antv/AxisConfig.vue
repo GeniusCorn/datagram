@@ -169,6 +169,8 @@ const tickMethodOptions = $ref([
               store.elementsList[props.index].cpt.options.xAxis.tickCount
             "
             w-full
+            :validator="(x: number) => x > 0"
+            placeholder="请输入数字"
           />
         </n-form-item>
 
@@ -213,6 +215,8 @@ const tickMethodOptions = $ref([
               store.elementsList[props.index].cpt.options.yAxis.tickCount
             "
             w-full
+            :validator="(x: number) => x > 0"
+            placeholder="请输入数字"
           />
         </n-form-item>
 

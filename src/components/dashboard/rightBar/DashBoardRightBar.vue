@@ -48,6 +48,8 @@ function updateData() {
             />
 
             <RemoveElement :index="index" />
+
+            <br />
           </n-space>
         </n-tab-pane>
 

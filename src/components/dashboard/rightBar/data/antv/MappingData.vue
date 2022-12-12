@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-form w-full label-placement="left" label-width="auto" size="large">
+  <n-form w-full label-placement="left" label-width="auto" size="medium">
     <n-form-item label="弧度字段">
       <n-input
         v-model:value="store.elementsList[props.index].cpt.options.angleField"

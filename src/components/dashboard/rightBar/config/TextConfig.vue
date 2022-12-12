@@ -27,16 +27,22 @@ const textAlignOptions = $ref([
 </script>
 
 <template>
-  <n-form w-full label-placement="left" label-width="auto" size="large">
+  <n-form w-full label-width="auto" size="medium">
     <n-form-item label="字体大小">
       <n-input-number
         v-model:value="store.elementsList[props.index].cpt.options.fontSize"
+        w-full
+        :validator="(x: number) => x > 0"
+        placeholder="请输入数字"
       />
     </n-form-item>
 
     <n-form-item label="行高">
       <n-input-number
         v-model:value="store.elementsList[props.index].cpt.options.lineHeight"
+        w-full
+        :validator="(x: number) => x > 0"
+        placeholder="请输入数字"
       />
     </n-form-item>
 

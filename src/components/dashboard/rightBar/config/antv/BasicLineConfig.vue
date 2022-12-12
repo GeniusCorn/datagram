@@ -145,6 +145,8 @@ const shapeOptions = $ref([
             v-model:value="
               store.elementsList[props.index].cpt.options.point.size
             "
+            :validator="(x: number) => x > 0"
+            placeholder="请输入数字"
             w-full
           />
         </n-form-item>

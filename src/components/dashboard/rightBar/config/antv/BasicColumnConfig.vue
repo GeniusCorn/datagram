@@ -74,6 +74,8 @@ const labelPositionOptions = $ref([
             store.elementsList[props.index].cpt.options.label.style.fontSize
           "
           w-full
+          :validator="(x: number) => x > 0"
+          placeholder="请输入数字"
         />
       </n-form-item>
     </template>
