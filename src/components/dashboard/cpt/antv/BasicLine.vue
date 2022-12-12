@@ -32,6 +32,12 @@ const options: LineOptions = {
   xField: 'Date',
   yField: 'scales',
   smooth: false,
+  stepType: '',
+  label: false,
+  point: {
+    shape: 'circle',
+    size: 2
+  },
   xAxis: false,
   yAxis: false
 }
