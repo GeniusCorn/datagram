@@ -28,7 +28,7 @@ function updateData() {
 </script>
 
 <template>
-  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-auto>
+  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-auto z-14>
     <template v-if="store.currentElement !== -1">
       <n-tabs
         default-value="coordinate"
