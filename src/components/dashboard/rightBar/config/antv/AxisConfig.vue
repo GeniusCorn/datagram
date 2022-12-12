@@ -138,7 +138,7 @@ const tickMethodOptions = $ref([
 <template>
   <n-collapse-item title="坐标轴" name="axis">
     <n-form w-full label-width="auto" size="medium">
-      <n-form-item label="x 轴开关" label-placement="left">
+      <n-form-item label="x 轴显示" label-placement="left">
         <n-switch
           v-model:value="xAxisEnabled"
           @update:value="handleXAxisChange"
@@ -163,7 +163,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="期望 x 轴刻度数量">
+        <n-form-item label="x 轴刻度数量">
           <n-input-number
             v-model:value="
               store.elementsList[props.index].cpt.options.xAxis.tickCount
@@ -172,7 +172,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="刻度计算方法">
+        <n-form-item label="x 轴刻度计算方法">
           <n-select
             v-model:value="
               store.elementsList[props.index].cpt.options.xAxis.tickMethod
@@ -207,7 +207,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="期望 y 轴刻度数量">
+        <n-form-item label="y 轴刻度数量">
           <n-input-number
             v-model:value="
               store.elementsList[props.index].cpt.options.yAxis.tickCount
@@ -216,7 +216,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="刻度计算方法">
+        <n-form-item label="y 轴刻度计算方法">
           <n-select
             v-model:value="
               store.elementsList[props.index].cpt.options.yAxis.tickMethod
