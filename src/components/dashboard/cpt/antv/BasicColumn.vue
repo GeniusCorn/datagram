@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
-import { Line, LineOptions } from '@antv/g2plot'
+import { Column, ColumnOptions } from '@antv/g2plot'
 
 const store = useDataStore()
 
 const data = [
   {
-    Date: '2010-01',
-    scales: 2002
+    type: '家具家电',
+    sales: 38
   },
   {
-    Date: '2010-02',
-    scales: 1850
+    type: '粮油副食',
+    sales: 52
   },
   {
-    Date: '2010-03',
-    scales: 3000
+    type: '生鲜水果',
+    sales: 61
   }
 ]
 
@@ -25,28 +25,27 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const options: LineOptions = {
+const basicColumnOptions: ColumnOptions = {
   data: store.elementsList[props.index].cpt.data,
 
-  padding: 'auto',
-  xField: 'Date',
-  yField: 'scales',
-  smooth: false,
-  stepType: undefined,
-  xAxis: false
+  xField: 'type',
+  yField: 'sales',
+  label: {
+    position: 'middle'
+  }
 }
 
 Object.assign(
-  store.elementsList[props.index].cpt.options as LineOptions,
-  options
+  store.elementsList[props.index].cpt.options as ColumnOptions,
+  basicColumnOptions
 )
 
 const container = $ref()
 
-let plot: Line
+let plot: Column
 
 onMounted(() => {
-  plot = new Line(container as HTMLElement, options)
+  plot = new Column(container as HTMLElement, basicColumnOptions)
 
   plot.render()
 

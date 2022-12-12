@@ -28,7 +28,7 @@ function updateData() {
 </script>
 
 <template>
-  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-auto>
+  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-auto z-14>
     <template v-if="store.currentElement !== -1">
       <n-tabs
         default-value="coordinate"
@@ -40,12 +40,14 @@ function updateData() {
         </n-tab-pane>
 
         <n-tab-pane name="config" tab="属性">
+          <n-space vertical>
           <component
             :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
             :index="index"
           />
 
           <RemoveElement :index="index" />
+          </n-space>
         </n-tab-pane>
 
         <n-tab-pane name="data" tab="数据">

@@ -4,6 +4,10 @@ import { useDataStore } from '@/store/index'
 import VueDragResize from 'vue-drag-resize'
 import { Rect } from '@/types/Rect'
 
+const props = defineProps<{
+  scale: number
+}>()
+
 const store = useDataStore()
 
 const canvas: HTMLElement | undefined = $ref()
@@ -47,9 +51,11 @@ defineExpose({ updateData })
     top-12
     left-20
     right-68
-    h="[calc(100vh-3rem)]"
     bg-gray-100
-    class="canvas"
+    w="[1920px]"
+    h="[1080px]"
+    transform-origin-left-top
+    :style="{ transform: `scale(${props.scale})` }"
   >
     <VueDragResize
       v-for="(element, index) in store.elementsList"
@@ -58,6 +64,8 @@ defineExpose({ updateData })
       :y="element.drag.y"
       :w="element.drag.width"
       :h="element.drag.height"
+      :parent-scale-x="props.scale"
+      :parent-scale-y="props.scale"
       :is-active="element.drag.isActive"
       :parent-w="clientWidth"
       :parent-h="clientHeight"
