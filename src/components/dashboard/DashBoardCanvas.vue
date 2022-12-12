@@ -23,9 +23,11 @@ onMounted(() => {
 
 function changePosition(newRect: Rect, index: number): void {
   store.changeElementPosition(newRect, index)
+  store.changeElementSize(newRect, index)
 }
 
 function changeSize(newRect: Rect, index: number): void {
+  store.changeElementPosition(newRect, index)
   store.changeElementSize(newRect, index)
 }
 
@@ -45,7 +47,9 @@ defineExpose({ updateData })
     top-12
     left-20
     right-68
-    h="[calc(100vh-3rem-1rem)]"
+    h="[calc(100vh-3rem)]"
+    bg-gray-100
+    class="canvas"
   >
     <VueDragResize
       v-for="(element, index) in store.elementsList"
@@ -68,4 +72,12 @@ defineExpose({ updateData })
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.canvas {
+  width: 1920px;
+  height: 1080px;
+  transform: scale(0.8);
+  transform-origin: left top;
+  /* z-index: -1; */
+}
+</style>
