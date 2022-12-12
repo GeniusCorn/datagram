@@ -20,16 +20,13 @@ const options: PieOptions = {
   data: store.elementsList[props.index].cpt.data,
   angleField: 'value',
   colorField: 'type',
+  legend: false,
   label: {
     offset: '-30%',
     content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
     style: {
       fontSize: 14
     }
-  },
-  legend: {
-    layout: 'vertical',
-    position: 'right'
   }
 }
 
