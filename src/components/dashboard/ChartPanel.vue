@@ -35,6 +35,15 @@ function submitSelectedChart(chart: string | undefined) {
       >
         折线图
       </div>
+
+      <div
+        class="chartBlock"
+        :class="{ selected: selectedChart === 'BasicColumn' }"
+        @click="selectChart('BasicColumn')"
+      >
+        柱状图
+      </div>
+
       <div
         class="chartBlock"
         :class="{ selected: selectedChart === 'BasicPie' }"

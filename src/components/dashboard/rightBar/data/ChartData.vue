@@ -23,9 +23,10 @@ function updateData() {
   emit('update')
 }
 
-const cptTypeToData = new Map()
-  .set('BasicLine', 'BasicLineData')
-  .set('BasicPie', 'BasicPieData')
+const cptTypeToData = new Map<string, string>()
+  .set('BasicLine', 'CoordinateData')
+  .set('BasicPie', 'MappingData')
+  .set('BasicColumn', 'CoordinateData')
 </script>
 
 <template>
