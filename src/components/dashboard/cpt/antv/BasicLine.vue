@@ -33,16 +33,7 @@ const options: LineOptions = {
   yField: 'scales',
   smooth: false,
   stepType: undefined,
-  xAxis: {
-    position: 'top',
-    title: {
-      text: '折线图标题',
-      position: 'center',
-      style: {
-        fontSize: 12
-      }
-    }
-  }
+  xAxis: false
 }
 
 Object.assign(

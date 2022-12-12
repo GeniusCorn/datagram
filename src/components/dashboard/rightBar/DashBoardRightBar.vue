@@ -40,12 +40,14 @@ function updateData() {
         </n-tab-pane>
 
         <n-tab-pane name="config" tab="属性">
+          <n-space vertical>
           <component
             :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
             :index="index"
           />
 
           <RemoveElement :index="index" />
+          </n-space>
         </n-tab-pane>
 
         <n-tab-pane name="data" tab="数据">
