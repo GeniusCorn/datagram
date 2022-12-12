@@ -9,8 +9,8 @@ import BasicLineConfig from '@/components/dashboard/rightBar/config/antv/BasicLi
 import BasicPieConfig from '@/components/dashboard/rightBar/config/antv/BasicPieConfig.vue'
 
 import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
-import BasicLineData from '@/components/dashboard/rightBar/data/BasicLineData.vue'
-import BasicPieData from '@/components/dashboard/rightBar/data/BasicPieData.vue'
+import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
+import MappingData from '@/components/dashboard/rightBar/data/antv/MappingData.vue'
 
 const list = [
   BasicLine,
@@ -20,8 +20,8 @@ const list = [
   BasicLineConfig,
   BasicPieConfig,
   TextData,
-  BasicLineData,
-  BasicPieData
+  CoordinateData,
+  MappingData
 ]
 
 export function registerCpt(): void {
