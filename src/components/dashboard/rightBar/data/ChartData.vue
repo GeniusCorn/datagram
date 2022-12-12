@@ -26,6 +26,7 @@ function updateData() {
 const cptTypeToData = new Map<string, string>()
   .set('BasicLine', 'CoordinateData')
   .set('BasicPie', 'MappingData')
+  .set('BasicColumn', 'CoordinateData')
 </script>
 
 <template>
