@@ -30,9 +30,9 @@ const basicColumnOptions: ColumnOptions = {
 
   xField: 'type',
   yField: 'sales',
-  label: {
-    position: 'middle'
-  }
+  label: false,
+  xAxis: false,
+  yAxis: false
 }
 
 Object.assign(

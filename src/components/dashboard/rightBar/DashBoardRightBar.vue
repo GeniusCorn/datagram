@@ -11,6 +11,7 @@ const cptTypeToConfig = new Map()
   .set('CptText', 'TextConfig')
   .set('BasicLine', 'BasicLineConfig')
   .set('BasicPie', 'BasicPieConfig')
+  .set('BasicColumn', 'BasicColumnConfig')
 
 const cptTypeToData = new Map().set('CptText', 'TextData')
 
@@ -41,12 +42,12 @@ function updateData() {
 
         <n-tab-pane name="config" tab="属性">
           <n-space vertical>
-          <component
-            :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
-            :index="index"
-          />
+            <component
+              :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
+              :index="index"
+            />
 
-          <RemoveElement :index="index" />
+            <RemoveElement :index="index" />
           </n-space>
         </n-tab-pane>
 
