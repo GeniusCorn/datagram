@@ -8,6 +8,12 @@ const props = defineProps<{
 
 let legendEnabled: boolean = $ref(false)
 
+onMounted(() => {
+  if (store.elementsList[props.index].cpt.options.legend === false)
+    legendEnabled = false
+  else legendEnabled = true
+})
+
 onUpdated(() => {
   if (store.elementsList[props.index].cpt.options.legend === false)
     legendEnabled = false
