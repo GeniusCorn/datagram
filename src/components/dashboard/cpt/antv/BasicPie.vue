@@ -16,7 +16,7 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const basicLineOptions: PieOptions = {
+const options: PieOptions = {
   data: store.elementsList[props.index].cpt.data,
   angleField: 'value',
   colorField: 'type',
@@ -35,7 +35,7 @@ const basicLineOptions: PieOptions = {
 
 Object.assign(
   store.elementsList[props.index].cpt.options as PieOptions,
-  basicLineOptions
+  options
 )
 
 const container = $ref()
@@ -43,7 +43,7 @@ const container = $ref()
 let plot: Pie
 
 onMounted(() => {
-  plot = new Pie(container as HTMLElement, basicLineOptions)
+  plot = new Pie(container as HTMLElement, options)
 
   plot.render()
 

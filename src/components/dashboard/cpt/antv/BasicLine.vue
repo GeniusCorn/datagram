@@ -25,7 +25,7 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const basicLineOptions: LineOptions = {
+const options: LineOptions = {
   data: store.elementsList[props.index].cpt.data,
 
   padding: 'auto',
@@ -47,22 +47,22 @@ const basicLineOptions: LineOptions = {
 
 Object.assign(
   store.elementsList[props.index].cpt.options as LineOptions,
-  basicLineOptions
+  options
 )
 
 const container = $ref()
 
-let line: Line
+let plot: Line
 
 onMounted(() => {
-  line = new Line(container as HTMLElement, basicLineOptions)
+  plot = new Line(container as HTMLElement, options)
 
-  line.render()
+  plot.render()
 
   watch(
     () => store.elementsList[props.index]?.cpt.options,
     () => {
-      line.update(store.elementsList[props.index]?.cpt.options)
+      plot.update(store.elementsList[props.index]?.cpt.options)
     },
     {
       deep: true
@@ -71,11 +71,11 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  line.destroy()
+  plot.destroy()
 })
 
 function updateData() {
-  line.changeData(store.elementsList[props.index]?.cpt.data)
+  plot.changeData(store.elementsList[props.index]?.cpt.data)
 }
 
 defineExpose({ updateData })
