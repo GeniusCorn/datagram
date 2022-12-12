@@ -9,6 +9,9 @@ const props = defineProps<{
 let xAxisEnabled: boolean = $ref(false)
 let xAxisLabelEnabled: boolean = $ref(false)
 
+let yAxisEnabled: boolean = $ref(false)
+let yAxisLabelEnabled: boolean = $ref(false)
+
 onMounted(() => {
   checkStatus()
 })
@@ -22,16 +25,26 @@ function checkStatus() {
     ? (xAxisEnabled = false)
     : (xAxisEnabled = true)
 
+  !store.elementsList[props.index].cpt.options.yAxis
+    ? (yAxisEnabled = false)
+    : (yAxisEnabled = true)
+
   !store.elementsList[props.index].cpt.options.xAxis.label
     ? (xAxisLabelEnabled = false)
     : (xAxisLabelEnabled = true)
+
+  !store.elementsList[props.index].cpt.options.yAxis.label
+    ? (yAxisLabelEnabled = false)
+    : (yAxisLabelEnabled = true)
 }
 
 function handleXAxisChange(value: boolean) {
   if (value === true)
     store.elementsList[props.index].cpt.options.xAxis = {
       position: 'bottom',
-      label: false
+      label: false,
+      tickCount: 5,
+      tickMethod: 'cat'
     }
   else store.elementsList[props.index].cpt.options.xAxis = false
 }
@@ -40,6 +53,23 @@ function handleXAxisLabelChange(value: boolean) {
   if (value === true)
     store.elementsList[props.index].cpt.options.xAxis.label = {}
   else store.elementsList[props.index].cpt.options.xAxis.label = false
+}
+
+function handleYAxisChange(value: boolean) {
+  if (value === true)
+    store.elementsList[props.index].cpt.options.yAxis = {
+      position: 'left',
+      label: false,
+      tickCount: 5,
+      tickMethod: 'r-pretty'
+    }
+  else store.elementsList[props.index].cpt.options.yAxis = false
+}
+
+function handleYAxisLabelChange(value: boolean) {
+  if (value === true)
+    store.elementsList[props.index].cpt.options.yAxis.label = {}
+  else store.elementsList[props.index].cpt.options.yAxis.label = false
 }
 
 const positionOptions = $ref([
@@ -60,12 +90,55 @@ const positionOptions = $ref([
     value: 'right'
   }
 ])
+
+const tickMethodOptions = $ref([
+  {
+    label: 'cat',
+    value: 'cat'
+  },
+  {
+    label: 'time-cat',
+    value: 'time-cat'
+  },
+  {
+    label: 'wilkinson-extended',
+    value: 'wilkinson-extended'
+  },
+  {
+    label: 'r-pretty',
+    value: 'r-pretty'
+  },
+  {
+    label: 'time',
+    value: 'time'
+  },
+  {
+    label: 'time-pretty',
+    value: 'time-pretty'
+  },
+  {
+    label: 'log',
+    value: 'log'
+  },
+  {
+    label: 'pow',
+    value: 'pow'
+  },
+  {
+    label: 'quantile',
+    value: 'quantile'
+  },
+  {
+    label: 'd3-linear',
+    value: 'd3-linear'
+  }
+])
 </script>
 
 <template>
   <n-collapse-item title="坐标轴" name="axis">
-    <n-form w-full label-placement="left" label-width="auto" size="medium">
-      <n-form-item label="x 轴开关">
+    <n-form w-full label-width="auto" size="medium">
+      <n-form-item label="x 轴开关" label-placement="left">
         <n-switch
           v-model:value="xAxisEnabled"
           @update:value="handleXAxisChange"
@@ -83,10 +156,72 @@ const positionOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="x 轴标签">
+        <n-form-item label="x 轴标签" label-placement="left">
           <n-switch
             v-model:value="xAxisLabelEnabled"
             @update:value="handleXAxisLabelChange"
+          />
+        </n-form-item>
+
+        <n-form-item label="期望 x 轴刻度数量">
+          <n-input-number
+            v-model:value="
+              store.elementsList[props.index].cpt.options.xAxis.tickCount
+            "
+            w-full
+          />
+        </n-form-item>
+
+        <n-form-item label="刻度计算方法">
+          <n-select
+            v-model:value="
+              store.elementsList[props.index].cpt.options.xAxis.tickMethod
+            "
+            :options="tickMethodOptions"
+          />
+        </n-form-item>
+      </template>
+
+      <n-form-item label="y 轴开关" label-placement="left">
+        <n-switch
+          v-model:value="yAxisEnabled"
+          @update:value="handleYAxisChange"
+        />
+      </n-form-item>
+
+      <template v-if="yAxisEnabled">
+        <n-form-item label="y 轴位置">
+          <n-select
+            v-model:value="
+              store.elementsList[props.index].cpt.options.yAxis.position
+            "
+            :options="positionOptions"
+            placeholder="请选择"
+          />
+        </n-form-item>
+
+        <n-form-item label="y 轴标签" label-placement="left">
+          <n-switch
+            v-model:value="yAxisLabelEnabled"
+            @update:value="handleYAxisLabelChange"
+          />
+        </n-form-item>
+
+        <n-form-item label="期望 y 轴刻度数量">
+          <n-input-number
+            v-model:value="
+              store.elementsList[props.index].cpt.options.yAxis.tickCount
+            "
+            w-full
+          />
+        </n-form-item>
+
+        <n-form-item label="刻度计算方法">
+          <n-select
+            v-model:value="
+              store.elementsList[props.index].cpt.options.yAxis.tickMethod
+            "
+            :options="tickMethodOptions"
           />
         </n-form-item>
       </template>

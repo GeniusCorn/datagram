@@ -8,7 +8,7 @@ import CptText from '@/components/dashboard/cpt/CptText.vue'
 import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
 import BasicLineConfig from '@/components/dashboard/rightBar/config/antv/BasicLineConfig.vue'
 import BasicPieConfig from '@/components/dashboard/rightBar/config/antv/BasicPieConfig.vue'
-import BasicColumnConfig from '@/components/dashboard/rightBar/config/antv/BasicColumnConfig.vue'
+// import BasicColumnConfig from '@/components/dashboard/rightBar/config/antv/BasicColumnConfig.vue'
 
 import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
 import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
@@ -22,7 +22,7 @@ const list = [
   TextConfig,
   BasicLineConfig,
   BasicPieConfig,
-  BasicColumnConfig,
+  // BasicColumnConfig,
   TextData,
   CoordinateData,
   MappingData

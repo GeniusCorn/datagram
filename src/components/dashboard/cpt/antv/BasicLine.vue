@@ -32,8 +32,8 @@ const options: LineOptions = {
   xField: 'Date',
   yField: 'scales',
   smooth: false,
-  stepType: undefined,
-  xAxis: false
+  xAxis: false,
+  yAxis: false
 }
 
 Object.assign(
