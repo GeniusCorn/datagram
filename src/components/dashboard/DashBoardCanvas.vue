@@ -80,12 +80,4 @@ defineExpose({ updateData })
   </div>
 </template>
 
-<style scoped>
-.canvas {
-  width: 1920px;
-  height: 1080px;
-  transform: scale(0.8);
-  transform-origin: left top;
-  /* z-index: -1; */
-}
-</style>
+<style scoped></style>
