@@ -48,6 +48,8 @@ export const useDataStore = defineStore('data', () => {
       drag,
       cpt
     })
+
+    console.log(elementsList)
   }
 
   function removeElement(index: number): void {

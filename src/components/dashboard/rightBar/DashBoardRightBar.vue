@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store/index'
-import CoordinateConfig from '@/components/dashboard/rightBar/CoordinateConfig.vue'
 import ChartData from '@/components/dashboard/rightBar/data/ChartData.vue'
 
 const store = useDataStore()
@@ -37,7 +36,7 @@ function updateData() {
         type="line"
       >
         <n-tab-pane name="coordinate" tab="坐标">
-          <component :is="CoordinateConfig" :index="index" />
+          <CoordinateConfig :index="index" />
         </n-tab-pane>
 
         <n-tab-pane name="config" tab="属性">

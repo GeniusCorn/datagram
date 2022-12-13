@@ -51,7 +51,7 @@ function onSubmitComponent(component: string) {
       items-center
       hover:text-gray
       cursor-pointer
-      @click="onSubmitComponent('cptText')"
+      @click="onSubmitComponent('CptText')"
     >
       <Icon size="25">
         <CursorText />
