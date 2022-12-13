@@ -57,6 +57,7 @@ defineExpose({ updateData })
 
 <template>
   <div
+    id="canvas"
     ref="canvas"
     absolute
     top-12

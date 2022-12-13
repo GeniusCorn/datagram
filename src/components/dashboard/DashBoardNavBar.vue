@@ -3,10 +3,46 @@ import { Icon } from '@vicons/utils'
 import { ChevronLeft } from '@vicons/tabler'
 import { useDataStore } from '@/store'
 import { useMessage } from 'naive-ui'
+import html2canvas from 'html2canvas'
+
+const emit = defineEmits(['export'])
 
 const message = useMessage()
 
 const store = useDataStore()
+
+function clearCanvas(): void {
+  if (store.elementsList.length === 0) {
+    message.error(`画布已经为空`)
+    return
+  }
+
+  localStorage.clear()
+
+  for (let i = store.elementsList.length; i >= 0; i -= 1) {
+    store.removeElement(i)
+  }
+}
+
+function exportCanvas(): void {
+  emit('export')
+
+  setTimeout(() => {
+    const canvas: HTMLElement | null = document.querySelector(
+      '#canvas'
+    ) as HTMLElement
+
+    html2canvas(canvas as HTMLElement).then((canvas) => {
+      const canvasData = canvas.toDataURL('image/png')
+      const link = document.createElement('a')
+      link.href = canvasData
+      link.download = '我的大屏.png'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    })
+  }, 200)
+}
 
 function saveElementsListToLocalStorage(): void {
   if (store.elementsList.length === 0) {
@@ -20,19 +56,6 @@ function saveElementsListToLocalStorage(): void {
   localStorage.setItem('elementsList', value)
 
   message.success(`保存成功`)
-}
-
-function clearCanvas(): void {
-  if (store.elementsList.length === 0) {
-    message.error(`画布已经为空`)
-    return
-  }
-
-  localStorage.clear()
-
-  for (let i = store.elementsList.length; i >= 0; i -= 1) {
-    store.removeElement(i)
-  }
 }
 </script>
 
@@ -66,7 +89,7 @@ function clearCanvas(): void {
         </n-popconfirm>
 
         <n-button quaternary>预览</n-button>
-        <n-button type="info">导出</n-button>
+        <n-button type="info" @click="exportCanvas">导出</n-button>
         <n-button type="primary" @click="saveElementsListToLocalStorage"
           >保存</n-button
         >
