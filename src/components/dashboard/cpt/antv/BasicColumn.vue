@@ -25,7 +25,7 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const basicColumnOptions: ColumnOptions = {
+let options: ColumnOptions = {
   data: store.elementsList[props.index].cpt.data,
 
   xField: 'type',
@@ -35,17 +35,20 @@ const basicColumnOptions: ColumnOptions = {
   yAxis: false
 }
 
-Object.assign(
-  store.elementsList[props.index].cpt.options as ColumnOptions,
-  basicColumnOptions
-)
+if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
+  Object.assign(
+    store.elementsList[props.index].cpt.options as ColumnOptions,
+    options
+  )
+
+options = store.elementsList[props.index].cpt.options
 
 const container = $ref()
 
 let plot: Column
 
 onMounted(() => {
-  plot = new Column(container as HTMLElement, basicColumnOptions)
+  plot = new Column(container as HTMLElement, options)
 
   plot.render()
 

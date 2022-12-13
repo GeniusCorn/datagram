@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
-import {
-  Option,
-  textOptions
-} from '@/components/dashboard/rightBar/options/textOptions'
 
 const props = defineProps<{
   index: number
@@ -11,12 +7,18 @@ const props = defineProps<{
 
 const store = useDataStore()
 
-Object.assign(
-  store.elementsList[props.index].cpt.options as Option,
-  textOptions
-)
+const textOptions = {
+  bold: false,
+  fontSize: 16,
+  lineHeight: 30,
+  textAlign: 'start'
+}
 
-store.elementsList[props.index].cpt.data = '新建文本'
+if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
+  Object.assign(store.elementsList[props.index].cpt.options, textOptions)
+
+if (Object.keys(store.elementsList[props.index].cpt.data).length === 0)
+  store.elementsList[props.index].cpt.data = '新建文本'
 </script>
 
 <template>

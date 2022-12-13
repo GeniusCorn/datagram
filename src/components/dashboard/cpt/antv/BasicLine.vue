@@ -25,7 +25,7 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const options: LineOptions = {
+let options: LineOptions = {
   data: store.elementsList[props.index].cpt.data,
 
   padding: 'auto',
@@ -42,10 +42,12 @@ const options: LineOptions = {
   yAxis: false
 }
 
-Object.assign(
-  store.elementsList[props.index].cpt.options as LineOptions,
-  options
-)
+if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
+  Object.assign(
+    store.elementsList[props.index].cpt.options as LineOptions,
+    options
+  )
+else options = store.elementsList[props.index].cpt.options
 
 const container = $ref()
 

@@ -21,6 +21,7 @@ specifiers:
   eslint-plugin-promise: ^6.1.1
   eslint-plugin-vue: ^9.8.0
   happy-dom: ^7.8.1
+  lodash-es: ^4.17.21
   naive-ui: ^2.34.2
   pinia: ^2.0.28
   prettier: ^2.8.1
@@ -42,6 +43,7 @@ specifiers:
 
 dependencies:
   '@antv/g2plot': 2.4.23
+  lodash-es: 4.17.21
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
   uuid: 9.0.0
   vue: 3.2.45
@@ -3771,7 +3773,6 @@ packages:
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: true
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}

@@ -16,7 +16,7 @@ const props = defineProps<{
 
 store.elementsList[props.index].cpt.data = data
 
-const options: PieOptions = {
+let options: PieOptions = {
   data: store.elementsList[props.index].cpt.data,
   angleField: 'value',
   colorField: 'type',
@@ -30,10 +30,12 @@ const options: PieOptions = {
   }
 }
 
-Object.assign(
-  store.elementsList[props.index].cpt.options as PieOptions,
-  options
-)
+if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
+  Object.assign(
+    store.elementsList[props.index].cpt.options as PieOptions,
+    options
+  )
+else options = store.elementsList[props.index].cpt.options
 
 const container = $ref()
 
