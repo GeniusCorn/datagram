@@ -25,7 +25,7 @@ function submitSelectedChart(chart: string | undefined) {
 </script>
 
 <template>
-  <n-modal w-600px preset="card" title="添加视图组件">
+  <n-modal w-600px preset="card" title="添加图表组件">
     <div flex="~" justify-around>
       <div
         class="chartBlock"

@@ -38,7 +38,7 @@ function onSubmitComponent(component: string) {
       <Icon size="25">
         <ChartPie />
       </Icon>
-      <div>视图</div>
+      <div>图表</div>
     </div>
 
     <ChartPanel v-model:show="showChartPanel" @submit="onSubmitComponent" />
