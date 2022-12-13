@@ -19,7 +19,6 @@ function submitSelectedChart(chart: string | undefined) {
     return
   }
 
-  message.info(`选择${chart}`)
   selectedChart = undefined
   emit('submit', chart)
 }
