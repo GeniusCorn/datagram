@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.51",
-    "@types/node": "^18.11.13",
+    "@types/node": "^18.11.15",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
