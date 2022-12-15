@@ -22,7 +22,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.1.51",
+    "@iconify-json/tabler": "^1.1.52",
     "@types/node": "^18.11.15",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
