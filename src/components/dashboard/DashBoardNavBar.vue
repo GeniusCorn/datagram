@@ -24,6 +24,11 @@ function clearCanvas(): void {
   }
 }
 
+function pushRouterToPreview(): void {
+  const url = `${window.location.href}preview`
+  window.open(url, '_blank')
+}
+
 function exportCanvas(): void {
   if (store.elementsList.length === 0) {
     message.error(`画布为空，无法导出`)
@@ -93,7 +98,7 @@ function saveElementsListToLocalStorage(): void {
           确认清空画布？
         </n-popconfirm>
 
-        <n-button quaternary>预览</n-button>
+        <n-button quaternary @click="pushRouterToPreview">预览</n-button>
         <n-button type="info" @click="exportCanvas">导出</n-button>
         <n-button type="primary" @click="saveElementsListToLocalStorage"
           >保存</n-button

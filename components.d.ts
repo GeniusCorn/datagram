@@ -43,6 +43,7 @@ declare module '@vue/runtime-core' {
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
     OperateElement: typeof import('./src/components/dashboard/rightBar/OperateElement.vue')['default']
+    PreviewNavBar: typeof import('./src/components/preview/PreviewNavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TextConfig: typeof import('./src/components/dashboard/rightBar/config/TextConfig.vue')['default']
