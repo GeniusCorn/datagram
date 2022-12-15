@@ -13,7 +13,7 @@ const store = useDataStore()
 
 function clearCanvas(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布已经为空`)
+    message.error(`画布为空，无法清空`)
     return
   }
 
@@ -25,6 +25,11 @@ function clearCanvas(): void {
 }
 
 function exportCanvas(): void {
+  if (store.elementsList.length === 0) {
+    message.error(`画布为空，无法导出`)
+    return
+  }
+
   emit('export')
 
   setTimeout(() => {
