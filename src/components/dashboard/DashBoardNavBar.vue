@@ -106,6 +106,7 @@ function saveElementsListToLocalStorage(): void {
         </n-popconfirm>
 
         <n-button quaternary @click="pushRouterToPreview">预览</n-button>
+        <n-button quaternary @click="pushRouterToPreview">预览</n-button>
         <n-button type="info" @click="exportCanvas">导出</n-button>
         <n-button type="primary" @click="saveElementsListToLocalStorage"
           >保存</n-button
