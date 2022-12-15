@@ -1,3 +1,7 @@
+<p align='center'>
+  <img src='./public/logo.png' alt='DataGram' height='400'/>
+</p>
+
 # DataGram
 
 English | [简体中文](README.zh-CN.md)
