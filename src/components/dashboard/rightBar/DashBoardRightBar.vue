@@ -46,7 +46,9 @@ function updateData() {
               :index="index"
             />
 
-            <RemoveElement :index="index" />
+            <br />
+
+            <OperateElement :index="index" />
 
             <br />
           </n-space>

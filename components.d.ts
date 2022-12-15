@@ -42,7 +42,7 @@ declare module '@vue/runtime-core' {
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
-    RemoveElement: typeof import('./src/components/dashboard/rightBar/RemoveElement.vue')['default']
+    OperateElement: typeof import('./src/components/dashboard/rightBar/OperateElement.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TextConfig: typeof import('./src/components/dashboard/rightBar/config/TextConfig.vue')['default']
