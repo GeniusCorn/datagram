@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router/index'
 import { Icon } from '@vicons/utils'
 import { ChevronLeft } from '@vicons/tabler'
 import { useDataStore } from '@/store'
@@ -32,7 +33,7 @@ function pushRouterToPreview(): void {
 
   saveElementsListToLocalStorage()
 
-  const url = `${window.location.href}preview`
+  const url = `${window.location.href}/preview`
   window.open(url, '_blank')
 }
 
@@ -86,11 +87,11 @@ function saveElementsListToLocalStorage(): void {
     h-12
     px-10
   >
-    <div>
+    <n-button text @click="router.push('/')">
       <Icon>
         <ChevronLeft />
       </Icon>
-    </div>
+    </n-button>
 
     <div>
       <n-space>
@@ -105,7 +106,6 @@ function saveElementsListToLocalStorage(): void {
           确认清空画布？
         </n-popconfirm>
 
-        <n-button quaternary @click="pushRouterToPreview">预览</n-button>
         <n-button quaternary @click="pushRouterToPreview">预览</n-button>
         <n-button type="info" @click="exportCanvas">导出</n-button>
         <n-button type="primary" @click="saveElementsListToLocalStorage"
