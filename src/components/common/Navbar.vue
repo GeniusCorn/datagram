@@ -13,14 +13,29 @@ const options = $ref([
     key: 'changePassword'
   },
   {
-    label: '关于我们',
-    key: 'about'
-  },
-  {
     label: '退出登录',
     key: 'logout'
   }
 ])
+
+function handleSelect(key: string): void {
+  switch (key) {
+    case 'profile':
+      router.push('profile')
+      break
+
+    case 'changePassword':
+      router.push('password_reset')
+      break
+
+    case 'logout':
+      router.push('login')
+      break
+
+    default:
+      break
+  }
+}
 </script>
 
 <template>
@@ -39,7 +54,7 @@ const options = $ref([
       </n-space>
 
       <n-space>
-        <n-dropdown :options="options">
+        <n-dropdown :options="options" @select="handleSelect">
           <n-button text>
             <template #icon>
               <Icon>

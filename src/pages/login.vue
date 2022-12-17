@@ -28,9 +28,11 @@ function validateForm(formValue: Form): boolean {
   }
 
   if (formValue.password.length < 6) {
-    message.error('密码长度错误')
+    message.error('密码长度需不少于六位')
     return false
   }
+
+  router.push('/')
 
   return true
 }
@@ -73,9 +75,9 @@ function validateForm(formValue: Form): boolean {
       </n-button>
 
       <div flex="~ row" justify-between>
-        <n-button text @click="router.push('/password_reset')">
+        <!-- <n-button text @click="router.push('/password_reset')">
           忘记密码
-        </n-button>
+        </n-button> -->
         <n-button text @click="router.push('/register')"> 注册账号</n-button>
       </div>
     </div>

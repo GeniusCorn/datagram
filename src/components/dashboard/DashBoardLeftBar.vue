@@ -26,15 +26,7 @@ function onSubmitComponent(component: string) {
 
 <template>
   <div flex="~ col" bg="[#f8f9fa]" w-20 h-full items-center gap-4>
-    <div
-      flex="~ col"
-      gap-1
-      items-center
-      hover:text-gray
-      cursor-pointer
-      mt-24px
-      @click="showChartPanel = true"
-    >
+    <div class="button" mt-40px @click="showChartPanel = true">
       <Icon size="25">
         <ChartPie />
       </Icon>
@@ -45,14 +37,7 @@ function onSubmitComponent(component: string) {
 
     <n-divider />
 
-    <div
-      flex="~ col"
-      gap-1
-      items-center
-      hover:text-gray
-      cursor-pointer
-      @click="onSubmitComponent('CptText')"
-    >
+    <div class="button" @click="onSubmitComponent('CptText')">
       <Icon size="25">
         <CursorText />
       </Icon>
@@ -61,7 +46,7 @@ function onSubmitComponent(component: string) {
 
     <n-divider />
 
-    <div flex="~ col" gap-1 items-center hover:text-gray cursor-pointer>
+    <div class="button">
       <Icon size="25">
         <Photo />
       </Icon>
@@ -70,7 +55,7 @@ function onSubmitComponent(component: string) {
 
     <n-divider />
 
-    <div flex="~ col" gap-1 items-center hover:text-gray cursor-pointer>
+    <div class="button">
       <Icon size="25">
         <Map2 />
       </Icon>
@@ -81,4 +66,8 @@ function onSubmitComponent(component: string) {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.button {
+  @apply flex flex-col gap-1 justify-center items-center hover:text-[#36ad2a] cursor-pointer transition duration-200 ease-in-out;
+}
+</style>
