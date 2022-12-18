@@ -51,7 +51,7 @@ import data from '@/assets/home/data.png'
         <n-card title="数据连接" bg-gray-100>
           <div flex="~" justify-between>
             <div>
-              <p>支持多种数据源，如 Excel 文件及 API 数据源等；</p>
+              <p>支持多种数据集，如 Excel 文件及 API 数据源等；</p>
               <p>支持上传并在云端管理数据源。</p>
             </div>
 

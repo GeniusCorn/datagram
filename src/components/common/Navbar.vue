@@ -48,7 +48,7 @@ function handleSelect(key: string): void {
           <n-space>
             <n-button text @click="router.push('/')">首页</n-button>
             <n-button text @click="router.push('/dashboard')">仪表盘</n-button>
-            <n-button text>数据源</n-button>
+            <n-button text @click="router.push('/dataset')">数据集</n-button>
           </n-space>
         </div>
       </n-space>
