@@ -18,12 +18,12 @@
     "pinia": "^2.0.28",
     "uuid": "^9.0.0",
     "vue": "^3.2.45",
-    "vue-drag-resize": "^2.0.3",
+    "vue-drag-resize": "2.0.3",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.52",
-    "@types/node": "^18.11.16",
+    "@types/node": "^18.11.17",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
