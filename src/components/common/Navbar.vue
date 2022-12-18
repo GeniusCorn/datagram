@@ -1,20 +1,24 @@
 <script setup lang="ts">
 import router from '@/router/index'
 import { Icon } from '@vicons/utils'
-import { User } from '@vicons/tabler'
+import { User, Apple, EditCircle, Logout } from '@vicons/tabler'
+import { Component } from 'vue'
 
 const options = $ref([
   {
     label: '个人信息',
-    key: 'profile'
+    key: 'profile',
+    icon: renderIcon(Apple)
   },
   {
     label: '修改密码',
-    key: 'changePassword'
+    key: 'changePassword',
+    icon: renderIcon(EditCircle)
   },
   {
     label: '退出登录',
-    key: 'logout'
+    key: 'logout',
+    icon: renderIcon(Logout)
   }
 ])
 
@@ -34,6 +38,14 @@ function handleSelect(key: string): void {
 
     default:
       break
+  }
+}
+
+function renderIcon(icon: Component) {
+  return () => {
+    return h(Icon, null, {
+      default: () => h(icon)
+    })
   }
 }
 </script>
