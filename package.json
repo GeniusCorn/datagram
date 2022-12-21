@@ -11,8 +11,14 @@
     "preview": "vite preview",
     "test": "vitest"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "@antv/g2plot": "^2.4.23",
+    "cz-conventional-changelog": "^3.3.0",
     "html2canvas": "^1.4.1",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.28",
