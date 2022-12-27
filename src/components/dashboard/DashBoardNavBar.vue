@@ -15,7 +15,7 @@ function clearCanvas(): void {
     return
   }
 
-  localStorage.clear()
+  localStorage.removeItem('elementsList')
 
   for (let i = store.elementsList.length; i >= 0; i -= 1) {
     store.removeElement(i)
@@ -67,7 +67,7 @@ function saveElementsListToLocalStorage(): void {
 
   const value = JSON.stringify(store.elementsList)
 
-  localStorage.clear()
+  localStorage.removeItem('elementsList')
   localStorage.setItem('elementsList', value)
 
   window.$message?.success(`保存成功`)
