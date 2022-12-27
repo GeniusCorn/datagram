@@ -28,6 +28,7 @@ router.beforeEach(async (to, from, next) => {
       token === '' ||
       token === 'undefined'
     ) {
+      window.$message?.error('未登录')
       next('/login')
     } else {
       next()

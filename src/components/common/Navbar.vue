@@ -33,6 +33,9 @@ function handleSelect(key: string): void {
       break
 
     case 'logout':
+      localStorage.removeItem('token')
+      window.$message?.info('退出登录')
+
       router.push('login')
       break
 
