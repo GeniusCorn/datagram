@@ -3,23 +3,46 @@ import logo from '@/assets/logo.png'
 import router from '@/router'
 import { User, Lock } from '@vicons/tabler'
 import { useMessage } from 'naive-ui'
+import UserService from '@/service/user'
 
 const message = useMessage()
 
 interface Form {
-  user: string
+  account: string
   password: string
   passwordRepeat: string
 }
 
 const formValue: Form = $ref({
-  user: '',
+  account: '',
   password: '',
   passwordRepeat: ''
 })
 
+async function registerUser(formValue: Form): Promise<void> {
+  if (validateForm(formValue)) {
+    const res = await UserService.register(
+      formValue.account,
+      formValue.password
+    )
+
+    if (res.data.code !== 0) {
+      message.error(res.data.message)
+    } else {
+      message.success(res.data.message)
+      clearForm()
+    }
+  }
+}
+
+function clearForm() {
+  formValue.account = ''
+  formValue.password = ''
+  formValue.passwordRepeat = ''
+}
+
 function validateForm(formValue: Form): boolean {
-  if (formValue.user.length === 0) {
+  if (formValue.account.length === 0) {
     message.error('请输入用户名')
     return false
   }
@@ -51,7 +74,7 @@ function validateForm(formValue: Form): boolean {
 
     <div flex="~ col" gap="4">
       <n-input
-        v-model:value="formValue.user"
+        v-model:value="formValue.account"
         w-full
         placeholder="请输入用户名"
         @keydown.enter.prevent
@@ -85,7 +108,7 @@ function validateForm(formValue: Form): boolean {
         type="primary"
         size="large"
         w-full
-        @click="validateForm(formValue)"
+        @click="registerUser(formValue)"
       >
         注册
       </n-button>

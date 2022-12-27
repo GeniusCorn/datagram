@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@antv/g2plot": "^2.4.23",
+    "axios": "^1.2.1",
+    "base-64": "^1.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "html2canvas": "^1.4.1",
     "lodash-es": "^4.17.21",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.53",
+    "@types/base-64": "^1.0.0",
     "@types/node": "^18.11.17",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
