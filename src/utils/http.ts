@@ -1,3 +1,4 @@
+import router from '@/router'
 import axios, { AxiosInstance } from 'axios'
 
 const api: AxiosInstance = axios.create({
@@ -9,9 +10,14 @@ const api: AxiosInstance = axios.create({
 
 // 请求拦截器
 api.interceptors.request.use(
-  (config) => {
-    // console.log(config)
-    return config
+  async (config) => {
+    const handleConfig = { ...config }
+
+    if (handleConfig.headers != null) {
+      handleConfig.headers.token = localStorage.getItem('token')
+    }
+
+    return handleConfig
   },
   async (error) => {
     // console.log(error)
@@ -26,7 +32,15 @@ api.interceptors.response.use(
 
     return response
   },
-  (error) => {
+  async (error) => {
+    if (error.response.status === 401 || error.response.status === 403) {
+      window.$message?.error(error.response.data.message)
+
+      localStorage.removeItem('token')
+
+      await router.push('/login')
+    }
+
     return error.response
   }
 )
