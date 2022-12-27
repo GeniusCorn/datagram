@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./src/components/common/Footer.vue')['default']
     LegendConfig: typeof import('./src/components/dashboard/rightBar/config/antv/LegendConfig.vue')['default']
     MappingData: typeof import('./src/components/dashboard/rightBar/data/antv/MappingData.vue')['default']
+    NaiveProvider: typeof import('./src/components/NaiveProvider.vue')['default']
     Navbar: typeof import('./src/components/common/Navbar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
@@ -66,5 +67,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     TextConfig: typeof import('./src/components/dashboard/rightBar/config/TextConfig.vue')['default']
     TextData: typeof import('./src/components/dashboard/rightBar/data/TextData.vue')['default']
+    WindowMessage: typeof import('./src/components/WindowMessage.vue')['default']
   }
 }

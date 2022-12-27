@@ -2,6 +2,7 @@
 
 <template>
   <n-message-provider>
+    <WindowMessage />
     <RouterView />
   </n-message-provider>
 </template>
