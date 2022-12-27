@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
-import { useMessage } from 'naive-ui'
 import html2canvas from 'html2canvas'
 
 const emit = defineEmits(['export'])
-
-const message = useMessage()
 
 const store = useDataStore()
 
 function exportCanvas(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布为空，无法导出`)
+    window.$message?.error(`画布为空，无法导出`)
     return
   }
 

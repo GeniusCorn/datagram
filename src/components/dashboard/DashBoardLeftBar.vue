@@ -2,9 +2,6 @@
 import { Icon } from '@vicons/utils'
 import { ChartPie, Map2, CursorText, Photo } from '@vicons/tabler'
 import { useDataStore } from '@/store/index'
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
 
 const store = useDataStore()
 
@@ -18,7 +15,7 @@ function onSubmitComponent(component: string) {
   selected = component
 
   store.addElement(component)
-  message.success(`组件添加成功`)
+  window.$message?.success(`组件添加成功`)
 
   selected = undefined
 }

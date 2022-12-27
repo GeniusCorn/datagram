@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
-
 interface Form {
   phone: string
 }
@@ -28,7 +24,7 @@ const options = $ref([
 
 function validateForm(formValue: Form): boolean {
   if (formValue.phone !== '' && formValue.phone.length !== 11) {
-    message.error('手机号码格式错误')
+    window.$message?.error('手机号码格式错误')
     return false
   }
 

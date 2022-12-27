@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
-
 const emit = defineEmits<{
   (e: 'submit', chart: string): void
 }>()
@@ -15,7 +11,7 @@ function selectChart(chart: string) {
 
 function submitSelectedChart(chart: string | undefined) {
   if (chart === undefined) {
-    message.error('请选择一个图表类型')
+    window.$message?.error('请选择一个图表类型')
     return
   }
 

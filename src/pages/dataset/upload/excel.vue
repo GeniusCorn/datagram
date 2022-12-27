@@ -3,9 +3,6 @@ import { Icon } from '@vicons/utils'
 import { AlertCircle, File } from '@vicons/tabler'
 import { UploadFileInfo } from 'naive-ui/es/upload'
 import { excelToJson } from '@/utils/xlsx'
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
 
 let fileData: any[] = $ref([])
 
@@ -24,7 +21,7 @@ function checkFileType(fileName: string): boolean {
   const type = fileName.split('.').at(-1)
 
   if (type !== 'xlsx') {
-    message.error('该文件类型不支持，请上传 xlsx 格式的文件')
+    window.$message?.error('该文件类型不支持，请上传 xlsx 格式的文件')
     return false
   }
 

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useMessage } from 'naive-ui'
-
-const message = useMessage()
-
 interface Form {
   originalPassword: string
   password: string
@@ -17,17 +13,17 @@ const formValue: Form = $ref({
 
 function validateForm(formValue: Form): boolean {
   if (formValue.originalPassword.length === 0) {
-    message.error('请输入原始密码')
+    window.$message?.error('请输入原始密码')
     return false
   }
 
   if (formValue.password.length < 6) {
-    message.error('密码长度需不少于六位')
+    window.$message?.error('密码长度需不少于六位')
     return false
   }
 
   if (formValue.password !== formValue.passwordRepeat) {
-    message.error('两次密码输入不一致')
+    window.$message?.error('两次密码输入不一致')
     return false
   }
 

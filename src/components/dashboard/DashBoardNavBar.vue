@@ -3,18 +3,15 @@ import router from '@/router/index'
 import { Icon } from '@vicons/utils'
 import { ChevronLeft } from '@vicons/tabler'
 import { useDataStore } from '@/store'
-import { useMessage } from 'naive-ui'
 import html2canvas from 'html2canvas'
 
 const emit = defineEmits(['export'])
-
-const message = useMessage()
 
 const store = useDataStore()
 
 function clearCanvas(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布为空，无法清空`)
+    window.$message?.error(`画布为空，无法清空`)
     return
   }
 
@@ -27,7 +24,7 @@ function clearCanvas(): void {
 
 function pushRouterToPreview(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布为空，无法预览`)
+    window.$message?.error(`画布为空，无法预览`)
     return
   }
 
@@ -39,7 +36,7 @@ function pushRouterToPreview(): void {
 
 function exportCanvas(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布为空，无法导出`)
+    window.$message?.error(`画布为空，无法导出`)
     return
   }
 
@@ -64,7 +61,7 @@ function exportCanvas(): void {
 
 function saveElementsListToLocalStorage(): void {
   if (store.elementsList.length === 0) {
-    message.error(`画布为空，无法保存`)
+    window.$message?.error(`画布为空，无法保存`)
     return
   }
 
@@ -73,7 +70,7 @@ function saveElementsListToLocalStorage(): void {
   localStorage.clear()
   localStorage.setItem('elementsList', value)
 
-  message.success(`保存成功`)
+  window.$message?.success(`保存成功`)
 }
 </script>
 

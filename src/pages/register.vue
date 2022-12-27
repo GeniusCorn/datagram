@@ -2,10 +2,7 @@
 import logo from '@/assets/logo.png'
 import router from '@/router'
 import { User, Lock } from '@vicons/tabler'
-import { useMessage } from 'naive-ui'
 import UserService from '@/service/user'
-
-const message = useMessage()
 
 interface Form {
   account: string
@@ -27,9 +24,9 @@ async function registerUser(formValue: Form): Promise<void> {
     )
 
     if (res.data.code !== 0) {
-      message.error(res.data.message)
+      window.$message?.error(res.data.message)
     } else {
-      message.success(res.data.message)
+      window.$message?.success(res.data.message)
       clearForm()
     }
   }
@@ -43,22 +40,22 @@ function clearForm() {
 
 function validateForm(formValue: Form): boolean {
   if (formValue.account.length === 0) {
-    message.error('请输入用户名')
+    window.$message?.error('请输入用户名')
     return false
   }
 
   if (formValue.password.length === 0) {
-    message.error('请输入密码')
+    window.$message?.error('请输入密码')
     return false
   }
 
   if (formValue.password.length < 6) {
-    message.error('密码长度需不少于六位')
+    window.$message?.error('密码长度需不少于六位')
     return false
   }
 
   if (formValue.password !== formValue.passwordRepeat) {
-    message.error('两次密码输入不一致')
+    window.$message?.error('两次密码输入不一致')
     return false
   }
 
