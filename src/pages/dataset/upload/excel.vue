@@ -3,6 +3,7 @@ import { Icon } from '@vicons/utils'
 import { AlertCircle, File } from '@vicons/tabler'
 import { UploadFileInfo } from 'naive-ui/es/upload'
 import { excelToJson } from '@/utils/xlsx'
+import DatasetsService from '@/service/datasets'
 
 let fileData: any[] = $ref([])
 
@@ -26,6 +27,24 @@ function checkFileType(fileName: string): boolean {
   }
 
   return true
+}
+
+const datasetName = $ref('新建数据集')
+
+async function uploadData() {
+  const account = localStorage.getItem('account') as string
+
+  const res = await DatasetsService.createDataset(
+    fileData,
+    account,
+    datasetName
+  )
+
+  if (res.data.code === 0) {
+    window.$message?.success(res.data.message)
+
+    fileData = []
+  }
 }
 </script>
 
@@ -53,7 +72,6 @@ function checkFileType(fileName: string): boolean {
 
         <div flex="~ col" gap-4 h-full>
           <n-upload
-            multiple
             directory-dnd
             :max="1"
             @before-upload="handleFinish"
@@ -76,8 +94,12 @@ function checkFileType(fileName: string): boolean {
             </n-upload-dragger>
           </n-upload>
 
-          <div v-if="fileData.length > 0">
-            <n-button type="primary" w-full>确认上传</n-button>
+          <div v-if="fileData.length > 0" flex="~ col" gap-2>
+            <n-input v-model:value="datasetName" />
+
+            <n-button type="primary" w-full @click="uploadData"
+              >确认上传</n-button
+            >
           </div>
         </div>
       </div>
