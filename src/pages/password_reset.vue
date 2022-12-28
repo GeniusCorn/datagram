@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router'
 import UsersService from '@/service/users'
 
 interface Form {
@@ -13,6 +14,35 @@ const formValue: Form = $ref({
   newPasswordRepeat: ''
 })
 
+async function submitForm(formValue: Form) {
+  if (validateForm(formValue)) {
+    const account = localStorage.getItem('account') as string
+    const res = await UsersService.updatePassword(
+      account,
+      formValue.password,
+      formValue.newPassword
+    )
+
+    if (res.data.code === 1) {
+      window.$message?.error(res.data.message)
+    } else {
+      clearForm()
+      window.$message?.success(res.data.message)
+
+      localStorage.removeItem('account')
+      localStorage.removeItem('token')
+
+      router.push('/login')
+    }
+  }
+}
+
+function clearForm() {
+  formValue.password = ''
+  formValue.newPassword = ''
+  formValue.newPasswordRepeat = ''
+}
+
 function validateForm(formValue: Form): boolean {
   if (formValue.password.length === 0) {
     window.$message?.error('请输入原始密码')
@@ -24,7 +54,7 @@ function validateForm(formValue: Form): boolean {
     return false
   }
 
-  if (formValue.password !== formValue.newPasswordRepeat) {
+  if (formValue.newPassword !== formValue.newPasswordRepeat) {
     window.$message?.error('两次密码输入不一致')
     return false
   }
@@ -64,7 +94,7 @@ function validateForm(formValue: Form): boolean {
           />
         </n-form-item>
 
-        <n-button type="primary" w-full @click="validateForm(formValue)">
+        <n-button type="primary" w-full @click="submitForm(formValue)">
           确认修改密码
         </n-button>
       </n-form>
