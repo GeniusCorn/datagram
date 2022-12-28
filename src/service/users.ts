@@ -6,7 +6,11 @@ class UserService {
   api: string
 
   constructor() {
-    this.api = '/user'
+    this.api = '/users'
+  }
+
+  async getUser(account: string): Promise<AxiosRequestConfig> {
+    return await http.get(`${this.api}/${account}`)
   }
 
   async register(
@@ -17,6 +21,13 @@ class UserService {
       account: encode(account),
       password: encode(password)
     })
+  }
+
+  async updatePhone(
+    account: string,
+    phone: string
+  ): Promise<AxiosRequestConfig> {
+    return await http.put(`${this.api}`, { account, phone })
   }
 }
 

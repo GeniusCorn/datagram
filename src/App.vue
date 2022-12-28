@@ -1,10 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <n-message-provider>
-    <WindowMessage />
-    <RouterView />
-  </n-message-provider>
+  <Suspense>
+    <n-message-provider>
+      <WindowMessage />
+      <RouterView />
+    </n-message-provider>
+  </Suspense>
 </template>
 
 <style>

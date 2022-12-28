@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import UserService from '@/service/users'
+
 interface Form {
   phone: string
 }
@@ -7,20 +9,38 @@ const formValue: Form = $ref({
   phone: ''
 })
 
+const account: string = $ref(localStorage.getItem('account') as string)
+
+const res = await UserService.getUser(account)
+
+const data = res.data.data.at(0)
+
+formValue.phone = data.phone
+
 const options = $ref([
   {
     label: '免费用户',
-    value: 'free'
+    value: 'user'
   },
   {
     label: '付费用户',
-    value: 'paid'
+    value: 'vip'
   },
   {
     label: '管理员',
     value: 'admin'
   }
 ])
+
+async function submitForm(formValue: Form) {
+  if (validateForm(formValue)) {
+    const res = await UserService.updatePhone(account, formValue.phone)
+
+    if (res.data.code === 0) {
+      window.$message?.success(res.data.message)
+    }
+  }
+}
 
 function validateForm(formValue: Form): boolean {
   if (formValue.phone !== '' && formValue.phone.length !== 11) {
@@ -37,7 +57,11 @@ function validateForm(formValue: Form): boolean {
     <n-card title="个人信息" w-100>
       <n-form label-width="auto">
         <n-form-item label="用户名">
-          <n-input placeholder="用户名" :disabled="true" />
+          <n-input
+            v-model:value="account"
+            placeholder="用户名"
+            :disabled="true"
+          />
         </n-form-item>
 
         <n-form-item label="电话">
@@ -45,10 +69,14 @@ function validateForm(formValue: Form): boolean {
         </n-form-item>
 
         <n-form-item label="角色">
-          <n-select :options="options" default-value="free" disabled />
+          <n-select
+            v-model:value="data.authority"
+            :options="options"
+            disabled
+          />
         </n-form-item>
 
-        <n-button type="primary" w-full @click="validateForm(formValue)">
+        <n-button type="primary" w-full @click="submitForm(formValue)">
           更新个人信息
         </n-button>
       </n-form>

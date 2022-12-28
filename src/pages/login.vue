@@ -23,6 +23,7 @@ async function loginUser(formValue: Form) {
 
     if (res.data.code === 0) {
       localStorage.setItem('token', res.data.data.token)
+      localStorage.setItem('account', formValue.account)
 
       window.$message?.success(res.data.message)
 

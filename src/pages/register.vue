@@ -2,7 +2,7 @@
 import logo from '@/assets/logo.png'
 import router from '@/router'
 import { User, Lock } from '@vicons/tabler'
-import UserService from '@/service/user'
+import UserService from '@/service/users'
 
 interface Form {
   account: string
