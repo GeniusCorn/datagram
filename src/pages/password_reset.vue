@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import UsersService from '@/service/users'
+
 interface Form {
-  originalPassword: string
   password: string
-  passwordRepeat: string
+  newPassword: string
+  newPasswordRepeat: string
 }
 
 const formValue: Form = $ref({
-  originalPassword: '',
   password: '',
-  passwordRepeat: ''
+  newPassword: '',
+  newPasswordRepeat: ''
 })
 
 function validateForm(formValue: Form): boolean {
-  if (formValue.originalPassword.length === 0) {
+  if (formValue.password.length === 0) {
     window.$message?.error('请输入原始密码')
     return false
   }
@@ -22,7 +24,7 @@ function validateForm(formValue: Form): boolean {
     return false
   }
 
-  if (formValue.password !== formValue.passwordRepeat) {
+  if (formValue.password !== formValue.newPasswordRepeat) {
     window.$message?.error('两次密码输入不一致')
     return false
   }
@@ -37,7 +39,7 @@ function validateForm(formValue: Form): boolean {
       <n-form label-width="auto">
         <n-form-item label="原始密码">
           <n-input
-            v-model:value="formValue.originalPassword"
+            v-model:value="formValue.password"
             type="password"
             placeholder="请输入原始密码"
             show-password-on="mousedown"
@@ -46,7 +48,7 @@ function validateForm(formValue: Form): boolean {
 
         <n-form-item label="新密码">
           <n-input
-            v-model:value="formValue.password"
+            v-model:value="formValue.newPassword"
             type="password"
             placeholder="请输入新密码"
             show-password-on="mousedown"
@@ -55,7 +57,7 @@ function validateForm(formValue: Form): boolean {
 
         <n-form-item label="确认密码">
           <n-input
-            v-model:value="formValue.passwordRepeat"
+            v-model:value="formValue.newPasswordRepeat"
             type="password"
             placeholder="请再次输入密码"
             show-password-on="mousedown"

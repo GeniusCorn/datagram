@@ -2,7 +2,7 @@
 import logo from '@/assets/logo.png'
 import router from '@/router'
 import { User, Lock } from '@vicons/tabler'
-import UserService from '@/service/users'
+import UsersService from '@/service/users'
 
 interface Form {
   account: string
@@ -18,7 +18,7 @@ const formValue: Form = $ref({
 
 async function registerUser(formValue: Form): Promise<void> {
   if (validateForm(formValue)) {
-    const res = await UserService.register(
+    const res = await UsersService.register(
       formValue.account,
       formValue.password
     )

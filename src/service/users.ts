@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from 'axios'
 import http from '../utils/http'
 import { encode } from 'base-64'
 
-class UserService {
+class UsersService {
   api: string
 
   constructor() {
@@ -29,6 +29,14 @@ class UserService {
   ): Promise<AxiosRequestConfig> {
     return await http.put(`${this.api}`, { account, phone })
   }
+
+  async updatePassword(
+    account: string,
+    password: string,
+    newPassword: string
+  ): Promise<AxiosRequestConfig> {
+    return await http.patch(`${this.api}`, { account, password, newPassword })
+  }
 }
 
-export default new UserService()
+export default new UsersService()

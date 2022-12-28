@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UserService from '@/service/users'
+import UsersService from '@/service/users'
 
 interface Form {
   phone: string
@@ -11,7 +11,7 @@ const formValue: Form = $ref({
 
 const account: string = $ref(localStorage.getItem('account') as string)
 
-const res = await UserService.getUser(account)
+const res = await UsersService.getUser(account)
 
 const data = res.data.data.at(0)
 
@@ -34,7 +34,7 @@ const options = $ref([
 
 async function submitForm(formValue: Form) {
   if (validateForm(formValue)) {
-    const res = await UserService.updatePhone(account, formValue.phone)
+    const res = await UsersService.updatePhone(account, formValue.phone)
 
     if (res.data.code === 0) {
       window.$message?.success(res.data.message)
