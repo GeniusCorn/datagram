@@ -4,6 +4,8 @@ import { Icon } from '@vicons/utils'
 import { User, Apple, EditCircle, Logout } from '@vicons/tabler'
 import { Component } from 'vue'
 
+const account = $ref(localStorage.getItem('account'))
+
 const options = $ref([
   {
     label: '个人信息',
@@ -77,7 +79,7 @@ function renderIcon(icon: Component) {
                 <User />
               </Icon>
             </template>
-            示例用户
+            {{ account }}
           </n-button>
         </n-dropdown>
       </n-space>
