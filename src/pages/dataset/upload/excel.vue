@@ -6,16 +6,21 @@ import { excelToJson } from '@/utils/xlsx'
 import DatasetsService from '@/service/datasets'
 
 let fileData: any[] = $ref([])
+let customFileName = $ref('')
 
 async function handleFinish({ file }: { file: UploadFileInfo }) {
   const fileName: string | undefined = file.file?.name
   if (fileName) {
-    if (checkFileType(fileName)) fileData = await excelToJson(file.file as File)
+    if (checkFileType(fileName)) {
+      fileData = await excelToJson(file.file as File)
+      customFileName = fileName.split('.').at(0) as string
+    }
   }
 }
 
 function handleRemove() {
   fileData.splice(0, fileData.length)
+  customFileName = ''
 }
 
 function checkFileType(fileName: string): boolean {
@@ -29,15 +34,13 @@ function checkFileType(fileName: string): boolean {
   return true
 }
 
-const datasetName = $ref('新建数据集')
-
 async function uploadData() {
   const account = localStorage.getItem('account') as string
 
   const res = await DatasetsService.createDataset(
     fileData,
     account,
-    datasetName
+    customFileName
   )
 
   if (res.data.code === 0) {
@@ -95,7 +98,7 @@ async function uploadData() {
           </n-upload>
 
           <div v-if="fileData.length > 0" flex="~ col" gap-2>
-            <n-input v-model:value="datasetName" />
+            <n-input v-model:value="customFileName" />
 
             <n-button type="primary" w-full @click="uploadData"
               >确认上传</n-button
