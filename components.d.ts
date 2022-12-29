@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     NaiveProvider: typeof import('./src/components/NaiveProvider.vue')['default']
     Navbar: typeof import('./src/components/common/Navbar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
+    NButtonGroup: typeof import('naive-ui')['NButtonGroup']
     NCard: typeof import('naive-ui')['NCard']
     NCollapse: typeof import('naive-ui')['NCollapse']
     NCollapseItem: typeof import('naive-ui')['NCollapseItem']

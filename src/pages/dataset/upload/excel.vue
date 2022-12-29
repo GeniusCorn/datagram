@@ -4,6 +4,7 @@ import { AlertCircle, File } from '@vicons/tabler'
 import { UploadFileInfo } from 'naive-ui/es/upload'
 import { excelToJson } from '@/utils/xlsx'
 import DatasetsService from '@/service/datasets'
+import router from '@/router'
 
 let fileData: any[] = $ref([])
 let customFileName = $ref('')
@@ -47,6 +48,8 @@ async function uploadData() {
     window.$message?.success(res.data.message)
 
     fileData = []
+
+    router.push('/dataset')
   }
 }
 </script>
