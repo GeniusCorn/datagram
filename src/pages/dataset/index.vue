@@ -9,9 +9,7 @@ const account = $ref(localStorage.getItem('account') as string)
 let res = await DatasetsService.getDatasetByOwner(account)
 let datasets = $ref(res.data.data)
 
-let fileData: any[] = $ref([])
-let fileName: string = $ref('')
-let fileID: number = $ref(0)
+let fileIndex: number | undefined = $ref(undefined)
 
 const options = $ref([
   {
@@ -26,10 +24,20 @@ const options = $ref([
   }
 ])
 
+const fileData: any[] = $computed(() => {
+  if (fileIndex !== undefined) return JSON.parse(datasets.at(fileIndex).data)
+})
+const fileName: string = $ref(datasets.at(fileIndex).name)
+const fileID: number = $computed(() => datasets.at(fileIndex).id)
+
+const datasetCreateTime = $computed(() =>
+  new Date(datasets.at(fileIndex).create_time).toLocaleString('chinese', {
+    timeZone: 'asia/Shanghai'
+  })
+)
+
 function selectDataset(index: number) {
-  fileData = JSON.parse(datasets.at(index).data)
-  fileName = datasets.at(index).name
-  fileID = datasets.at(index).id
+  fileIndex = index
 }
 
 async function updateDatasetName(name: string) {
@@ -47,8 +55,9 @@ async function deleteDataset(id: number) {
   const res = await DatasetsService.deleteDataset(id)
   if (res.data.code === 0) {
     window.$message?.success(res.data.message)
-    clearSelectedFile()
     updateRes()
+
+    datasets.length > 0 ? (fileIndex = undefined) : (fileIndex = 0)
   }
 }
 
@@ -69,12 +78,6 @@ function validateDatasetName(name: string): boolean {
 async function updateRes() {
   res = await DatasetsService.getDatasetByOwner(account)
   datasets = res.data.data
-}
-
-function clearSelectedFile() {
-  fileData = []
-  fileName = ''
-  fileID = 0
 }
 
 function handleSelect(key: string | number) {
@@ -138,8 +141,9 @@ function renderIcon(icon: Component) {
         </div>
 
         <div w-full overflow-auto>
-          <n-card v-if="fileData.length > 0" title="数据预览">
+          <n-card v-if="fileData?.length > 0" title="数据预览">
             <template #header-extra>
+              <n-text mr-2>数据集创建时间：{{ datasetCreateTime }}</n-text>
               <n-button-group>
                 <n-input v-model:value="fileName" autosize clearable min-w-40 />
                 <n-button type="info" @click="updateDatasetName(fileName)"
