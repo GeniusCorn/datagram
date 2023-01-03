@@ -9,11 +9,10 @@ class DashboardsService {
   }
 
   async createDashboard(
-    data: any[],
     account: string,
     dashboardName: string
   ): Promise<AxiosRequestConfig> {
-    return await http.post(`${this.api}`, { data, account, dashboardName })
+    return await http.post(`${this.api}`, { account, dashboardName })
   }
 
   async getDashboardByOwner(account: string): Promise<AxiosRequestConfig> {
