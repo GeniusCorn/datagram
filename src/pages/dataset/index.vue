@@ -107,7 +107,7 @@ function renderIcon(icon: Component) {
     </n-layout-header>
     <n-layout-content>
       <div h="[calc(100vh-3rem)]" flex="~ row" overflow-hidden>
-        <div w-60 h-full border="r gray" p-4 box-border flex="~ col">
+        <div w-60 h-full border="r gray" p-4 box-border flex="~ col" gap-4>
           <div flex="~ row" justify-between items-center>
             <h2>数据集</h2>
 
@@ -118,7 +118,7 @@ function renderIcon(icon: Component) {
             </n-dropdown>
           </div>
 
-          <div h-full overflow-y-auto overflow-x-hidden flex="~ col" gap-2>
+          <div h-full overflow-y-auto overflow-x-hidden flex="~ col" gap-4>
             <div
               v-for="(dataset, index) in datasets"
               :key="index"
@@ -130,9 +130,7 @@ function renderIcon(icon: Component) {
               duration-200
               ease-in-out
             >
-              <div>
-                {{ index + 1 }}
-              </div>
+              <div>{{ index + 1 }}.</div>
               <div w-full @click="selectDataset(index)">
                 {{ dataset.name }}
               </div>

@@ -185,13 +185,12 @@ function handleSelect(key: string): void {
               :key="index"
               hover="text-[#36ad2a]"
               cursor-pointer
-              grid="~ cols-3"
+              flex="~ row"
+              gap-2
               :class="{ 'text-[#36ad2a]': dashboard.id === currentDashboardID }"
               @click="selectDashboard(dashboard.id)"
             >
-              <div>
-                {{ index + 1 }}
-              </div>
+              <div>{{ index + 1 }}.</div>
               <div>
                 {{ dashboard.name }}
               </div>
