@@ -16,7 +16,7 @@ interface Cpt {
   data: any
 }
 
-interface Element {
+export interface Element {
   id: string
   drag: Drag
   cpt: Cpt

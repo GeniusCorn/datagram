@@ -19,6 +19,10 @@ class DashboardsService {
     return await http.get(`${this.api}`, { params: { account } })
   }
 
+  async getDashboardByID(ID: number): Promise<AxiosRequestConfig> {
+    return await http.get(`${this.api}`, { params: { ID } })
+  }
+
   async deleteDashboard(id: number): Promise<AxiosRequestConfig> {
     return await http.delete(`${this.api}/${id}`)
   }
