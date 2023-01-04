@@ -23,6 +23,10 @@ class DashboardsService {
     return await http.get(`${this.api}`, { params: { ID } })
   }
 
+  async updateDashboard(id: number, data: any): Promise<AxiosRequestConfig> {
+    return await http.put(`${this.api}`, { id, data })
+  }
+
   async renameDashboard(id: number, name: string): Promise<AxiosRequestConfig> {
     return await http.patch(`${this.api}`, { id, name })
   }

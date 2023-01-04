@@ -106,6 +106,11 @@ async function selectDashboard(id: number) {
   } else {
     store.elementsList = []
   }
+
+  const value = JSON.stringify(store.elementsList)
+
+  localStorage.removeItem('elementsList')
+  localStorage.setItem('elementsList', value)
 }
 
 // select dashboard end
@@ -145,7 +150,7 @@ const dropdownOptions = [
 async function handleSelect(key: string): Promise<void> {
   switch (key) {
     case 'edit':
-      router.push('/dashboard/canvas')
+      router.push(`/dashboard/canvas/${currentDashboardID}`)
       break
 
     case 'share':

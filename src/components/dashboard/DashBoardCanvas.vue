@@ -16,14 +16,13 @@ let clientWidth: number | undefined = $ref()
 let clientHeight: number | undefined = $ref()
 
 onBeforeMount(() => {
-  const elementsList = JSON.parse(
-    localStorage.getItem('elementsList') as string
-  )
-
-  if (elementsList)
-    store.$patch({
-      elementsList
-    })
+  // const elementsList = JSON.parse(
+  //   localStorage.getItem('elementsList') as string
+  // )
+  // if (elementsList)
+  //   store.$patch({
+  //     elementsList
+  //   })
 })
 
 onMounted(() => {

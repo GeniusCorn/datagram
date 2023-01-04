@@ -4,6 +4,11 @@ import { Icon } from '@vicons/utils'
 import { ChevronLeft } from '@vicons/tabler'
 import { useDataStore } from '@/store'
 import html2canvas from 'html2canvas'
+import { useRoute } from 'vue-router'
+import DashboardsService from '@/service/dashboards'
+
+const route = useRoute()
+const id = parseInt(route.path.split('/').at(-1) as string)
 
 const emit = defineEmits(['export'])
 
@@ -59,7 +64,7 @@ function exportCanvas(): void {
   }, 200)
 }
 
-function saveElementsListToLocalStorage(): void {
+async function saveElementsListToLocalStorage(): Promise<void> {
   if (store.elementsList.length === 0) {
     window.$message?.error(`画布为空，无法保存`)
     return
@@ -70,7 +75,11 @@ function saveElementsListToLocalStorage(): void {
   localStorage.removeItem('elementsList')
   localStorage.setItem('elementsList', value)
 
-  window.$message?.success(`保存成功`)
+  const res = await DashboardsService.updateDashboard(id, value)
+
+  if (res.data.code === 0) {
+    window.$message?.success(res.data.message)
+  }
 }
 </script>
 
@@ -84,7 +93,7 @@ function saveElementsListToLocalStorage(): void {
     h-12
     px-10
   >
-    <n-button text @click="router.push('/')">
+    <n-button text @click="router.push('/dashboard')">
       <Icon>
         <ChevronLeft />
       </Icon>
