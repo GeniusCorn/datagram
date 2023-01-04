@@ -80,6 +80,10 @@ function validateDashboardName(name: string): boolean {
 let currentDashboardID: number | undefined = $ref(undefined)
 
 async function selectDashboard(id: number) {
+  if (id === currentDashboardID) {
+    return
+  }
+
   currentDashboardID = id
   const res = await DashboardsService.getDashboardByID(id)
   const data = res.data.data.at(0).data
