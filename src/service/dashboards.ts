@@ -23,6 +23,10 @@ class DashboardsService {
     return await http.get(`${this.api}`, { params: { ID } })
   }
 
+  async renameDashboard(id: number, name: string): Promise<AxiosRequestConfig> {
+    return await http.patch(`${this.api}`, { id, name })
+  }
+
   async deleteDashboard(id: number): Promise<AxiosRequestConfig> {
     return await http.delete(`${this.api}/${id}`)
   }

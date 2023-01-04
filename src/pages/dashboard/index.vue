@@ -49,6 +49,7 @@ async function submitDashboard() {
     if (res1.data.code === 1) {
       window.$message?.error(res1.data.message)
 
+      newDashboardName = ''
       return false
     } else {
       window.$message?.success(res1.data.message)
@@ -58,11 +59,20 @@ async function submitDashboard() {
       return true
     }
   } else {
+    newDashboardName = ''
     return false
   }
 }
 
 function validateDashboardName(name: string): boolean {
+  for (let i = 0; i < dashboards.length; i += 1) {
+    if (dashboards[i].name === newDashboardName) {
+      window.$message?.error('当前仪表盘名称已存在')
+
+      return false
+    }
+  }
+
   if (name.length === 0) {
     window.$message?.error('请输入仪表盘名称')
 
@@ -143,7 +153,7 @@ async function handleSelect(key: string): Promise<void> {
       break
 
     case 'rename':
-      router.push('rename')
+      renameDashboardModal = true
       break
 
     case 'delete':
@@ -154,6 +164,23 @@ async function handleSelect(key: string): Promise<void> {
     default:
       break
   }
+}
+
+let renameDashboardModal = $ref(false)
+
+async function renameDashboard(id: number, name: string) {
+  if (validateDashboardName(newDashboardName)) {
+    const res1 = await DashboardsService.renameDashboard(id, name)
+
+    if (res1.data.code === 0) {
+      window.$message?.success(res1.data.message)
+    }
+  } else {
+    return false
+  }
+
+  newDashboardName = ''
+  updateData()
 }
 
 async function deleteDashboard() {
@@ -204,10 +231,10 @@ async function updateData() {
           @click="selectDashboard(dashboard.id)"
         >
           <div>{{ index + 1 }}.</div>
-          <div>
+          <div w-full>
             {{ dashboard.name }}
           </div>
-          <div w-full text-right>
+          <div text-right>
             <n-dropdown
               :options="dropdownOptions"
               trigger="click"
@@ -281,6 +308,23 @@ async function updateData() {
     positive-text="确认"
     negative-text="取消"
     @positive-click="submitDashboard"
+  >
+    <n-text>仪表盘名称</n-text>
+    <n-input v-model:value="newDashboardName" placeholder="请输入仪表盘名称" />
+  </n-modal>
+
+  <!-- rename dashboard -->
+  <n-modal
+    v-model:show="renameDashboardModal"
+    :mask-closable="false"
+    preset="dialog"
+    :show-icon="false"
+    title="重命名仪表盘"
+    positive-text="确认"
+    negative-text="取消"
+    @positive-click="
+      renameDashboard(currentDashboardID as number, newDashboardName)
+    "
   >
     <n-text>仪表盘名称</n-text>
     <n-input v-model:value="newDashboardName" placeholder="请输入仪表盘名称" />
