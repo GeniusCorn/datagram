@@ -3,6 +3,11 @@ import router from '@/router/index'
 import { Icon } from '@vicons/utils'
 import { User, Apple, EditCircle, Logout } from '@vicons/tabler'
 import { Component } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const path = $computed(() => route.path)
 
 const account = $ref(localStorage.getItem('account'))
 
@@ -60,13 +65,28 @@ function renderIcon(icon: Component) {
   <div flex="~ row" items-center border="b gray" box-border h-12 px-10>
     <div flex="~ row" items-center justify-between w-full>
       <n-space>
-        <div>DataGram</div>
+        <div @click="router.push('/')">DataGram</div>
 
         <div flex="~ row">
           <n-space>
-            <n-button text @click="router.push('/')">首页</n-button>
-            <n-button text @click="router.push('/dashboard')">仪表盘</n-button>
-            <n-button text @click="router.push('/dataset')">数据集</n-button>
+            <n-button
+              text
+              :class="{ 'text-[#36ad2a]': path === '/' }"
+              @click="router.push('/')"
+              >首页</n-button
+            >
+            <n-button
+              text
+              :class="{ 'text-[#36ad2a]': path === '/dashboard' }"
+              @click="router.push('/dashboard')"
+              >仪表盘</n-button
+            >
+            <n-button
+              text
+              :class="{ 'text-[#36ad2a]': path === '/dataset' }"
+              @click="router.push('/dataset')"
+              >数据集</n-button
+            >
           </n-space>
         </div>
       </n-space>

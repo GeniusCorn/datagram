@@ -159,112 +159,102 @@ function handleSelect(key: string): void {
 </script>
 
 <template>
-  <n-layout>
-    <n-layout-header>
-      <Navbar />
-    </n-layout-header>
-    <n-layout-content>
-      <div h="[calc(100vh-3rem)]" flex="~ row" overflow-hidden>
-        <div w-60 h-full border="r gray" p-4 box-border flex="~ col" gap-4>
-          <div flex="~ row" justify-between items-center>
-            <h2>仪表盘</h2>
+  <div h="[calc(100vh-3rem)]" flex="~ row" overflow-hidden>
+    <div w-60 h-full border="r gray" p-4 box-border flex="~ col" gap-4>
+      <div flex="~ row" justify-between items-center>
+        <h2>仪表盘</h2>
 
-            <n-button
-              icon-placement="right"
-              type="primary"
-              size="small"
-              @click="toggleModal"
-            >
-              添加
-            </n-button>
-          </div>
-
-          <div h-full overflow-y-auto overflow-x-hidden flex="~ col" gap-4>
-            <div
-              v-for="(dashboard, index) in dashboards"
-              :key="index"
-              hover="text-[#36ad2a]"
-              cursor-pointer
-              flex="~ row"
-              gap-2
-              :class="{ 'text-[#36ad2a]': dashboard.id === currentDashboardID }"
-              @click="selectDashboard(dashboard.id)"
-            >
-              <div>{{ index + 1 }}.</div>
-              <div>
-                {{ dashboard.name }}
-              </div>
-              <div w-full text-right>
-                <n-dropdown
-                  :options="dropdownOptions"
-                  trigger="click"
-                  @select="handleSelect"
-                >
-                  <Icon>
-                    <Dots />
-                  </Icon>
-                </n-dropdown>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div w-full overflow-auto>
-          <div
-            v-if="store.elementsList.length !== 0"
-            id="canvas"
-            ref="canvas"
-            absolute
-            bg-gray-100
-            w="[1920px]"
-            h="[1080px]"
-            transform-origin-left-top
-            :style="{ transform: `scale(${scale})` }"
-          >
-            <VueDragResize
-              v-for="(element, index) in store.elementsList"
-              :key="element.id"
-              :x="element.drag.x"
-              :y="element.drag.y"
-              :w="element.drag.width"
-              :h="element.drag.height"
-              :parent-limitation="true"
-              :parent-w="clientWidth"
-              :parent-h="clientHeight"
-              :parent-scale-x="scale"
-              :parent-scale-y="scale"
-              :is-draggable="false"
-              :is-resizable="false"
-              :is-active="element.drag.isActive"
-            >
-              <component :is="element.cpt.type" ref="itemRefs" :index="index" />
-            </VueDragResize>
-          </div>
-          <div
-            v-else
-            text-gray
-            h-full
-            flex="~"
-            justify-center
-            items-center
-            text-2xl
-          >
-            这是一个空的仪表盘，赶快编辑加入一些新的内容吧~
-          </div>
-        </div>
-
-        <div
-          v-if="store.elementsList.length !== 0"
-          absolute
-          bottom-1
-          left-60
-          w-30
+        <n-button
+          icon-placement="right"
+          type="primary"
+          size="small"
+          @click="toggleModal"
         >
-          <n-slider v-model:value="scale" :max="1" :min="0.1" :step="0.01" />
+          添加
+        </n-button>
+      </div>
+
+      <div h-full overflow-y-auto overflow-x-hidden flex="~ col" gap-4>
+        <div
+          v-for="(dashboard, index) in dashboards"
+          :key="index"
+          hover="text-[#36ad2a]"
+          cursor-pointer
+          flex="~ row"
+          gap-2
+          transition
+          duration-200
+          ease-in-out
+          :class="{ 'text-[#36ad2a]': dashboard.id === currentDashboardID }"
+          @click="selectDashboard(dashboard.id)"
+        >
+          <div>{{ index + 1 }}.</div>
+          <div>
+            {{ dashboard.name }}
+          </div>
+          <div w-full text-right>
+            <n-dropdown
+              :options="dropdownOptions"
+              trigger="click"
+              @select="handleSelect"
+            >
+              <Icon>
+                <Dots />
+              </Icon>
+            </n-dropdown>
+          </div>
         </div>
       </div>
-    </n-layout-content>
-  </n-layout>
+    </div>
+
+    <div w-full overflow-auto>
+      <div
+        v-if="store.elementsList.length !== 0"
+        id="canvas"
+        ref="canvas"
+        absolute
+        bg-gray-100
+        w="[1920px]"
+        h="[1080px]"
+        transform-origin-left-top
+        :style="{ transform: `scale(${scale})` }"
+      >
+        <VueDragResize
+          v-for="(element, index) in store.elementsList"
+          :key="element.id"
+          :x="element.drag.x"
+          :y="element.drag.y"
+          :w="element.drag.width"
+          :h="element.drag.height"
+          :parent-limitation="true"
+          :parent-w="clientWidth"
+          :parent-h="clientHeight"
+          :parent-scale-x="scale"
+          :parent-scale-y="scale"
+          :is-draggable="false"
+          :is-resizable="false"
+          :is-active="element.drag.isActive"
+        >
+          <component :is="element.cpt.type" ref="itemRefs" :index="index" />
+        </VueDragResize>
+      </div>
+      <div
+        v-else
+        text-gray
+        h-full
+        flex="~"
+        justify-center
+        items-center
+        text-2xl
+      >
+        这是一个空的仪表盘，赶快编辑加入一些新的内容吧~
+      </div>
+    </div>
+
+    <div v-if="store.elementsList.length !== 0" absolute bottom-1 left-60 w-30>
+      <n-slider v-model:value="scale" :max="1" :min="0.1" :step="0.01" />
+    </div>
+  </div>
 
   <!-- add new dashboard -->
   <n-modal
@@ -281,3 +271,8 @@ function handleSelect(key: string): void {
     <n-input v-model:value="newDashboardName" placeholder="请输入仪表盘名称" />
   </n-modal>
 </template>
+
+<route lang="yaml">
+meta:
+  layout: common
+</route>
