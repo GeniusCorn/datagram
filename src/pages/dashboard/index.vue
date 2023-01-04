@@ -48,6 +48,7 @@ async function submitDashboard() {
 
     if (res1.data.code === 1) {
       window.$message?.error(res1.data.message)
+
       return false
     } else {
       window.$message?.success(res1.data.message)
@@ -64,11 +65,13 @@ async function submitDashboard() {
 function validateDashboardName(name: string): boolean {
   if (name.length === 0) {
     window.$message?.error('请输入仪表盘名称')
+
     return false
   }
 
   if (name.length > 10) {
     window.$message?.error('仪表盘名称不能大于十个字符')
+
     return false
   }
 
@@ -95,10 +98,6 @@ async function selectDashboard(id: number) {
   }
 }
 
-async function updateData() {
-  const res = await DashboardsService.getDashboardByOwner(account)
-  dashboards = res.data.data
-}
 // select dashboard end
 
 // dropdown start
@@ -133,7 +132,7 @@ const dropdownOptions = [
   }
 ]
 
-function handleSelect(key: string): void {
+async function handleSelect(key: string): Promise<void> {
   switch (key) {
     case 'edit':
       router.push('/dashboard/canvas')
@@ -148,14 +147,30 @@ function handleSelect(key: string): void {
       break
 
     case 'delete':
-      router.push('delete')
+      deleteDashboard()
+      updateData()
       break
 
     default:
       break
   }
 }
+
+async function deleteDashboard() {
+  const res1 = await DashboardsService.deleteDashboard(
+    currentDashboardID as number
+  )
+
+  if (res1.data.code === 0) {
+    window.$message?.success(res1.data.message)
+  }
+}
 // dropdown end
+
+async function updateData() {
+  const res = await DashboardsService.getDashboardByOwner(account)
+  dashboards = res.data.data
+}
 </script>
 
 <template>
