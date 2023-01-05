@@ -35,7 +35,10 @@ function pushRouterToPreview(): void {
 
   saveElementsListToLocalStorage()
 
-  const url = `${window.location.href}/preview`
+  const url = `${window.location.href
+    .split('#')
+    .at(0)}#/dashboard/canvas/preview`
+
   window.open(url, '_blank')
 }
 
