@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import router from '@/router'
-import { Table, Database } from '@vicons/tabler'
+import { Table, Database, CursorText, SquareX, Dots } from '@vicons/tabler'
 import { Icon } from '@vicons/utils'
 import { Component } from 'vue'
 import DatasetsService from '@/service/datasets'
@@ -9,8 +9,26 @@ const account = $ref(localStorage.getItem('account') as string)
 let res = await DatasetsService.getDatasetByOwner(account)
 let datasets = $ref(res.data.data)
 
+// preview dataset start
 let fileIndex: number | undefined = $ref(undefined)
 
+const fileData: any[] = $computed(() => {
+  if (fileIndex !== undefined) return JSON.parse(datasets.at(fileIndex).data)
+})
+const fileID: number = $computed(() => datasets.at(fileIndex).id)
+
+const datasetCreateTime = $computed(() =>
+  new Date(datasets.at(fileIndex).create_time).toLocaleString('chinese', {
+    timeZone: 'asia/Shanghai'
+  })
+)
+
+function selectDataset(index: number) {
+  fileIndex = index
+}
+// preview dataset end
+
+// add dataset start
 const options = $ref([
   {
     label: 'Excel 数据集',
@@ -24,32 +42,65 @@ const options = $ref([
   }
 ])
 
-const fileData: any[] = $computed(() => {
-  if (fileIndex !== undefined) return JSON.parse(datasets.at(fileIndex).data)
-})
-let fileName: string = $ref(datasets.at(fileIndex).name)
-const fileID: number = $computed(() => datasets.at(fileIndex).id)
+function handleAddDatasetButton(key: string | number) {
+  switch (key) {
+    case 'excel':
+      router.push('/dataset/upload/excel')
+      break
 
-const datasetCreateTime = $computed(() =>
-  new Date(datasets.at(fileIndex).create_time).toLocaleString('chinese', {
-    timeZone: 'asia/Shanghai'
-  })
-)
+    default:
+      break
+  }
+}
+// add dataset end
 
-function selectDataset(index: number, name: string) {
-  fileIndex = index
-  fileName = name
+// edit dataset end
+let renameDatasetModal = $ref(false)
+
+const dropdownOptions = [
+  {
+    label: '重命名',
+    key: 'rename',
+    icon: renderIcon(CursorText)
+  },
+  {
+    label: '删除',
+    key: 'delete',
+    icon: renderIcon(SquareX)
+  }
+]
+
+function handleMoreButtonSelect(key: string) {
+  switch (key) {
+    case 'rename':
+      renameDatasetModal = true
+
+      break
+
+    case 'delete':
+      deleteDataset(fileID)
+      break
+
+    default:
+      break
+  }
 }
 
-async function updateDatasetName(name: string) {
+let newDatasetName: string = $ref('')
+
+async function renameDataset(name: string) {
   if (validateDatasetName(name)) {
     const res = await DatasetsService.updateDatasetName(fileID, name)
+    newDatasetName = ''
     if (res.data.code === 0) {
       window.$message?.success(res.data.message)
 
       updateRes()
+
+      renameDatasetModal = false
     }
   }
+  return false
 }
 
 async function deleteDataset(id: number) {
@@ -63,6 +114,14 @@ async function deleteDataset(id: number) {
 }
 
 function validateDatasetName(name: string): boolean {
+  for (let i = 0; i < datasets.length; i += 1) {
+    if (datasets[i].name === newDatasetName) {
+      window.$message?.error('当前仪表盘名称已存在')
+
+      return false
+    }
+  }
+
   if (name === '') {
     window.$message?.error('数据集名称不可为空')
     return false
@@ -75,21 +134,11 @@ function validateDatasetName(name: string): boolean {
 
   return true
 }
+// edit dataset end
 
 async function updateRes() {
   res = await DatasetsService.getDatasetByOwner(account)
   datasets = res.data.data
-}
-
-function handleSelect(key: string | number) {
-  switch (key) {
-    case 'excel':
-      router.push('/dataset/upload/excel')
-      break
-
-    default:
-      break
-  }
 }
 
 function renderIcon(icon: Component) {
@@ -107,7 +156,11 @@ function renderIcon(icon: Component) {
       <div flex="~ row" justify-between items-center>
         <h2>数据集</h2>
 
-        <n-dropdown :options="options" @select="handleSelect">
+        <n-dropdown
+          :options="options"
+          trigger="click"
+          @select="handleAddDatasetButton"
+        >
           <n-button icon-placement="right" type="primary" size="small">
             添加
           </n-button>
@@ -126,10 +179,22 @@ function renderIcon(icon: Component) {
           duration-200
           ease-in-out
           :class="{ 'text-[#36ad2a]': index === fileIndex }"
+          @click="selectDataset(index)"
         >
           <div>{{ index + 1 }}.</div>
-          <div w-full @click="selectDataset(index, dataset.name)">
+          <div w-full>
             {{ dataset.name }}
+          </div>
+          <div text-right>
+            <n-dropdown
+              :options="dropdownOptions"
+              trigger="click"
+              @select="handleMoreButtonSelect"
+            >
+              <Icon>
+                <Dots />
+              </Icon>
+            </n-dropdown>
           </div>
         </div>
       </div>
@@ -139,22 +204,6 @@ function renderIcon(icon: Component) {
       <n-card v-if="fileData?.length > 0" title="数据预览">
         <template #header-extra>
           <n-text mr-2>数据集创建时间：{{ datasetCreateTime }}</n-text>
-          <n-button-group>
-            <n-input v-model:value="fileName" autosize clearable min-w-40 />
-            <n-button type="info" @click="updateDatasetName(fileName)"
-              >更新</n-button
-            >
-            <n-popconfirm
-              positive-text="确认"
-              negative-text="取消"
-              @positive-click="deleteDataset(fileID)"
-            >
-              <template #trigger>
-                <n-button type="error">删除</n-button>
-              </template>
-              确认要删除该数据集？
-            </n-popconfirm>
-          </n-button-group>
         </template>
 
         <n-table size="small" :bordered="true" striped>
@@ -176,6 +225,20 @@ function renderIcon(icon: Component) {
       </n-card>
     </div>
   </div>
+
+  <!-- rename dataset -->
+  <n-modal
+    v-model:show="renameDatasetModal"
+    :mask-closable="false"
+    preset="dialog"
+    :show-icon="false"
+    title="重命名数据集"
+    positive-text="确认"
+    negative-text="取消"
+    @positive-click="renameDataset(newDatasetName)"
+  >
+    <n-input v-model:value="newDatasetName" placeholder="请输入数据集名称" />
+  </n-modal>
 </template>
 
 <route lang="yaml">

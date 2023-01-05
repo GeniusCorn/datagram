@@ -331,7 +331,6 @@ async function updateData() {
       renameDashboard(currentDashboardID as number, newDashboardName)
     "
   >
-    <n-text>仪表盘名称</n-text>
     <n-input v-model:value="newDashboardName" placeholder="请输入仪表盘名称" />
   </n-modal>
 </template>

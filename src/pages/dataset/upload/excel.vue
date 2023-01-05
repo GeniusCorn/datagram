@@ -50,6 +50,8 @@ async function uploadData() {
     fileData = []
 
     router.push('/dataset')
+  } else {
+    window.$message?.error(res.data.message)
   }
 }
 </script>
@@ -101,7 +103,11 @@ async function uploadData() {
           </n-upload>
 
           <div v-if="fileData.length > 0" flex="~ col" gap-2>
-            <n-input v-model:value="customFileName" />
+            <n-input
+              v-model:value="customFileName"
+              clearable
+              placeholder="请输入数据集名称"
+            />
 
             <n-button type="primary" w-full @click="uploadData"
               >确认上传</n-button
