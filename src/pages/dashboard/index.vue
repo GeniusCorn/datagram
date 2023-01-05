@@ -256,7 +256,7 @@ async function updateData() {
 
     <div w-full overflow-auto>
       <div
-        v-if="store.elementsList.length !== 0"
+        v-if="currentDashboardID !== undefined"
         id="canvas"
         ref="canvas"
         absolute

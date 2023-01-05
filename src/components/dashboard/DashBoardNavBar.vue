@@ -14,6 +14,27 @@ const emit = defineEmits(['export'])
 
 const store = useDataStore()
 
+let showSaveDashboardModal = $ref(false)
+
+function backToDashboard() {
+  const isSaved =
+    localStorage.getItem('elementsList') === JSON.stringify(store.elementsList)
+
+  if (isSaved) {
+    router.push('/dashboard')
+  } else {
+    showSaveDashboardModal = true
+  }
+}
+
+function resetElementsList() {
+  store.elementsList = JSON.parse(
+    localStorage.getItem('elementsList') as string
+  )
+
+  router.push('/dashboard')
+}
+
 function clearCanvas(): void {
   if (store.elementsList.length === 0) {
     window.$message?.error(`画布为空，无法清空`)
@@ -96,7 +117,7 @@ async function saveElementsListToLocalStorage(): Promise<void> {
     h-12
     px-10
   >
-    <n-button text @click="router.push('/dashboard')">
+    <n-button text @click="backToDashboard">
       <Icon>
         <ChevronLeft />
       </Icon>
@@ -123,6 +144,21 @@ async function saveElementsListToLocalStorage(): Promise<void> {
       </n-space>
     </div>
   </div>
+
+  <!-- save dashboard modal -->
+  <n-modal
+    v-model:show="showSaveDashboardModal"
+    :mask-closable="false"
+    preset="dialog"
+    :show-icon="false"
+    title="仪表盘已变动，是否保存"
+    positive-text="保存"
+    negative-text="不保存"
+    @positive-click="saveElementsListToLocalStorage"
+    @negative-click="resetElementsList"
+  >
+    <n-text>如果未保存，仪表盘的变更将会丢失！</n-text>
+  </n-modal>
 </template>
 
 <style scoped></style>
