@@ -112,7 +112,6 @@ async function selectDashboard(id: number) {
   localStorage.removeItem('elementsList')
   localStorage.setItem('elementsList', value)
 }
-
 // select dashboard end
 
 // dropdown start
@@ -285,20 +284,9 @@ async function updateData() {
           <component :is="element.cpt.type" ref="itemRefs" :index="index" />
         </VueDragResize>
       </div>
-      <div
-        v-else
-        text-gray
-        h-full
-        flex="~"
-        justify-center
-        items-center
-        text-2xl
-      >
-        这是一个空的仪表盘，赶快编辑加入一些新的内容吧~
-      </div>
     </div>
 
-    <div v-if="store.elementsList.length !== 0" absolute bottom-1 left-60 w-30>
+    <div v-if="currentDashboardID !== undefined" absolute bottom-1 left-60 w-30>
       <n-slider v-model:value="scale" :max="1" :min="0.1" :step="0.01" />
     </div>
   </div>
