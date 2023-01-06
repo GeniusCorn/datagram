@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AxisConfig: typeof import('./src/components/dashboard/rightBar/config/antv/AxisConfig.vue')['default']
+    AxisConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/AxisConfig.vue')['default']
     BasicBar: typeof import('./src/components/dashboard/cpt/antv/BasicBar.vue')['default']
     BasicBarConfig: typeof import('./src/components/dashboard/rightBar/config/antv/BasicBarConfig.vue')['default']
     BasicColumn: typeof import('./src/components/dashboard/cpt/antv/BasicColumn.vue')['default']
@@ -27,7 +27,8 @@ declare module '@vue/runtime-core' {
     DashBoardRightBar: typeof import('./src/components/dashboard/rightBar/DashBoardRightBar.vue')['default']
     DatasetNavbar: typeof import('./src/components/dataset/DatasetNavbar.vue')['default']
     Footer: typeof import('./src/components/common/Footer.vue')['default']
-    LegendConfig: typeof import('./src/components/dashboard/rightBar/config/antv/LegendConfig.vue')['default']
+    LabelConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LabelConfig.vue')['default']
+    LegendConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LegendConfig.vue')['default']
     MappingData: typeof import('./src/components/dashboard/rightBar/data/antv/MappingData.vue')['default']
     Navbar: typeof import('./src/components/common/Navbar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']

@@ -108,11 +108,7 @@ const shapeOptions = $ref([
       />
     </n-form-item>
 
-    <n-form-item label="标签显示" label-placement="left">
-      <n-switch
-        v-model:value="store.elementsList[props.index].cpt.options.label"
-      />
-    </n-form-item>
+    <LabelConfig :index="props.index" />
   </n-form>
 
   <n-collapse accordion>
