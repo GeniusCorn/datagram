@@ -8,6 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AxisConfig: typeof import('./src/components/dashboard/rightBar/config/antv/AxisConfig.vue')['default']
+    BasicBar: typeof import('./src/components/dashboard/cpt/antv/BasicBar.vue')['default']
+    BasicBarConfig: typeof import('./src/components/dashboard/rightBar/config/antv/BasicBarConfig.vue')['default']
     BasicColumn: typeof import('./src/components/dashboard/cpt/antv/BasicColumn.vue')['default']
     BasicColumnConfig: typeof import('./src/components/dashboard/rightBar/config/antv/BasicColumnConfig.vue')['default']
     BasicLine: typeof import('./src/components/dashboard/cpt/antv/BasicLine.vue')['default']

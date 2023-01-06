@@ -15,6 +15,7 @@ const cptTypeToConfig = new Map()
   .set('BasicLine', 'BasicLineConfig')
   .set('BasicPie', 'BasicPieConfig')
   .set('BasicColumn', 'BasicColumnConfig')
+  .set('BasicBar', 'BasicBarConfig')
 
 const cptTypeToData = new Map().set('CptText', 'TextData')
 

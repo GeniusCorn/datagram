@@ -138,7 +138,7 @@ const tickMethodOptions = $ref([
 <template>
   <n-collapse-item title="坐标轴" name="axis">
     <n-form w-full label-width="auto" size="medium">
-      <n-form-item label="x 轴显示" label-placement="left">
+      <n-form-item label="x 轴开关" label-placement="left">
         <n-switch
           v-model:value="xAxisEnabled"
           @update:value="handleXAxisChange"
