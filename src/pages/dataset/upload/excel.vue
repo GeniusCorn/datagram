@@ -122,7 +122,10 @@ async function uploadData() {
         <n-table striped>
           <thead>
             <tr>
-              <th v-for="(head, index) in fileData.at(0)" :key="index">
+              <th
+                v-for="(head, index) in Object.keys(fileData.at(0))"
+                :key="index"
+              >
                 {{ head }}
               </th>
             </tr>
