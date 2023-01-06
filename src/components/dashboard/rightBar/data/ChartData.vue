@@ -6,12 +6,14 @@ const props = defineProps<{
   index: number
 }>()
 
-let data = $ref(JSON.stringify(store.elementsList[props.index].cpt.data))
+let data = $ref(
+  JSON.stringify(store.elementsList[props.index].cpt.options.data)
+)
 
 watch(
   () => props.index,
   () => {
-    data = JSON.stringify(store.elementsList[props.index].cpt.data)
+    data = JSON.stringify(store.elementsList[props.index].cpt.options.data)
   }
 )
 
@@ -27,12 +29,23 @@ const cptTypeToData = new Map<string, string>()
   .set('BasicLine', 'CoordinateData')
   .set('BasicPie', 'MappingData')
   .set('BasicColumn', 'CoordinateData')
+
+const dataRef: any = $ref()
+
+function loadData() {
+  // plot.changeData(store.elementsList[props.index]?.cpt.data)
+  data = JSON.stringify(store.elementsList[props.index].cpt.options.data)
+  dataRef.loadData()
+}
+
+defineExpose({ loadData })
 </script>
 
 <template>
   <n-space vertical>
     <component
       :is="cptTypeToData.get(store.elementsList[index].cpt.type)"
+      ref="dataRef"
       :index="props.index"
     />
 
