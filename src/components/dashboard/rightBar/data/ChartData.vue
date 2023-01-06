@@ -43,7 +43,7 @@ defineExpose({ loadData })
 </script>
 
 <template>
-  <n-space vertical>
+  <n-form size="medium" label-width="auto">
     <component
       :is="cptTypeToData.get(store.elementsList[index].cpt.type)"
       ref="dataRef"
@@ -61,12 +61,8 @@ defineExpose({ loadData })
       />
     </n-form-item>
 
-    <n-button ghost type="primary" float-right @click="updateData"
-      >更新数据</n-button
-    >
-
-    <br />
-  </n-space>
+    <n-button type="primary" w-full @click="updateData"> 更新数据 </n-button>
+  </n-form>
 </template>
 
 <style scoped></style>

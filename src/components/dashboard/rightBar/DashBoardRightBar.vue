@@ -91,16 +91,18 @@ function importData() {
         </n-tab-pane>
 
         <n-tab-pane name="data" tab="数据">
-          <div flex="~ col" gap-4>
-            <n-select
-              :options="selectOptions"
-              placeholder="请选择数据集"
-              @update:value="handleUpdateValue"
-            />
+          <n-form w-full size="medium">
+            <n-form-item label="选择数据集">
+              <n-select
+                :options="selectOptions"
+                placeholder="请选择数据集"
+                @update:value="handleUpdateValue"
+              />
+            </n-form-item>
 
-            <n-button type="primary" w-full @click="importData"
-              >导入数据</n-button
-            >
+            <n-button type="primary" w-full mb-24px @click="importData">
+              导入数据
+            </n-button>
 
             <component
               :is="
@@ -111,7 +113,7 @@ function importData() {
               :index="index"
               @update="updateData"
             />
-          </div>
+          </n-form>
         </n-tab-pane>
       </n-tabs>
     </template>
