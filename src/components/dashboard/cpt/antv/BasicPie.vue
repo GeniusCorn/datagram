@@ -18,16 +18,13 @@ store.elementsList[props.index].cpt.data = data
 
 let options: PieOptions = {
   data: store.elementsList[props.index].cpt.data,
+
   angleField: 'value',
   colorField: 'type',
-  legend: false,
-  label: {
-    offset: '-30%',
-    content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-    style: {
-      fontSize: 14
-    }
-  }
+  radius: 1,
+  innerRadius: 0,
+
+  legend: false
 }
 
 if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
