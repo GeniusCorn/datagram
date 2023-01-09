@@ -33,6 +33,14 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
+        :class="{ selected: selectedChart === 'BasicArea' }"
+        @click="selectChart('BasicArea')"
+      >
+        面积图
+      </div>
+
+      <div
+        class="chartBlock"
         :class="{ selected: selectedChart === 'BasicColumn' }"
         @click="selectChart('BasicColumn')"
       >
