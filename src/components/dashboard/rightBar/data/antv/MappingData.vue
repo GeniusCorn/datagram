@@ -37,14 +37,14 @@ defineExpose({ loadData })
 
 <template>
   <n-form w-full label-placement="left" label-width="auto" size="medium">
-    <n-form-item label="弧度字段">
+    <n-form-item label="角度映射字段">
       <n-select
         v-model:value="store.elementsList[props.index].cpt.options.angleField"
         :options="selectOptions"
       />
     </n-form-item>
 
-    <n-form-item label="数据字段">
+    <n-form-item label="颜色映射字段">
       <n-select
         v-model:value="store.elementsList[props.index].cpt.options.colorField"
         :options="selectOptions"

@@ -50,8 +50,8 @@ const positionOptions = $ref([
 
 <template>
   <n-collapse-item title="图例" name="legend">
-    <n-form w-full label-placement="left" label-width="auto" size="medium">
-      <n-form-item label="图例开关">
+    <n-form label-width="auto">
+      <n-form-item label="图例开关" label-placement="left">
         <n-switch v-model:value="legendEnabled" @update:value="handleChange" />
       </n-form-item>
 
@@ -82,6 +82,7 @@ const positionOptions = $ref([
             v-model:value="
               store.elementsList[props.index].cpt.options.legend.offsetX
             "
+            w-full
             placeholder="请输入"
           />
         </n-form-item>
@@ -91,11 +92,12 @@ const positionOptions = $ref([
             v-model:value="
               store.elementsList[props.index].cpt.options.legend.offsetY
             "
+            w-full
             placeholder="请输入"
           />
         </n-form-item>
 
-        <n-form-item label="图例分页">
+        <n-form-item label="图例分页" label-placement="left">
           <n-switch
             v-model:value="
               store.elementsList[props.index].cpt.options.legend.flipPage
