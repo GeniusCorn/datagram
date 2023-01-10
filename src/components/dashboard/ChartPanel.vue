@@ -22,13 +22,13 @@ function submitSelectedChart(chart: string | undefined) {
 
 <template>
   <n-modal w-600px preset="card" title="添加图表组件">
-    <div flex="~" justify-around>
+    <div grid="~ cols-5 gap-4">
       <div
         class="chartBlock"
         :class="{ selected: selectedChart === 'LineChart' }"
         @click="selectChart('LineChart')"
       >
-        折线图
+        基础折线图
       </div>
 
       <div
@@ -52,7 +52,7 @@ function submitSelectedChart(chart: string | undefined) {
         :class="{ selected: selectedChart === 'ColumnChart' }"
         @click="selectChart('ColumnChart')"
       >
-        柱状图
+        基础柱状图
       </div>
 
       <div
@@ -60,7 +60,7 @@ function submitSelectedChart(chart: string | undefined) {
         :class="{ selected: selectedChart === 'BarChart' }"
         @click="selectChart('BarChart')"
       >
-        条形图
+        横向柱状图
       </div>
 
       <div
@@ -85,10 +85,10 @@ function submitSelectedChart(chart: string | undefined) {
 
 <style scoped>
 .selected {
-  @apply border-[#18a058] text-[#18a058];
+  @apply border-[#36ad2a] text-[#36ad2a];
 }
 
 .chartBlock {
-  @apply h-16 w-16 border rounded cursor-pointer flex flex-col items-center;
+  @apply h-16 w-16 border rounded cursor-pointer flex flex-col items-center hover:text-[#36ad2a] cursor-pointer transition duration-200 ease-in-out;
 }
 </style>
