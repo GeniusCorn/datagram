@@ -25,48 +25,48 @@ function submitSelectedChart(chart: string | undefined) {
     <div flex="~" justify-around>
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'BasicLine' }"
-        @click="selectChart('BasicLine')"
+        :class="{ selected: selectedChart === 'LineChart' }"
+        @click="selectChart('LineChart')"
       >
         折线图
       </div>
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'MultipleLine' }"
-        @click="selectChart('MultipleLine')"
+        :class="{ selected: selectedChart === 'MultipleLineChart' }"
+        @click="selectChart('MultipleLineChart')"
       >
         堆叠折线图
       </div>
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'BasicArea' }"
-        @click="selectChart('BasicArea')"
+        :class="{ selected: selectedChart === 'AreaChart' }"
+        @click="selectChart('AreaChart')"
       >
         面积图
       </div>
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'BasicColumn' }"
-        @click="selectChart('BasicColumn')"
+        :class="{ selected: selectedChart === 'ColumnChart' }"
+        @click="selectChart('ColumnChart')"
       >
         柱状图
       </div>
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'BasicBar' }"
-        @click="selectChart('BasicBar')"
+        :class="{ selected: selectedChart === 'BarChart' }"
+        @click="selectChart('BarChart')"
       >
         条形图
       </div>
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'BasicPie' }"
-        @click="selectChart('BasicPie')"
+        :class="{ selected: selectedChart === 'PieChart' }"
+        @click="selectChart('PieChart')"
       >
         饼图
       </div>

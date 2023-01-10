@@ -26,12 +26,12 @@ function updateData() {
 }
 
 const cptTypeToData = new Map<string, string>()
-  .set('BasicLine', 'CoordinateData')
-  .set('MultipleLine', 'CoordinateData')
-  .set('BasicArea', 'CoordinateData')
-  .set('BasicPie', 'MappingData')
-  .set('BasicColumn', 'CoordinateData')
-  .set('BasicBar', 'CoordinateData')
+  .set('LineChart', 'CoordinateData')
+  .set('MultipleLineChart', 'CoordinateData')
+  .set('AreaChart', 'CoordinateData')
+  .set('PieChart', 'MappingData')
+  .set('ColumnChart', 'CoordinateData')
+  .set('BarChart', 'CoordinateData')
 
 const dataRef: any = $ref()
 

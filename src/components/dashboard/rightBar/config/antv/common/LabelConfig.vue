@@ -9,7 +9,7 @@ const props = defineProps<{
 let labelEnabled: boolean = $ref(false)
 
 const isPie: boolean = $computed(
-  () => store.elementsList[props.index].cpt.type === 'BasicPie'
+  () => store.elementsList[props.index].cpt.type === 'PieChart'
 )
 
 function checkStatus() {

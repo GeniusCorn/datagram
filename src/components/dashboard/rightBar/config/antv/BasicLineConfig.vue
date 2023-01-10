@@ -150,7 +150,7 @@ const shapeOptions = $ref([
     </n-collapse-item>
 
     <template
-      v-if="store.elementsList[props.index].cpt.type === 'MultipleLine'"
+      v-if="store.elementsList[props.index].cpt.type === 'MultipleLineChart'"
     >
       <LegendConfig :index="props.index" />
     </template>

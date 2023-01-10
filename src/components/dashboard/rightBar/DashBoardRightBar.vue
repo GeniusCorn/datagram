@@ -11,15 +11,15 @@ const store = useDataStore()
 let index: number = $ref(0)
 
 const cptTypeToConfig = new Map()
-  .set('CptText', 'TextConfig')
-  .set('BasicLine', 'BasicLineConfig')
-  .set('MultipleLine', 'BasicLineConfig')
-  .set('BasicArea', 'BasicAreaConfig')
-  .set('BasicPie', 'BasicPieConfig')
-  .set('BasicColumn', 'BasicColumnConfig')
-  .set('BasicBar', 'BasicBarConfig')
+  .set('TextCpt', 'TextConfig')
+  .set('LineChart', 'BasicLineConfig')
+  .set('MultipleLineChart', 'BasicLineConfig')
+  .set('AreaChart', 'BasicAreaConfig')
+  .set('PieChart', 'BasicPieConfig')
+  .set('ColumnChart', 'BasicColumnConfig')
+  .set('BarChart', 'BasicBarConfig')
 
-const cptTypeToData = new Map().set('CptText', 'TextData')
+const cptTypeToData = new Map().set('TextCpt', 'TextData')
 
 watch(store.elementsList, () => {
   for (let i = 0; i < store.elementsList.length; i += 1) {
@@ -93,18 +93,20 @@ function importData() {
         </n-tab-pane>
 
         <n-tab-pane name="data" tab="数据">
-          <n-form w-full size="medium">
-            <n-form-item label="选择数据集">
-              <n-select
-                :options="selectOptions"
-                placeholder="请选择数据集"
-                @update:value="handleUpdateValue"
-              />
-            </n-form-item>
+          <n-form w-full>
+            <template v-if="store.elementsList[index].cpt.type !== 'TextCpt'">
+              <n-form-item label="选择数据集">
+                <n-select
+                  :options="selectOptions"
+                  placeholder="请选择数据集"
+                  @update:value="handleUpdateValue"
+                />
+              </n-form-item>
 
-            <n-button type="primary" w-full mb-24px @click="importData">
-              导入数据
-            </n-button>
+              <n-button type="primary" w-full mb-24px @click="importData">
+                导入数据
+              </n-button>
+            </template>
 
             <component
               :is="

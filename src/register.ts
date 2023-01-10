@@ -1,12 +1,12 @@
 import { app } from '@/main'
 
-import CptText from '@/components/dashboard/cpt/CptText.vue'
-import BasicLine from '@/components/dashboard/cpt/antv/BasicLine.vue'
-import MultipleLine from '@/components/dashboard/cpt/antv/MultipleLine.vue'
-import BasicArea from '@/components/dashboard/cpt/antv/BasicArea.vue'
-import BasicPie from '@/components/dashboard/cpt/antv/BasicPie.vue'
-import BasicColumn from '@/components/dashboard/cpt/antv/BasicColumn.vue'
-import BasicBar from '@/components/dashboard/cpt/antv/BasicBar.vue'
+import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
+import LineChart from '@/components/dashboard/cpt/antv/LineChart.vue'
+import MultipleLineChart from '@/components/dashboard/cpt/antv/MultipleLineChart.vue'
+import AreaChart from '@/components/dashboard/cpt/antv/AreaChart.vue'
+import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
+import ColumnChart from '@/components/dashboard/cpt/antv/ColumnChart.vue'
+import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 
 import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
 import BasicLineConfig from '@/components/dashboard/rightBar/config/antv/BasicLineConfig.vue'
@@ -20,13 +20,13 @@ import CoordinateData from '@/components/dashboard/rightBar/data/antv/Coordinate
 import MappingData from '@/components/dashboard/rightBar/data/antv/MappingData.vue'
 
 const cptList = [
-  CptText,
-  BasicLine,
-  MultipleLine,
-  BasicArea,
-  BasicPie,
-  BasicColumn,
-  BasicBar
+  TextCpt,
+  LineChart,
+  MultipleLineChart,
+  AreaChart,
+  PieChart,
+  ColumnChart,
+  BarChart
 ]
 
 const configList = [

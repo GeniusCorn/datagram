@@ -51,7 +51,10 @@ defineExpose({ loadData })
       />
     </n-form-item>
 
-    <n-form-item label="分组字段">
+    <n-form-item
+      v-if="store.elementsList[props.index].cpt.type === 'MultipleLineChart'"
+      label="分组字段"
+    >
       <n-select
         v-model:value="store.elementsList[props.index].cpt.options.seriesField"
         :options="selectOptions"

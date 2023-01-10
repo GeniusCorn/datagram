@@ -34,7 +34,7 @@ function onSubmitComponent(component: string) {
 
     <n-divider />
 
-    <div class="button" @click="onSubmitComponent('CptText')">
+    <div class="button" @click="onSubmitComponent('TextCpt')">
       <Icon size="25">
         <CursorText />
       </Icon>
