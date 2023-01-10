@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-form w-full label-width="auto" size="medium">
+  <n-form w-full label-width="auto">
     <LabelConfig :index="props.index" />
   </n-form>
 

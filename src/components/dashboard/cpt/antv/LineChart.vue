@@ -16,16 +16,15 @@ store.elementsList[props.index].cpt.data = data
 let options: LineOptions = {
   data: store.elementsList[props.index].cpt.data,
 
-  padding: 'auto',
+  stepType: '',
   xField: 'Date',
   yField: 'scales',
   smooth: false,
-  stepType: '',
-  label: false,
   point: {
     shape: 'circle',
     size: 4
   },
+  label: false,
   xAxis: false,
   yAxis: false
 }

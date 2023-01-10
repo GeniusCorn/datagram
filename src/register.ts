@@ -9,11 +9,10 @@ import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
 
 import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
-import BasicLineConfig from '@/components/dashboard/rightBar/config/antv/BasicLineConfig.vue'
-import BasicAreaConfig from '@/components/dashboard/rightBar/config/antv/BasicAreaConfig.vue'
-import BasicPieConfig from '@/components/dashboard/rightBar/config/antv/BasicPieConfig.vue'
-import BasicColumnConfig from '@/components/dashboard/rightBar/config/antv/BasicColumnConfig.vue'
-import BasicBarConfig from '@/components/dashboard/rightBar/config/antv/BasicBarConfig.vue'
+import LineConfig from '@/components/dashboard/rightBar/config/antv/LineConfig.vue'
+import AreaConfig from '@/components/dashboard/rightBar/config/antv/AreaConfig.vue'
+import ColumnConfig from '@/components/dashboard/rightBar/config/antv/ColumnConfig.vue'
+import PieConfig from '@/components/dashboard/rightBar/config/antv/PieConfig.vue'
 
 import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
 import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
@@ -29,14 +28,7 @@ const cptList = [
   TextCpt
 ]
 
-const configList = [
-  BasicLineConfig,
-  BasicAreaConfig,
-  BasicPieConfig,
-  BasicColumnConfig,
-  BasicBarConfig,
-  TextConfig
-]
+const configList = [LineConfig, AreaConfig, ColumnConfig, PieConfig, TextConfig]
 
 const dataList = [CoordinateData, MappingData, TextData]
 

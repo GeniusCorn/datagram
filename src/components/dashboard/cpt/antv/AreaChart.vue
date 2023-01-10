@@ -18,6 +18,7 @@ let options: AreaOptions = {
 
   xField: 'Date',
   yField: 'scales',
+  smooth: false,
   label: false,
   xAxis: false,
   yAxis: false
