@@ -148,6 +148,12 @@ const shapeOptions = $ref([
         </n-form-item>
       </template>
     </n-collapse-item>
+
+    <template
+      v-if="store.elementsList[props.index].cpt.type === 'MultipleLine'"
+    >
+      <LegendConfig :index="props.index" />
+    </template>
   </n-collapse>
 </template>
 

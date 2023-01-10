@@ -33,6 +33,14 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
+        :class="{ selected: selectedChart === 'MultipleLine' }"
+        @click="selectChart('MultipleLine')"
+      >
+        堆叠折线图
+      </div>
+
+      <div
+        class="chartBlock"
         :class="{ selected: selectedChart === 'BasicArea' }"
         @click="selectChart('BasicArea')"
       >

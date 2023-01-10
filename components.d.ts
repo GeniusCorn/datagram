@@ -32,6 +32,8 @@ declare module '@vue/runtime-core' {
     LabelConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LabelConfig.vue')['default']
     LegendConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LegendConfig.vue')['default']
     MappingData: typeof import('./src/components/dashboard/rightBar/data/antv/MappingData.vue')['default']
+    MultipleLine: typeof import('./src/components/dashboard/cpt/antv/MultipleLine.vue')['default']
+    MultipleLineConfig: typeof import('./src/components/dashboard/rightBar/config/antv/MultipleLineConfig.vue')['default']
     Navbar: typeof import('./src/components/common/Navbar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']

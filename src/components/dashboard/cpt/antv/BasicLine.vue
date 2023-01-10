@@ -36,7 +36,7 @@ let options: LineOptions = {
   label: false,
   point: {
     shape: 'circle',
-    size: 2
+    size: 4
   },
   xAxis: false,
   yAxis: false

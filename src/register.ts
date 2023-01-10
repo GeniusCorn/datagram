@@ -2,6 +2,7 @@ import { app } from '@/main'
 
 import CptText from '@/components/dashboard/cpt/CptText.vue'
 import BasicLine from '@/components/dashboard/cpt/antv/BasicLine.vue'
+import MultipleLine from '@/components/dashboard/cpt/antv/MultipleLine.vue'
 import BasicArea from '@/components/dashboard/cpt/antv/BasicArea.vue'
 import BasicPie from '@/components/dashboard/cpt/antv/BasicPie.vue'
 import BasicColumn from '@/components/dashboard/cpt/antv/BasicColumn.vue'
@@ -18,7 +19,15 @@ import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
 import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
 import MappingData from '@/components/dashboard/rightBar/data/antv/MappingData.vue'
 
-const cptList = [CptText, BasicLine, BasicArea, BasicPie, BasicColumn, BasicBar]
+const cptList = [
+  CptText,
+  BasicLine,
+  MultipleLine,
+  BasicArea,
+  BasicPie,
+  BasicColumn,
+  BasicBar
+]
 
 const configList = [
   TextConfig,
