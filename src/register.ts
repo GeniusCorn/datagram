@@ -1,12 +1,12 @@
 import { app } from '@/main'
 
-import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
 import LineChart from '@/components/dashboard/cpt/antv/LineChart.vue'
 import MultipleLineChart from '@/components/dashboard/cpt/antv/MultipleLineChart.vue'
 import AreaChart from '@/components/dashboard/cpt/antv/AreaChart.vue'
-import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
 import ColumnChart from '@/components/dashboard/cpt/antv/ColumnChart.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
+import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
+import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
 
 import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
 import BasicLineConfig from '@/components/dashboard/rightBar/config/antv/BasicLineConfig.vue'
@@ -20,26 +20,25 @@ import CoordinateData from '@/components/dashboard/rightBar/data/antv/Coordinate
 import MappingData from '@/components/dashboard/rightBar/data/antv/MappingData.vue'
 
 const cptList = [
-  TextCpt,
   LineChart,
   MultipleLineChart,
   AreaChart,
-  PieChart,
   ColumnChart,
-  BarChart
+  BarChart,
+  PieChart,
+  TextCpt
 ]
 
 const configList = [
-  TextConfig,
   BasicLineConfig,
   BasicAreaConfig,
   BasicPieConfig,
   BasicColumnConfig,
   BasicBarConfig,
-  TextData,
-  CoordinateData,
-  MappingData
+  TextConfig
 ]
+
+const dataList = [CoordinateData, MappingData, TextData]
 
 export function registerCpt(): void {
   cptList.forEach((i: any) => {
@@ -47,6 +46,10 @@ export function registerCpt(): void {
   })
 
   configList.forEach((i: any) => {
+    app.component(i.__name, i)
+  })
+
+  dataList.forEach((i: any) => {
     app.component(i.__name, i)
   })
 }

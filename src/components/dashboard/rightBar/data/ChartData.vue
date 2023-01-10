@@ -29,9 +29,9 @@ const cptTypeToData = new Map<string, string>()
   .set('LineChart', 'CoordinateData')
   .set('MultipleLineChart', 'CoordinateData')
   .set('AreaChart', 'CoordinateData')
-  .set('PieChart', 'MappingData')
   .set('ColumnChart', 'CoordinateData')
   .set('BarChart', 'CoordinateData')
+  .set('PieChart', 'MappingData')
 
 const dataRef: any = $ref()
 

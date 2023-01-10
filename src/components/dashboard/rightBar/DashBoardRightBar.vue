@@ -11,13 +11,13 @@ const store = useDataStore()
 let index: number = $ref(0)
 
 const cptTypeToConfig = new Map()
-  .set('TextCpt', 'TextConfig')
   .set('LineChart', 'BasicLineConfig')
   .set('MultipleLineChart', 'BasicLineConfig')
   .set('AreaChart', 'BasicAreaConfig')
-  .set('PieChart', 'BasicPieConfig')
   .set('ColumnChart', 'BasicColumnConfig')
   .set('BarChart', 'BasicBarConfig')
+  .set('PieChart', 'BasicPieConfig')
+  .set('TextCpt', 'TextConfig')
 
 const cptTypeToData = new Map().set('TextCpt', 'TextData')
 
