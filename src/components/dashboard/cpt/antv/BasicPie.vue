@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
 import { Pie, PieOptions } from '@antv/g2plot'
+import sampleData from '@/data/regions-sales.json'
 
 const store = useDataStore()
 
-const data = [
-  { type: '分类一', value: 27 },
-  { type: '分类二', value: 25 },
-  { type: '分类三', value: 18 }
-]
+const data = [...sampleData]
 
 const props = defineProps<{
   index: number
@@ -19,8 +16,8 @@ store.elementsList[props.index].cpt.data = data
 let options: PieOptions = {
   data: store.elementsList[props.index].cpt.data,
 
-  angleField: 'value',
-  colorField: 'type',
+  angleField: '销售额',
+  colorField: '地区',
   radius: 1,
   innerRadius: 0,
 

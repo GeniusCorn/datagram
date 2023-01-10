@@ -1,27 +1,11 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
 import { Area, AreaOptions } from '@antv/g2plot'
+import sampleData from '@/data/fireworks-sales.json'
 
 const store = useDataStore()
 
-const data = [
-  {
-    Date: '2010-01',
-    scales: 1998
-  },
-  {
-    Date: '2010-02',
-    scales: 1850
-  },
-  {
-    Date: '2010-03',
-    scales: 1720
-  },
-  {
-    Date: '2010-04',
-    scales: 1818
-  }
-]
+const data = [...sampleData]
 
 const props = defineProps<{
   index: number

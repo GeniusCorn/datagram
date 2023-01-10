@@ -1,23 +1,11 @@
 <script setup lang="ts">
 import { useDataStore } from '@/store'
 import { Column, ColumnOptions } from '@antv/g2plot'
+import sampleData from '@/data/types-sales.json'
 
 const store = useDataStore()
 
-const data = [
-  {
-    type: '家具家电',
-    sales: 38
-  },
-  {
-    type: '粮油副食',
-    sales: 52
-  },
-  {
-    type: '生鲜水果',
-    sales: 61
-  }
-]
+const data = [...sampleData]
 
 const props = defineProps<{
   index: number
