@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AreaChart: typeof import('./src/components/dashboard/cpt/antv/AreaChart.vue')['default']
+    AreaConfig: typeof import('./src/components/dashboard/rightBar/config/antv/AreaConfig.vue')['default']
     AxisConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/AxisConfig.vue')['default']
     BarChart: typeof import('./src/components/dashboard/cpt/antv/BarChart.vue')['default']
     BasicAreaConfig: typeof import('./src/components/dashboard/rightBar/config/antv/AreaConfig.vue')['default']
@@ -18,6 +19,7 @@ declare module '@vue/runtime-core' {
     ChartData: typeof import('./src/components/dashboard/rightBar/data/ChartData.vue')['default']
     ChartPanel: typeof import('./src/components/dashboard/ChartPanel.vue')['default']
     ColumnChart: typeof import('./src/components/dashboard/cpt/antv/ColumnChart.vue')['default']
+    ColumnConfig: typeof import('./src/components/dashboard/rightBar/config/antv/ColumnConfig.vue')['default']
     CoordinateConfig: typeof import('./src/components/dashboard/rightBar/CoordinateConfig.vue')['default']
     CoordinateData: typeof import('./src/components/dashboard/rightBar/data/antv/CoordinateData.vue')['default']
     DashBoardCanvas: typeof import('./src/components/dashboard/DashBoardCanvas.vue')['default']
@@ -61,6 +63,7 @@ declare module '@vue/runtime-core' {
     NText: typeof import('naive-ui')['NText']
     OperateElement: typeof import('./src/components/dashboard/rightBar/OperateElement.vue')['default']
     PieChart: typeof import('./src/components/dashboard/cpt/antv/PieChart.vue')['default']
+    PieConfig: typeof import('./src/components/dashboard/rightBar/config/antv/PieConfig.vue')['default']
     PreviewNavBar: typeof import('./src/components/preview/PreviewNavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
