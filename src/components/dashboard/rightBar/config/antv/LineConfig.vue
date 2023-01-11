@@ -7,31 +7,6 @@ const props = defineProps<{
   index: number
 }>()
 
-let pointEnabled: boolean = $ref(false)
-
-onMounted(() => {
-  checkStatus()
-})
-
-onUpdated(() => {
-  checkStatus()
-})
-
-function checkStatus() {
-  !store.elementsList[props.index].cpt.options.point
-    ? (pointEnabled = false)
-    : (pointEnabled = true)
-}
-
-function handlePointChange(value: boolean) {
-  value
-    ? (store.elementsList[props.index].cpt.options.point = {
-        shape: 'circle',
-        size: 2
-      })
-    : (store.elementsList[props.index].cpt.options.point = false)
-}
-
 const stepTypeOptions = $ref([
   {
     label: '无',
@@ -52,37 +27,6 @@ const stepTypeOptions = $ref([
   {
     label: 'vhv',
     value: 'vhv'
-  }
-])
-
-const shapeOptions = $ref([
-  {
-    label: '圆',
-    value: 'circle'
-  },
-  {
-    label: '方',
-    value: 'square'
-  },
-  {
-    label: '领带',
-    value: 'bowtie'
-  },
-  {
-    label: '钻石',
-    value: 'diamond'
-  },
-  {
-    label: '六边形',
-    value: 'hexagon'
-  },
-  {
-    label: '三角形',
-    value: 'triangle'
-  },
-  {
-    label: '倒三角形',
-    value: 'triangle-down'
   }
 ])
 </script>
@@ -112,55 +56,11 @@ const shapeOptions = $ref([
       </n-form>
     </n-collapse-item>
 
+    <LineStyleConfig :index="props.index" />
+
     <LabelConfig :index="props.index" />
 
     <AxisConfig :index="props.index" />
-
-    <n-collapse-item title="大小" name="point">
-      <n-form w-full label-width="auto" size="medium">
-        <n-form-item label="线宽">
-          <n-input-number
-            v-model:value="
-              store.elementsList[props.index].cpt.options.lineStyle.lineWidth
-            "
-            :validator="(x: number) => x > 0"
-            placeholder="请输入数字"
-            w-full
-          />
-        </n-form-item>
-
-        <n-form-item label="数据点显示" label-placement="left">
-          <n-switch
-            v-model:value="pointEnabled"
-            @update:value="handlePointChange"
-          />
-        </n-form-item>
-      </n-form>
-
-      <template
-        v-if="store.elementsList[props.index].cpt.options.point !== false"
-      >
-        <n-form-item label="数据点形状">
-          <n-select
-            v-model:value="
-              store.elementsList[props.index].cpt.options.point.shape
-            "
-            :options="shapeOptions"
-          />
-        </n-form-item>
-
-        <n-form-item label="数据点大小">
-          <n-input-number
-            v-model:value="
-              store.elementsList[props.index].cpt.options.point.size
-            "
-            :validator="(x: number) => x > 0"
-            placeholder="请输入数字"
-            w-full
-          />
-        </n-form-item>
-      </template>
-    </n-collapse-item>
 
     <template
       v-if="store.elementsList[props.index].cpt.type === 'MultipleLineChart'"
