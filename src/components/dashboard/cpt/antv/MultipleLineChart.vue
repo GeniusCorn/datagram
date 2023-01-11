@@ -46,16 +46,20 @@ function initChartOptions() {
   let options: LineOptions = {
     data: sampleData,
 
+    stepType: '',
     xField: 'year',
     yField: 'gdp',
     seriesField: 'name',
     smooth: false,
-    stepType: '',
-    label: false,
+    lineStyle: {
+      lineWidth: 2
+    },
     point: {
       shape: 'circle',
       size: 4
     },
+
+    label: false,
     xAxis: false,
     yAxis: false,
     legend: false

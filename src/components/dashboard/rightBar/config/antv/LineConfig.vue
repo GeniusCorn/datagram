@@ -88,34 +88,47 @@ const shapeOptions = $ref([
 </script>
 
 <template>
-  <n-form w-full label-width="auto" size="medium">
-    <n-form-item label="阶梯类型">
-      <n-select
-        v-model:value="store.elementsList[props.index].cpt.options.stepType"
-        placeholder="无"
-        :options="stepTypeOptions"
-        :default-value="undefined"
-      />
-    </n-form-item>
+  <n-collapse accordion>
+    <n-collapse-item title="图表" name="chart">
+      <n-form w-full label-width="auto" size="medium">
+        <n-form-item label="阶梯类型">
+          <n-select
+            v-model:value="store.elementsList[props.index].cpt.options.stepType"
+            placeholder="无"
+            :options="stepTypeOptions"
+            :default-value="undefined"
+          />
+        </n-form-item>
 
-    <n-form-item
-      v-if="store.elementsList[props.index].cpt.options.stepType === ''"
-      label="曲线平滑"
-      label-placement="left"
-    >
-      <n-switch
-        v-model:value="store.elementsList[props.index].cpt.options.smooth"
-      />
-    </n-form-item>
+        <n-form-item
+          v-if="store.elementsList[props.index].cpt.options.stepType === ''"
+          label="曲线平滑"
+          label-placement="left"
+        >
+          <n-switch
+            v-model:value="store.elementsList[props.index].cpt.options.smooth"
+          />
+        </n-form-item>
+      </n-form>
+    </n-collapse-item>
 
     <LabelConfig :index="props.index" />
-  </n-form>
 
-  <n-collapse accordion>
     <AxisConfig :index="props.index" />
 
-    <n-collapse-item title="数据点" name="point">
+    <n-collapse-item title="大小" name="point">
       <n-form w-full label-width="auto" size="medium">
+        <n-form-item label="线宽">
+          <n-input-number
+            v-model:value="
+              store.elementsList[props.index].cpt.options.lineStyle.lineWidth
+            "
+            :validator="(x: number) => x > 0"
+            placeholder="请输入数字"
+            w-full
+          />
+        </n-form-item>
+
         <n-form-item label="数据点显示" label-placement="left">
           <n-switch
             v-model:value="pointEnabled"
@@ -127,7 +140,7 @@ const shapeOptions = $ref([
       <template
         v-if="store.elementsList[props.index].cpt.options.point !== false"
       >
-        <n-form-item label="形状">
+        <n-form-item label="数据点形状">
           <n-select
             v-model:value="
               store.elementsList[props.index].cpt.options.point.shape
@@ -136,7 +149,7 @@ const shapeOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="大小">
+        <n-form-item label="数据点大小">
           <n-input-number
             v-model:value="
               store.elementsList[props.index].cpt.options.point.size

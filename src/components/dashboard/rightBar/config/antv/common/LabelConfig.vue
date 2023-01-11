@@ -76,44 +76,49 @@ onUpdated(() => {
 </script>
 
 <template>
-  <n-form-item label="标签显示" label-placement="left">
-    <n-switch v-model:value="labelEnabled" @update:value="handleLabelChange" />
-  </n-form-item>
-
-  <template v-if="labelEnabled">
-    <n-form-item v-if="!isPie" label="标签位置">
-      <n-select
-        v-model:value="
-          store.elementsList[props.index].cpt.options.label.position
-        "
-        :options="labelPositionOptions"
+  <n-collapse-item title="标签" name="label">
+    <n-form-item label="标签显示" label-placement="left">
+      <n-switch
+        v-model:value="labelEnabled"
+        @update:value="handleLabelChange"
       />
     </n-form-item>
 
-    <n-form-item v-if="isPie" label="标签位置">
-      <n-select
-        v-model:value="store.elementsList[props.index].cpt.options.label.type"
-        :options="pieLabelTypeOptions"
-      />
-    </n-form-item>
+    <template v-if="labelEnabled">
+      <n-form-item v-if="!isPie" label="标签位置">
+        <n-select
+          v-model:value="
+            store.elementsList[props.index].cpt.options.label.position
+          "
+          :options="labelPositionOptions"
+        />
+      </n-form-item>
 
-    <n-form-item label="标签大小">
-      <n-input-number
-        v-model:value="
-          store.elementsList[props.index].cpt.options.label.style.fontSize
-        "
-        w-full
-        :validator="(x: number) => x > 0"
-        placeholder="请输入数字"
-      />
-    </n-form-item>
+      <n-form-item v-if="isPie" label="标签位置">
+        <n-select
+          v-model:value="store.elementsList[props.index].cpt.options.label.type"
+          :options="pieLabelTypeOptions"
+        />
+      </n-form-item>
 
-    <n-form-item label="字体颜色">
-      <n-color-picker
-        v-model:value="
-          store.elementsList[props.index].cpt.options.label.style.fill
-        "
-      />
-    </n-form-item>
-  </template>
+      <n-form-item label="标签大小">
+        <n-input-number
+          v-model:value="
+            store.elementsList[props.index].cpt.options.label.style.fontSize
+          "
+          w-full
+          :validator="(x: number) => x > 0"
+          placeholder="请输入数字"
+        />
+      </n-form-item>
+
+      <n-form-item label="字体颜色">
+        <n-color-picker
+          v-model:value="
+            store.elementsList[props.index].cpt.options.label.style.fill
+          "
+        />
+      </n-form-item>
+    </template>
+  </n-collapse-item>
 </template>

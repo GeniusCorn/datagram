@@ -12,7 +12,7 @@ defineExpose({ updateData })
 
 const store = useDataStore()
 
-const container = $ref()
+const chart = $ref()
 let plot: Line
 
 onMounted(() => {
@@ -37,7 +37,7 @@ onBeforeUnmount(() => {
 function renderChart() {
   const options = initChartOptions()
 
-  plot = new Line(container as HTMLElement, options)
+  plot = new Line(chart as HTMLElement, options)
   plot.render()
 }
 
@@ -50,13 +50,18 @@ function initChartOptions() {
     xField: 'Date',
     yField: 'scales',
     smooth: false,
+    lineStyle: {
+      lineWidth: 2
+    },
     point: {
       shape: 'circle',
       size: 4
     },
+
     label: false,
     xAxis: false,
-    yAxis: false
+    yAxis: false,
+    legend: false
   }
 
   // check if it is a new chart, if it is true assign initial options
@@ -79,7 +84,7 @@ function updateData() {
 </script>
 
 <template>
-  <div ref="container" h-full w-full></div>
+  <div ref="chart" h-full w-full></div>
 </template>
 
 <style scoped></style>
