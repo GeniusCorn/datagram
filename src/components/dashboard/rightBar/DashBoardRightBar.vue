@@ -66,7 +66,7 @@ function importData() {
 </script>
 
 <template>
-  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-auto z-14>
+  <div w-60 h-full bg="[#f8f9fa]" px-4 overflow-y-scroll z-14>
     <template v-if="store.currentElement !== -1">
       <n-tabs
         default-value="coordinate"
@@ -78,46 +78,48 @@ function importData() {
         </n-tab-pane>
 
         <n-tab-pane name="config" tab="属性">
-          <n-space vertical>
-            <component
-              :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
-              :index="index"
-            />
+          <component
+            :is="cptTypeToConfig.get(store.elementsList[index].cpt.type)"
+            :index="index"
+          />
 
-            <br />
+          <br />
+          <OperateElement :index="index" />
 
-            <OperateElement :index="index" />
-
-            <br />
-          </n-space>
+          <br />
         </n-tab-pane>
 
         <n-tab-pane name="data" tab="数据">
-          <n-form w-full>
-            <template v-if="store.elementsList[index].cpt.type !== 'TextCpt'">
-              <n-form-item label="选择数据集">
-                <n-select
-                  :options="selectOptions"
-                  placeholder="请选择数据集"
-                  @update:value="handleUpdateValue"
-                />
-              </n-form-item>
+          <n-collapse>
+            <n-collapse-item title="导入数据集" name="import">
+              <template v-if="store.elementsList[index].cpt.type !== 'TextCpt'">
+                <n-form-item label="选择数据集">
+                  <n-select
+                    :options="selectOptions"
+                    placeholder="请选择数据集"
+                    @update:value="handleUpdateValue"
+                  />
+                </n-form-item>
 
-              <n-button type="primary" w-full mb-24px @click="importData">
-                导入数据
-              </n-button>
-            </template>
+                <n-button type="primary" w-full mb-24px @click="importData">
+                  导入数据
+                </n-button>
+              </template>
+            </n-collapse-item>
 
-            <component
-              :is="
-                cptTypeToData.get(store.elementsList[index].cpt.type) ||
-                ChartData
-              "
-              ref="chartDataRef"
-              :index="index"
-              @update="updateData"
-            />
-          </n-form>
+            <n-collapse-item title="编辑数据" name="edit">
+              <component
+                :is="
+                  cptTypeToData.get(store.elementsList[index].cpt.type) ||
+                  ChartData
+                "
+                ref="chartDataRef"
+                :index="index"
+                @update="updateData"
+              />
+            </n-collapse-item>
+          </n-collapse>
+          <br />
         </n-tab-pane>
       </n-tabs>
     </template>

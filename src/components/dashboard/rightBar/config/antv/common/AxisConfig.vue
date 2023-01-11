@@ -163,7 +163,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="x 轴刻度数量">
+        <n-form-item label="x 轴刻度期望数量">
           <n-input-number
             v-model:value="
               store.elementsList[props.index].cpt.options.xAxis.tickCount
@@ -209,7 +209,7 @@ const tickMethodOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="y 轴刻度数量">
+        <n-form-item label="y 轴刻度期望数量">
           <n-input-number
             v-model:value="
               store.elementsList[props.index].cpt.options.yAxis.tickCount

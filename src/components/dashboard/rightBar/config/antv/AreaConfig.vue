@@ -9,17 +9,19 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-form w-full label-width="auto" size="medium">
-    <n-form-item label="曲线平滑" label-placement="left">
-      <n-switch
-        v-model:value="store.elementsList[props.index].cpt.options.smooth"
-      />
-    </n-form-item>
+  <n-collapse accordion>
+    <n-collapse-item title="图表" name="chart">
+      <n-form label-width="auto">
+        <n-form-item label="曲线平滑" label-placement="left">
+          <n-switch
+            v-model:value="store.elementsList[props.index].cpt.options.smooth"
+          />
+        </n-form-item>
+      </n-form>
+    </n-collapse-item>
 
     <LabelConfig :index="props.index" />
-  </n-form>
 
-  <n-collapse accordion>
     <AxisConfig :index="props.index" />
   </n-collapse>
 </template>

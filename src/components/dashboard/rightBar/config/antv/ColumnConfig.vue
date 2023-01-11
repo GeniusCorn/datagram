@@ -5,11 +5,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-form w-full label-width="auto">
-    <LabelConfig :index="props.index" />
-  </n-form>
-
   <n-collapse accordion>
+    <LabelConfig :index="props.index" />
+
     <AxisConfig :index="props.index" />
   </n-collapse>
 </template>

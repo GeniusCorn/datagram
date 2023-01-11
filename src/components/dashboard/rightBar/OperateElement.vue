@@ -38,8 +38,10 @@ function confirmDeleteElement(index: number): void {
 </script>
 
 <template>
-  <n-space float-right>
-    <n-button type="info" @click="copyElement(props.index)">复制</n-button>
+  <n-button-group w-max>
+    <n-button type="info" w-full @click="copyElement(props.index)"
+      >复制</n-button
+    >
 
     <n-popconfirm
       positive-text="确认"
@@ -47,12 +49,12 @@ function confirmDeleteElement(index: number): void {
       @positive-click="confirmDeleteElement(props.index)"
     >
       <template #trigger>
-        <n-button type="error">删除</n-button>
+        <n-button w-full type="error">删除</n-button>
       </template>
 
       确认删除该组件？
     </n-popconfirm>
-  </n-space>
+  </n-button-group>
 </template>
 
 <style scoped></style>
