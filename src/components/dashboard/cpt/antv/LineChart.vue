@@ -3,48 +3,22 @@ import { useDataStore } from '@/store'
 import { Line, LineOptions } from '@antv/g2plot'
 import sampleData from '@/data/fireworks-sales.json'
 
-const store = useDataStore()
-
-const data = [...sampleData]
-
 const props = defineProps<{
   index: number
 }>()
 
-store.elementsList[props.index].cpt.data = data
+// manually update chart data when data is updated
+defineExpose({ updateData })
 
-let options: LineOptions = {
-  data: store.elementsList[props.index].cpt.data,
-
-  stepType: '',
-  xField: 'Date',
-  yField: 'scales',
-  smooth: false,
-  point: {
-    shape: 'circle',
-    size: 4
-  },
-  label: false,
-  xAxis: false,
-  yAxis: false
-}
-
-if (Object.keys(store.elementsList[props.index].cpt.options).length === 0)
-  Object.assign(
-    store.elementsList[props.index].cpt.options as LineOptions,
-    options
-  )
-else options = store.elementsList[props.index].cpt.options
+const store = useDataStore()
 
 const container = $ref()
-
 let plot: Line
 
 onMounted(() => {
-  plot = new Line(container as HTMLElement, options)
+  renderChart()
 
-  plot.render()
-
+  // automatically update chart options when options updated
   watch(
     () => store.elementsList[props.index]?.cpt.options,
     () => {
@@ -60,11 +34,48 @@ onBeforeUnmount(() => {
   plot.destroy()
 })
 
+function renderChart() {
+  const options = initChartOptions()
+
+  plot = new Line(container as HTMLElement, options)
+  plot.render()
+}
+
+function initChartOptions() {
+  // initial chart options
+  let options: LineOptions = {
+    data: sampleData,
+
+    stepType: '',
+    xField: 'Date',
+    yField: 'scales',
+    smooth: false,
+    point: {
+      shape: 'circle',
+      size: 4
+    },
+    label: false,
+    xAxis: false,
+    yAxis: false
+  }
+
+  // check if it is a new chart, if it is true assign initial options
+  if (Object.keys(store.elementsList[props.index].cpt.options).length === 0) {
+    store.elementsList[props.index].cpt.data = sampleData
+    Object.assign(
+      store.elementsList[props.index].cpt.options as LineOptions,
+      options
+    )
+  } else {
+    options = store.elementsList[props.index].cpt.options
+  }
+
+  return options
+}
+
 function updateData() {
   plot.changeData(store.elementsList[props.index]?.cpt.data)
 }
-
-defineExpose({ updateData })
 </script>
 
 <template>
