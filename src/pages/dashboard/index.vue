@@ -162,7 +162,6 @@ async function handleSelect(key: string): Promise<void> {
 
     case 'delete':
       deleteDashboard()
-      updateData()
       break
 
     default:
@@ -195,6 +194,8 @@ async function deleteDashboard() {
   if (res1.data.code === 0) {
     window.$message?.success(res1.data.message)
   }
+
+  updateData()
 }
 // dropdown end
 
