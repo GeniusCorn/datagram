@@ -56,6 +56,11 @@ function handleUpdateValue(value: string) {
 const chartDataRef: any = $ref()
 
 function importData() {
+  if (selectedDatasetData.length === 0) {
+    window.$message?.error(`请选择一个数据集`)
+    return false
+  }
+
   store.elementsList[index].cpt.data = selectedDatasetData
   store.elementsList[index].cpt.options.data = selectedDatasetData
   updateData()
@@ -95,6 +100,7 @@ function importData() {
               <template v-if="store.elementsList[index].cpt.type !== 'TextCpt'">
                 <n-form-item label="选择数据集">
                   <n-select
+                    :default-value="undefined"
                     :options="selectOptions"
                     placeholder="请选择数据集"
                     @update:value="handleUpdateValue"
