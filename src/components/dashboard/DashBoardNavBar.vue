@@ -37,7 +37,7 @@ function resetElementsList() {
 
 function clearCanvas(): void {
   if (store.elementsList.length === 0) {
-    window.$message?.error(`画布为空，无法清空`)
+    window.$message?.error(`画布已经为空，无法清空`)
     return
   }
 
@@ -89,11 +89,6 @@ function exportCanvas(): void {
 }
 
 async function saveElementsListToLocalStorage(): Promise<void> {
-  if (store.elementsList.length === 0) {
-    window.$message?.error(`画布为空，无法保存`)
-    return
-  }
-
   const value = JSON.stringify(store.elementsList)
 
   localStorage.removeItem('elementsList')
