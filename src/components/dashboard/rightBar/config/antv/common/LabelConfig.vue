@@ -8,15 +8,23 @@ const props = defineProps<{
 
 let labelEnabled: boolean = $ref(false)
 
-const isPie: boolean = $computed(
-  () => store.elementsList[props.index].cpt.type === 'PieChart'
-)
+onMounted(() => {
+  checkStatus()
+})
+
+onUpdated(() => {
+  checkStatus()
+})
 
 function checkStatus() {
   !store.elementsList[props.index].cpt.options.label
     ? (labelEnabled = false)
     : (labelEnabled = true)
 }
+
+const isPie: boolean = $computed(
+  () => store.elementsList[props.index].cpt.type === 'PieChart'
+)
 
 function handleLabelChange(value: boolean) {
   if (isPie) {
@@ -65,14 +73,6 @@ const pieLabelTypeOptions = $ref([
     value: 'outer'
   }
 ])
-
-onMounted(() => {
-  checkStatus()
-})
-
-onUpdated(() => {
-  checkStatus()
-})
 </script>
 
 <template>
@@ -84,7 +84,9 @@ onUpdated(() => {
       />
     </n-form-item>
 
-    <template v-if="labelEnabled">
+    <template
+      v-if="store.elementsList[props.index].cpt.options.label !== false"
+    >
       <n-form-item v-if="!isPie" label="标签位置">
         <n-select
           v-model:value="
