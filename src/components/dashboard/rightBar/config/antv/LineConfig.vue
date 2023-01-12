@@ -69,13 +69,14 @@ const stepTypeOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="颜色">
+        <!-- FIXME: color picker -->
+        <!-- <n-form-item label="颜色">
           <n-color-picker
             v-model:value="
               store.elementsList[props.index].cpt.options.lineStyle.stroke
             "
           />
-        </n-form-item>
+        </n-form-item> -->
 
         <n-form-item label="透明度">
           <n-input-number
@@ -83,6 +84,7 @@ const stepTypeOptions = $ref([
               store.elementsList[props.index].cpt.options.lineStyle
                 .strokeOpacity
             "
+            w-full
             :step="0.1"
             :min="0"
             :max="1"

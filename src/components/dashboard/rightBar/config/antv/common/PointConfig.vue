@@ -98,13 +98,14 @@ const shapeOptions = $ref([
           />
         </n-form-item>
 
-        <n-form-item label="颜色">
+        <!-- FIXME: color picker -->
+        <!-- <n-form-item label="颜色">
           <n-color-picker
             v-model:value="
               store.elementsList[props.index].cpt.options.point.style.stroke
             "
           />
-        </n-form-item>
+        </n-form-item> -->
       </template>
     </n-form>
   </n-collapse-item>
