@@ -55,6 +55,8 @@ function confirmDeleteElement(index: number): void {
       确认删除该组件？
     </n-popconfirm>
   </n-button-group>
+
+  <br />
 </template>
 
 <style scoped></style>
