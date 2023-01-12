@@ -6,6 +6,7 @@ import AreaChart from '@/components/dashboard/cpt/antv/AreaChart.vue'
 import ColumnChart from '@/components/dashboard/cpt/antv/ColumnChart.vue'
 import GroupedColumn from '@/components/dashboard/cpt/antv/GroupedColumn.vue'
 import StackedColumn from '@/components/dashboard/cpt/antv/StackedColumn.vue'
+import WaterFallChart from '@/components/dashboard/cpt/antv/WaterFallChart.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
@@ -14,6 +15,7 @@ import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
 import LineConfig from '@/components/dashboard/rightBar/config/antv/LineConfig.vue'
 import AreaConfig from '@/components/dashboard/rightBar/config/antv/AreaConfig.vue'
 import ColumnConfig from '@/components/dashboard/rightBar/config/antv/ColumnConfig.vue'
+import WaterFallConfig from '@/components/dashboard/rightBar/config/antv/WaterFallConfig.vue'
 import PieConfig from '@/components/dashboard/rightBar/config/antv/PieConfig.vue'
 
 import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
@@ -27,12 +29,20 @@ const cptList = [
   ColumnChart,
   GroupedColumn,
   StackedColumn,
+  WaterFallChart,
   BarChart,
   PieChart,
   TextCpt
 ]
 
-const configList = [LineConfig, AreaConfig, ColumnConfig, PieConfig, TextConfig]
+const configList = [
+  LineConfig,
+  AreaConfig,
+  ColumnConfig,
+  WaterFallConfig,
+  PieConfig,
+  TextConfig
+]
 
 const dataList = [CoordinateData, MappingData, TextData]
 

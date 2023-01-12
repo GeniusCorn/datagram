@@ -79,6 +79,8 @@ declare module '@vue/runtime-core' {
     TextConfig: typeof import('./src/components/dashboard/rightBar/config/TextConfig.vue')['default']
     TextCpt: typeof import('./src/components/dashboard/cpt/TextCpt.vue')['default']
     TextData: typeof import('./src/components/dashboard/rightBar/data/TextData.vue')['default']
+    WaterFallChart: typeof import('./src/components/dashboard/cpt/antv/WaterFallChart.vue')['default']
+    WaterFallConfig: typeof import('./src/components/dashboard/rightBar/config/antv/WaterFallConfig.vue')['default']
     WindowMessage: typeof import('./src/components/WindowMessage.vue')['default']
   }
 }

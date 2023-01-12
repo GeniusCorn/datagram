@@ -73,6 +73,14 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
+        :class="{ selected: selectedChart === 'WaterFallChart' }"
+        @click="selectChart('WaterFallChart')"
+      >
+        瀑布图
+      </div>
+
+      <div
+        class="chartBlock"
         :class="{ selected: selectedChart === 'BarChart' }"
         @click="selectChart('BarChart')"
       >
