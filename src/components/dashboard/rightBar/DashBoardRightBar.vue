@@ -20,6 +20,7 @@ const cptTypeToConfig = new Map()
   .set('WaterFallChart', 'WaterFallConfig')
   .set('BarChart', 'ColumnConfig')
   .set('PieChart', 'PieConfig')
+  .set('RoseChart', 'PieConfig')
   .set('TextCpt', 'TextConfig')
 
 const cptTypeToData = new Map().set('TextCpt', 'TextData')

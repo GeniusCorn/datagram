@@ -94,6 +94,14 @@ function submitSelectedChart(chart: string | undefined) {
       >
         饼图
       </div>
+
+      <div
+        class="chartBlock"
+        :class="{ selected: selectedChart === 'RoseChart' }"
+        @click="selectChart('RoseChart')"
+      >
+        多色玫瑰图
+      </div>
     </div>
 
     <template #footer>
@@ -101,8 +109,9 @@ function submitSelectedChart(chart: string | undefined) {
         float-right
         type="primary"
         @click="submitSelectedChart(selectedChart)"
-        >确认</n-button
       >
+        确认
+      </n-button>
     </template>
   </n-modal>
 </template>

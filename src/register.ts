@@ -9,6 +9,8 @@ import StackedColumn from '@/components/dashboard/cpt/antv/StackedColumn.vue'
 import WaterFallChart from '@/components/dashboard/cpt/antv/WaterFallChart.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
+import RoseChart from '@/components/dashboard/cpt/antv/RoseChart.vue'
+
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
 
 import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
@@ -32,6 +34,7 @@ const cptList = [
   WaterFallChart,
   BarChart,
   PieChart,
+  RoseChart,
   TextCpt
 ]
 
