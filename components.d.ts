@@ -75,6 +75,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SizeConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LineStyleConfig.vue')['default']
+    StackedColumn: typeof import('./src/components/dashboard/cpt/antv/StackedColumn.vue')['default']
     TextConfig: typeof import('./src/components/dashboard/rightBar/config/TextConfig.vue')['default']
     TextCpt: typeof import('./src/components/dashboard/cpt/TextCpt.vue')['default']
     TextData: typeof import('./src/components/dashboard/rightBar/data/TextData.vue')['default']

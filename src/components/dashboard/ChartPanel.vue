@@ -65,6 +65,14 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
+        :class="{ selected: selectedChart === 'StackedColumn' }"
+        @click="selectChart('StackedColumn')"
+      >
+        堆叠柱状图
+      </div>
+
+      <div
+        class="chartBlock"
         :class="{ selected: selectedChart === 'BarChart' }"
         @click="selectChart('BarChart')"
       >

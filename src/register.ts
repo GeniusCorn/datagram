@@ -5,6 +5,7 @@ import MultipleLineChart from '@/components/dashboard/cpt/antv/MultipleLineChart
 import AreaChart from '@/components/dashboard/cpt/antv/AreaChart.vue'
 import ColumnChart from '@/components/dashboard/cpt/antv/ColumnChart.vue'
 import GroupedColumn from '@/components/dashboard/cpt/antv/GroupedColumn.vue'
+import StackedColumn from '@/components/dashboard/cpt/antv/StackedColumn.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
@@ -25,6 +26,7 @@ const cptList = [
   AreaChart,
   ColumnChart,
   GroupedColumn,
+  StackedColumn,
   BarChart,
   PieChart,
   TextCpt
