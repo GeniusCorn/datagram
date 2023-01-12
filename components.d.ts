@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     DashBoardRightBar: typeof import('./src/components/dashboard/rightBar/DashBoardRightBar.vue')['default']
     DatasetNavbar: typeof import('./src/components/dataset/DatasetNavbar.vue')['default']
     Footer: typeof import('./src/components/common/Footer.vue')['default']
+    GroupedColumn: typeof import('./src/components/dashboard/cpt/antv/GroupedColumn.vue')['default']
     LabelConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LabelConfig.vue')['default']
     LegendConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/LegendConfig.vue')['default']
     LineChart: typeof import('./src/components/dashboard/cpt/antv/LineChart.vue')['default']

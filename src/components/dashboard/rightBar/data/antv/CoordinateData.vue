@@ -52,7 +52,7 @@ defineExpose({ loadData })
     </n-form-item>
 
     <n-form-item
-      v-if="store.elementsList[props.index].cpt.type === 'MultipleLineChart'"
+      v-if="store.elementsList[props.index].cpt.options.seriesField?.length > 0"
       label="分组字段"
     >
       <n-select

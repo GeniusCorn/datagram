@@ -30,6 +30,7 @@ const cptTypeToData = new Map<string, string>()
   .set('MultipleLineChart', 'CoordinateData')
   .set('AreaChart', 'CoordinateData')
   .set('ColumnChart', 'CoordinateData')
+  .set('GroupedColumn', 'CoordinateData')
   .set('BarChart', 'CoordinateData')
   .set('PieChart', 'MappingData')
 

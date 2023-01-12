@@ -57,6 +57,14 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
+        :class="{ selected: selectedChart === 'GroupedColumn' }"
+        @click="selectChart('GroupedColumn')"
+      >
+        分组柱状图
+      </div>
+
+      <div
+        class="chartBlock"
         :class="{ selected: selectedChart === 'BarChart' }"
         @click="selectChart('BarChart')"
       >
