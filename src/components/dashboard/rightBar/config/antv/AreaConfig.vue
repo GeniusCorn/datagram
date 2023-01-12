@@ -20,6 +20,8 @@ const props = defineProps<{
       </n-form>
     </n-collapse-item>
 
+    <PointConfig :index="props.index" />
+
     <LabelConfig :index="props.index" />
 
     <AxisConfig :index="props.index" />

@@ -49,6 +49,11 @@ function initChartOptions() {
     xField: 'Date',
     yField: 'scales',
     smooth: false,
+    point: {
+      shape: 'circle',
+      size: 4
+    },
+
     label: false,
     xAxis: false,
     yAxis: false
