@@ -56,7 +56,43 @@ const stepTypeOptions = $ref([
       </n-form>
     </n-collapse-item>
 
-    <LineStyleConfig :index="props.index" />
+    <n-collapse-item title="折线样式" name="lineStyle">
+      <n-form>
+        <n-form-item label="线宽">
+          <n-input-number
+            v-model:value="
+              store.elementsList[props.index].cpt.options.lineStyle.lineWidth
+            "
+            :validator="(x: number) => x > 0"
+            placeholder="请输入数字"
+            w-full
+          />
+        </n-form-item>
+
+        <n-form-item label="颜色">
+          <n-color-picker
+            v-model:value="
+              store.elementsList[props.index].cpt.options.lineStyle.stroke
+            "
+          />
+        </n-form-item>
+
+        <n-form-item label="透明度">
+          <n-input-number
+            v-model:value="
+              store.elementsList[props.index].cpt.options.lineStyle
+                .strokeOpacity
+            "
+            :step="0.1"
+            :min="0"
+            :max="1"
+            :validator="(x: number) => x > 0"
+          />
+        </n-form-item>
+      </n-form>
+    </n-collapse-item>
+
+    <PointConfig :index="props.index" />
 
     <LabelConfig :index="props.index" />
 

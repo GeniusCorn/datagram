@@ -51,11 +51,13 @@ function initChartOptions() {
     yField: 'scales',
     smooth: false,
     lineStyle: {
-      lineWidth: 2
+      lineWidth: 2,
+      strokeOpacity: 1
     },
     point: {
       shape: 'circle',
-      size: 4
+      size: 4,
+      style: {}
     },
 
     label: false,
