@@ -51,6 +51,7 @@ function initChartOptions() {
     radius: 1,
     innerRadius: 0,
 
+    label: false,
     legend: false
   }
 
