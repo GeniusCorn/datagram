@@ -11,6 +11,7 @@ export type ChartName =
   | 'RoseChart'
   | 'RadarChart'
   | 'ScatterChart'
+  | 'FunnelChart'
 
 export type OthersName = 'TextCpt'
 
@@ -26,6 +27,7 @@ export type ChartConfigName =
   | 'PieConfig'
   | 'RadarConfig'
   | 'ScatterConfig'
+  | 'FunnelConfig'
 
 export type OthersConfigName = 'TextConfig'
 

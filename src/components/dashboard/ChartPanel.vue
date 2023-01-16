@@ -120,6 +120,14 @@ function submitSelectedChart(chart: ChartName | undefined) {
       >
         散点图
       </div>
+
+      <div
+        class="chartBlock"
+        :class="{ selected: selectedChart === 'FunnelChart' }"
+        @click="selectChart('FunnelChart')"
+      >
+        漏斗图
+      </div>
     </div>
 
     <template #footer>
