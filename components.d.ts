@@ -73,6 +73,8 @@ declare module '@vue/runtime-core' {
     PieConfig: typeof import('./src/components/dashboard/rightBar/config/antv/PieConfig.vue')['default']
     PointConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/PointConfig.vue')['default']
     PreviewNavBar: typeof import('./src/components/preview/PreviewNavBar.vue')['default']
+    RadarChart: typeof import('./src/components/dashboard/cpt/antv/RadarChart.vue')['default']
+    RadarConfig: typeof import('./src/components/dashboard/rightBar/config/antv/RadarConfig.vue')['default']
     RoseChart: typeof import('./src/components/dashboard/cpt/antv/RoseChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

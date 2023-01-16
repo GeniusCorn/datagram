@@ -21,6 +21,7 @@ const cptTypeToConfig = new Map()
   .set('BarChart', 'ColumnConfig')
   .set('PieChart', 'PieConfig')
   .set('RoseChart', 'PieConfig')
+  .set('RadarChart', 'RadarConfig')
   .set('TextCpt', 'TextConfig')
 
 const cptTypeToData = new Map().set('TextCpt', 'TextData')

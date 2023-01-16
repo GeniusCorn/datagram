@@ -102,6 +102,14 @@ function submitSelectedChart(chart: string | undefined) {
       >
         多色玫瑰图
       </div>
+
+      <div
+        class="chartBlock"
+        :class="{ selected: selectedChart === 'RadarChart' }"
+        @click="selectChart('RadarChart')"
+      >
+        雷达图
+      </div>
     </div>
 
     <template #footer>

@@ -10,6 +10,7 @@ import WaterFallChart from '@/components/dashboard/cpt/antv/WaterFallChart.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
 import RoseChart from '@/components/dashboard/cpt/antv/RoseChart.vue'
+import RadarChart from '@/components/dashboard/cpt/antv/RadarChart.vue'
 
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
 
@@ -19,6 +20,7 @@ import AreaConfig from '@/components/dashboard/rightBar/config/antv/AreaConfig.v
 import ColumnConfig from '@/components/dashboard/rightBar/config/antv/ColumnConfig.vue'
 import WaterFallConfig from '@/components/dashboard/rightBar/config/antv/WaterFallConfig.vue'
 import PieConfig from '@/components/dashboard/rightBar/config/antv/PieConfig.vue'
+import RadarConfig from '@/components/dashboard/rightBar/config/antv/RadarConfig.vue'
 
 import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
 import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
@@ -35,6 +37,7 @@ const cptList = [
   BarChart,
   PieChart,
   RoseChart,
+  RadarChart,
   TextCpt
 ]
 
@@ -44,6 +47,7 @@ const configList = [
   ColumnConfig,
   WaterFallConfig,
   PieConfig,
+  RadarConfig,
   TextConfig
 ]
 
