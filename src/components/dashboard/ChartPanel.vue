@@ -57,8 +57,8 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'GroupedColumn' }"
-        @click="selectChart('GroupedColumn')"
+        :class="{ selected: selectedChart === 'GroupedColumnChart' }"
+        @click="selectChart('GroupedColumnChart')"
       >
         分组柱状图
       </div>
@@ -66,7 +66,7 @@ function submitSelectedChart(chart: string | undefined) {
       <div
         class="chartBlock"
         :class="{ selected: selectedChart === 'StackedColumn' }"
-        @click="selectChart('StackedColumn')"
+        @click="selectChart('StackedColumnChart')"
       >
         堆叠柱状图
       </div>

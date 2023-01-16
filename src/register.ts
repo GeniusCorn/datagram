@@ -4,8 +4,8 @@ import LineChart from '@/components/dashboard/cpt/antv/LineChart.vue'
 import MultipleLineChart from '@/components/dashboard/cpt/antv/MultipleLineChart.vue'
 import AreaChart from '@/components/dashboard/cpt/antv/AreaChart.vue'
 import ColumnChart from '@/components/dashboard/cpt/antv/ColumnChart.vue'
-import GroupedColumn from '@/components/dashboard/cpt/antv/GroupedColumn.vue'
-import StackedColumn from '@/components/dashboard/cpt/antv/StackedColumn.vue'
+import GroupedColumnChart from '@/components/dashboard/cpt/antv/GroupedColumnChart.vue'
+import StackedColumnChart from '@/components/dashboard/cpt/antv/StackedColumnChart.vue'
 import WaterFallChart from '@/components/dashboard/cpt/antv/WaterFallChart.vue'
 import BarChart from '@/components/dashboard/cpt/antv/BarChart.vue'
 import PieChart from '@/components/dashboard/cpt/antv/PieChart.vue'
@@ -29,8 +29,8 @@ const cptList = [
   MultipleLineChart,
   AreaChart,
   ColumnChart,
-  GroupedColumn,
-  StackedColumn,
+  GroupedColumnChart,
+  StackedColumnChart,
   WaterFallChart,
   BarChart,
   PieChart,
