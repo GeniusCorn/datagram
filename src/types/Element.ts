@@ -10,6 +10,7 @@ export type ChartName =
   | 'PieChart'
   | 'RoseChart'
   | 'RadarChart'
+  | 'ScatterChart'
 
 export type OthersName = 'TextCpt'
 
@@ -24,6 +25,7 @@ export type ChartConfigName =
   | 'WaterFallConfig'
   | 'PieConfig'
   | 'RadarConfig'
+  | 'ScatterConfig'
 
 export type OthersConfigName = 'TextConfig'
 

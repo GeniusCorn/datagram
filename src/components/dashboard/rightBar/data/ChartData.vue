@@ -38,6 +38,7 @@ const cptTypeToData = new Map<CptName, ChartDataName>()
   .set('PieChart', 'MappingData')
   .set('RoseChart', 'CoordinateData')
   .set('RadarChart', 'CoordinateData')
+  .set('ScatterChart', 'CoordinateData')
 
 const dataRef: any = $ref()
 

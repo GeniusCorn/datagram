@@ -112,6 +112,14 @@ function submitSelectedChart(chart: ChartName | undefined) {
       >
         雷达图
       </div>
+
+      <div
+        class="chartBlock"
+        :class="{ selected: selectedChart === 'ScatterChart' }"
+        @click="selectChart('ScatterChart')"
+      >
+        散点图
+      </div>
     </div>
 
     <template #footer>

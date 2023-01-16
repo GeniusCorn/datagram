@@ -23,6 +23,7 @@ const cptTypeToConfig = new Map<CptName, CptConfigName>()
   .set('PieChart', 'PieConfig')
   .set('RoseChart', 'PieConfig')
   .set('RadarChart', 'RadarConfig')
+  .set('ScatterChart', 'ScatterConfig')
   .set('TextCpt', 'TextConfig')
 
 const cptTypeToData = new Map().set('TextCpt', 'TextData')
