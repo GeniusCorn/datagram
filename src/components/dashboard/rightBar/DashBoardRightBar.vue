@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { CptName, CptConfigName } from '@/types/Element.js'
 import { useDataStore } from '@/store/index'
 import ChartData from '@/components/dashboard/rightBar/data/ChartData.vue'
 import DatasetsService from '@/service/datasets'
@@ -10,7 +11,7 @@ const store = useDataStore()
 
 let index: number = $ref(0)
 
-const cptTypeToConfig = new Map()
+const cptTypeToConfig = new Map<CptName, CptConfigName>()
   .set('LineChart', 'LineConfig')
   .set('MultipleLineChart', 'LineConfig')
   .set('AreaChart', 'AreaConfig')

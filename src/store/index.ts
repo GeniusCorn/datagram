@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { Rect } from '@/types/Rect'
 import { v4 } from 'uuid'
+import type { CptName } from '@/types/Element'
 
 interface Drag {
   x: number
@@ -11,7 +12,7 @@ interface Drag {
 }
 
 interface Cpt {
-  type: string
+  type: CptName
   options: any
   data: any
 }
@@ -27,7 +28,7 @@ export const useDataStore = defineStore('data', () => {
 
   const elementsList: Element[] = $ref([])
 
-  function addElement(cptType: string): void {
+  function addElement(cptType: CptName): void {
     const drag: Drag = {
       x: 40,
       y: 40,

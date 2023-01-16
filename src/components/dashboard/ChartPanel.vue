@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import type { ChartName } from '@/types/Element'
+
 const emit = defineEmits<{
   (e: 'submit', chart: string): void
 }>()
 
-let selectedChart: string | undefined = $ref(undefined)
+let selectedChart: ChartName | undefined = $ref(undefined)
 
-function selectChart(chart: string) {
+function selectChart(chart: ChartName) {
   selectedChart = chart
 }
 
-function submitSelectedChart(chart: string | undefined) {
+function submitSelectedChart(chart: ChartName | undefined) {
   if (chart === undefined) {
     window.$message?.error('请选择一个图表类型')
     return
@@ -65,7 +67,7 @@ function submitSelectedChart(chart: string | undefined) {
 
       <div
         class="chartBlock"
-        :class="{ selected: selectedChart === 'StackedColumn' }"
+        :class="{ selected: selectedChart === 'StackedColumnChart' }"
         @click="selectChart('StackedColumnChart')"
       >
         堆叠柱状图

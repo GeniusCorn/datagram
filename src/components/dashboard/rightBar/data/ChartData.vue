@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { CptName, ChartDataName } from '@/types/Element'
 import { useDataStore } from '@/store'
 const store = useDataStore()
 
@@ -25,7 +26,7 @@ function updateData() {
   emit('update')
 }
 
-const cptTypeToData = new Map<string, string>()
+const cptTypeToData = new Map<CptName, ChartDataName>()
   .set('LineChart', 'CoordinateData')
   .set('MultipleLineChart', 'CoordinateData')
   .set('AreaChart', 'CoordinateData')
