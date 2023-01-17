@@ -76,7 +76,10 @@ function exportCanvas(): void {
       '#canvas'
     ) as HTMLElement
 
-    html2canvas(canvas as HTMLElement).then((canvas) => {
+    html2canvas(canvas as HTMLElement, {
+      allowTaint: true,
+      useCORS: true
+    }).then((canvas) => {
       const canvasData = canvas.toDataURL('image/png')
       const link = document.createElement('a')
       link.href = canvasData
