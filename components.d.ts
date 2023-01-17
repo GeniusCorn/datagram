@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AddPicPanel: typeof import('./src/components/dashboard/AddPicPanel.vue')['default']
     AreaChart: typeof import('./src/components/dashboard/cpt/antv/AreaChart.vue')['default']
     AreaConfig: typeof import('./src/components/dashboard/rightBar/config/antv/AreaConfig.vue')['default']
     AxisConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/AxisConfig.vue')['default']
@@ -71,6 +72,9 @@ declare module '@vue/runtime-core' {
     NUpload: typeof import('naive-ui')['NUpload']
     NUploadDragger: typeof import('naive-ui')['NUploadDragger']
     OperateElement: typeof import('./src/components/dashboard/rightBar/OperateElement.vue')['default']
+    PicConfig: typeof import('./src/components/dashboard/rightBar/config/PicConfig.vue')['default']
+    PicCpt: typeof import('./src/components/dashboard/cpt/PicCpt.vue')['default']
+    PicData: typeof import('./src/components/dashboard/rightBar/data/PicData.vue')['default']
     PieChart: typeof import('./src/components/dashboard/cpt/antv/PieChart.vue')['default']
     PieConfig: typeof import('./src/components/dashboard/rightBar/config/antv/PieConfig.vue')['default']
     PointConfig: typeof import('./src/components/dashboard/rightBar/config/antv/common/PointConfig.vue')['default']

@@ -2,7 +2,7 @@
 import type { ChartName } from '@/types/Element'
 
 const emit = defineEmits<{
-  (e: 'submit', chart: string): void
+  (e: 'submit', chart: ChartName): void
 }>()
 
 let selectedChart: ChartName | undefined = $ref(undefined)

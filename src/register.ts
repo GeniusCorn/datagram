@@ -15,8 +15,8 @@ import ScatterChart from '@/components/dashboard/cpt/antv/ScatterChart.vue'
 import FunnelChart from '@/components/dashboard/cpt/antv/FunnelChart.vue'
 
 import TextCpt from '@/components/dashboard/cpt/TextCpt.vue'
+import PicCpt from '@/components/dashboard/cpt/PicCpt.vue'
 
-import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
 import LineConfig from '@/components/dashboard/rightBar/config/antv/LineConfig.vue'
 import AreaConfig from '@/components/dashboard/rightBar/config/antv/AreaConfig.vue'
 import ColumnConfig from '@/components/dashboard/rightBar/config/antv/ColumnConfig.vue'
@@ -26,9 +26,14 @@ import RadarConfig from '@/components/dashboard/rightBar/config/antv/RadarConfig
 import ScatterConfig from '@/components/dashboard/rightBar/config/antv/ScatterConfig.vue'
 import FunnelConfig from '@/components/dashboard/rightBar/config/antv/FunnelConfig.vue'
 
-import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
+import TextConfig from '@/components/dashboard/rightBar/config/TextConfig.vue'
+import PicConfig from '@/components/dashboard/rightBar/config/PicConfig.vue'
+
 import CoordinateData from '@/components/dashboard/rightBar/data/antv/CoordinateData.vue'
 import MappingData from '@/components/dashboard/rightBar/data/antv/MappingData.vue'
+
+import TextData from '@/components/dashboard/rightBar/data/TextData.vue'
+import PicData from '@/components/dashboard/rightBar/data/PicData.vue'
 
 const cptList = [
   LineChart,
@@ -44,7 +49,9 @@ const cptList = [
   RadarChart,
   ScatterChart,
   FunnelChart,
-  TextCpt
+
+  TextCpt,
+  PicCpt
 ]
 
 const configList = [
@@ -56,10 +63,12 @@ const configList = [
   RadarConfig,
   ScatterConfig,
   FunnelConfig,
-  TextConfig
+
+  TextConfig,
+  PicConfig
 ]
 
-const dataList = [CoordinateData, MappingData, TextData]
+const dataList = [CoordinateData, MappingData, TextData, PicData]
 
 export function registerCpt(): void {
   cptList.forEach((i: any) => {

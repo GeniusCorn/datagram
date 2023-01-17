@@ -13,7 +13,7 @@ export type ChartName =
   | 'ScatterChart'
   | 'FunnelChart'
 
-export type OthersName = 'TextCpt'
+export type OthersName = 'TextCpt' | 'PicCpt'
 
 export type CptName = ChartName | OthersName
 
@@ -29,6 +29,6 @@ export type ChartConfigName =
   | 'ScatterConfig'
   | 'FunnelConfig'
 
-export type OthersConfigName = 'TextConfig'
+export type OthersConfigName = 'TextConfig' | 'PicConfig'
 
 export type CptConfigName = ChartConfigName | OthersConfigName

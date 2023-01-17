@@ -2,15 +2,16 @@
 import { Icon } from '@vicons/utils'
 import { ChartPie, Map2, CursorText, Photo } from '@vicons/tabler'
 import { useDataStore } from '@/store/index'
+import type { CptName } from '@/types/Element'
 
 const store = useDataStore()
 
 let showChartPanel: boolean = $ref(false)
 
 // eslint-disable-next-line no-unused-vars
-let selected: string | undefined = $ref(undefined)
+let selected: CptName | undefined = $ref(undefined)
 
-function onSubmitComponent(component: string) {
+function onSubmitComponent(component: CptName) {
   showChartPanel = false
   selected = component
 
@@ -43,7 +44,7 @@ function onSubmitComponent(component: string) {
 
     <n-divider />
 
-    <div class="button">
+    <div class="button" @click="onSubmitComponent('PicCpt')">
       <Icon size="25">
         <Photo />
       </Icon>

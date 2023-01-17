@@ -26,8 +26,23 @@ const cptTypeToConfig = new Map<CptName, CptConfigName>()
   .set('ScatterChart', 'ScatterConfig')
   .set('FunnelChart', 'FunnelConfig')
   .set('TextCpt', 'TextConfig')
+  .set('PicCpt', 'PicConfig')
 
-const cptTypeToData = new Map().set('TextCpt', 'TextData')
+const cptTypeToData = new Map()
+  .set('TextCpt', 'TextData')
+  .set('PicCpt', 'PicData')
+
+const enableImportDataset: boolean = $computed(() => {
+  if (store.elementsList[index].cpt.type === 'TextCpt') {
+    return false
+  }
+
+  if (store.elementsList[index].cpt.type === 'PicCpt') {
+    return false
+  }
+
+  return true
+})
 
 watch(store.elementsList, () => {
   for (let i = 0; i < store.elementsList.length; i += 1) {
@@ -104,23 +119,24 @@ function importData() {
 
         <n-tab-pane name="data" tab="数据">
           <n-collapse>
-            <n-collapse-item title="导入数据集" name="import">
-              <template v-if="store.elementsList[index].cpt.type !== 'TextCpt'">
-                <n-form-item label="选择数据集">
-                  <n-select
-                    :default-value="undefined"
-                    :options="selectOptions"
-                    placeholder="请选择数据集"
-                    @update:value="handleUpdateValue"
-                  />
-                </n-form-item>
+            <n-collapse-item
+              v-if="enableImportDataset"
+              title="导入数据集"
+              name="import"
+            >
+              <n-form-item label="选择数据集">
+                <n-select
+                  :default-value="undefined"
+                  :options="selectOptions"
+                  placeholder="请选择数据集"
+                  @update:value="handleUpdateValue"
+                />
+              </n-form-item>
 
-                <n-button type="primary" w-full mb-24px @click="importData">
-                  导入数据
-                </n-button>
-              </template>
+              <n-button type="primary" w-full mb-24px @click="importData">
+                导入数据
+              </n-button>
             </n-collapse-item>
-
             <n-collapse-item title="编辑数据" name="edit">
               <component
                 :is="
