@@ -20,7 +20,7 @@ function updateScale(newScale: number) {
 
       <DashBoardCanvas ref="canvas" :scale="scale" />
 
-      <div absolute bottom-1 left-20 w-30>
+      <div absolute bottom-1 left-25 w-30>
         <n-slider v-model:value="scale" :max="1" :min="0.1" :step="0.01" />
       </div>
       <div></div>
