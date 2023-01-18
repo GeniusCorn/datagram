@@ -34,6 +34,22 @@ class DashboardsService {
   async deleteDashboard(id: number): Promise<AxiosRequestConfig> {
     return await http.delete(`${this.api}/${id}`)
   }
+
+  async toggleShareDashboard(
+    id: number,
+    value: boolean
+  ): Promise<AxiosRequestConfig> {
+    return await http.post(`${this.api}/share`, { id, value })
+  }
+
+  async getSharedDashboard(
+    owner: number,
+    dashboardName: string
+  ): Promise<AxiosRequestConfig> {
+    return await http.get(`${this.api}/share`, {
+      params: { owner, dashboardName }
+    })
+  }
 }
 
 export default new DashboardsService()

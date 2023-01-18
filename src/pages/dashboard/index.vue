@@ -91,11 +91,14 @@ function validateDashboardName(name: string): boolean {
 
 // select dashboard start
 let currentDashboardID: number | undefined = $ref(undefined)
+let currentDashboardIndex: number | undefined = $ref(undefined)
 
-async function selectDashboard(id: number) {
+async function selectDashboard(id: number, index: number) {
   if (id === currentDashboardID) {
     return
   }
+
+  currentDashboardIndex = index
 
   currentDashboardID = id
   const res = await DashboardsService.getDashboardByID(id)
@@ -153,7 +156,7 @@ async function handleSelect(key: string): Promise<void> {
       break
 
     case 'share':
-      router.push('share')
+      showShareModal = true
       break
 
     case 'rename':
@@ -199,6 +202,39 @@ async function deleteDashboard() {
 }
 // dropdown end
 
+// share dashboard start
+let showShareModal: boolean = $ref(false)
+let enableShare: boolean = $ref(false)
+let shareLink: string = $ref('')
+
+function onShowShareModal() {
+  const currentDashboard = dashboards.at(currentDashboardIndex)
+
+  currentDashboard.share === 1 ? (enableShare = true) : (enableShare = false)
+
+  shareLink = `${window.location.href}/canvas/share/${currentDashboard.share_token}`
+}
+
+async function toggleShareSwitch(value: boolean) {
+  enableShare = value
+
+  const res = await DashboardsService.toggleShareDashboard(
+    currentDashboardID as number,
+    value
+  )
+
+  if (res.data.code !== 0) {
+    window.$message?.error(res.data.message)
+  }
+}
+
+function onCopyToClipboard() {
+  navigator.clipboard.writeText(shareLink)
+
+  window.$message?.success('链接地址已复制到剪贴板')
+}
+// share dashboard end
+
 async function updateData() {
   const res = await DashboardsService.getDashboardByOwner(account)
   dashboards = res.data.data
@@ -233,7 +269,7 @@ async function updateData() {
           duration-200
           ease-in-out
           :class="{ 'text-[#36ad2a]': dashboard.id === currentDashboardID }"
-          @click="selectDashboard(dashboard.id)"
+          @click="selectDashboard(dashboard.id, index)"
         >
           <div>{{ index + 1 }}.</div>
           <div w-full>
@@ -321,6 +357,39 @@ async function updateData() {
     "
   >
     <n-input v-model:value="newDashboardName" placeholder="请输入仪表盘名称" />
+  </n-modal>
+
+  <!-- share dashboard -->
+  <n-modal
+    v-model:show="showShareModal"
+    :mask-closable="false"
+    preset="dialog"
+    :show-icon="false"
+    title="分享仪表盘"
+    :on-after-enter="onShowShareModal"
+  >
+    <n-form-item label="链接分享" label-placement="left">
+      <n-switch
+        v-model:value="enableShare"
+        :on-update:value="toggleShareSwitch"
+      />
+    </n-form-item>
+
+    <template v-if="enableShare">
+      <n-form-item label="" label-placement="left">
+        <n-text depth="3" text-center>
+          开启链接后，任何人可通过此链接访问仪表盘。
+        </n-text>
+      </n-form-item>
+
+      <n-form-item label="链接" label-placement="left">
+        <n-input v-model:value="shareLink" disabled placeholder="链接" />
+      </n-form-item>
+
+      <n-button type="primary" float-right @click="onCopyToClipboard">
+        复制链接
+      </n-button>
+    </template>
   </n-modal>
 </template>
 
