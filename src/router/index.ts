@@ -16,10 +16,9 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const publicPages = ['/login', '/register']
-  const authRequired = !publicPages.includes(to.path)
+  const requireAuth = to.meta.requireAuth
 
-  if (authRequired) {
+  if (requireAuth !== false) {
     const token = localStorage.getItem('token')
 
     if (

@@ -118,3 +118,11 @@ function validateForm(formValue: Form): boolean {
 </template>
 
 <style scoped></style>
+
+<route>
+  {
+    meta: {
+      requireAuth: false
+    }
+  }
+</route>
