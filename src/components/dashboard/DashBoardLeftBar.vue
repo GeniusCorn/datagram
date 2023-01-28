@@ -53,14 +53,14 @@ function onSubmitComponent(component: CptName) {
 
     <n-divider />
 
-    <div class="button">
+    <!-- <div class="button">
       <Icon size="25">
         <Map2 />
       </Icon>
       <div>地图</div>
     </div>
 
-    <n-divider />
+    <n-divider /> -->
   </div>
 </template>
 
