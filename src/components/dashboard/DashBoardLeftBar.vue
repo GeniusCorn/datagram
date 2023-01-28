@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@vicons/utils'
-import { ChartPie, Map2, CursorText, Photo } from '@vicons/tabler'
+import { ChartPie, CursorText, Photo } from '@vicons/tabler'
 import { useDataStore } from '@/store/index'
 import type { CptName } from '@/types/Element'
 

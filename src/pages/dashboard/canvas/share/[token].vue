@@ -16,6 +16,10 @@ const dashboardName = JSON.parse(token).dashboardName
 
 const res = await DashboardService.getSharedDashboard(owner, dashboardName)
 
+if (res.data.code === 1) {
+  window.$message?.error(res.data.message)
+}
+
 const elementsList = $ref(JSON.parse(res.data.data.at(0).data))
 
 if (elementsList) {
