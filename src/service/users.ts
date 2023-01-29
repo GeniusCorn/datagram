@@ -9,6 +9,10 @@ class UsersService {
     this.api = '/users'
   }
 
+  async getAllUser(): Promise<AxiosRequestConfig> {
+    return await http.get(this.api)
+  }
+
   async getUser(account: string): Promise<AxiosRequestConfig> {
     return await http.get(`${this.api}/${account}`)
   }
@@ -36,6 +40,13 @@ class UsersService {
     newPassword: string
   ): Promise<AxiosRequestConfig> {
     return await http.patch(`${this.api}`, { account, password, newPassword })
+  }
+
+  async updateAuthority(
+    account: string,
+    authority: string
+  ): Promise<AxiosRequestConfig> {
+    return await http.put(`${this.api}`, { account, authority })
   }
 }
 

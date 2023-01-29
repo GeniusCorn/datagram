@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import router from '@/router/index'
 import { Icon } from '@vicons/utils'
-import { User, Apple, EditCircle, Logout } from '@vicons/tabler'
+import { User, Apple, EditCircle, Logout, Settings } from '@vicons/tabler'
 import { Component } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -64,7 +64,7 @@ function renderIcon(icon: Component) {
 <template>
   <div flex="~ row" items-center border="b gray" box-border h-12 px-10>
     <div flex="~ row" items-center justify-between w-full>
-      <n-space>
+      <div flex gap-4>
         <div @click="router.push('/')">DataGram</div>
 
         <div flex="~ row">
@@ -89,9 +89,22 @@ function renderIcon(icon: Component) {
             >
           </n-space>
         </div>
-      </n-space>
+      </div>
 
-      <n-space>
+      <div flex items-center gap-4>
+        <n-button
+          v-if="account === 'admin'"
+          text
+          @click="router.push('/admin')"
+        >
+          <template #icon>
+            <Icon>
+              <Settings />
+            </Icon>
+          </template>
+          后台管理
+        </n-button>
+
         <n-dropdown :options="options" @select="handleSelect">
           <n-button text>
             <template #icon>
@@ -102,7 +115,7 @@ function renderIcon(icon: Component) {
             {{ account }}
           </n-button>
         </n-dropdown>
-      </n-space>
+      </div>
     </div>
   </div>
 </template>
