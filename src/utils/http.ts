@@ -14,7 +14,6 @@ api.interceptors.request.use(
     const handleConfig = { ...config }
 
     if (handleConfig.headers != null) {
-      // @ts-expect-error
       handleConfig.headers.token = localStorage.getItem('token')
     }
 

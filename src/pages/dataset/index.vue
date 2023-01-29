@@ -48,6 +48,10 @@ function handleAddDatasetButton(key: string | number) {
       router.push('/dataset/upload/excel')
       break
 
+    case 'api':
+      router.push('/dataset/upload/api')
+      break
+
     default:
       break
   }
