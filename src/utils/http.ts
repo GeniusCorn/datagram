@@ -2,7 +2,7 @@ import router from '@/router'
 import axios, { AxiosInstance } from 'axios'
 
 const api: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-type': 'application/json'
   }

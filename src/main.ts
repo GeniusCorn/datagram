@@ -9,5 +9,7 @@ import { registerCpt } from '@/register'
 export const app = createApp(App)
 const pinia = createPinia()
 
+console.log(import.meta.env.VITE_API_URL)
+
 app.use(router).use(pinia).mount('#app')
 registerCpt()
