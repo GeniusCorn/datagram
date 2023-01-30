@@ -59,6 +59,9 @@ function renderIcon(icon: Component) {
     })
   }
 }
+
+const reg = /admin/d
+const verify = $computed(() => reg.test(account as string))
 </script>
 
 <template>
@@ -92,11 +95,7 @@ function renderIcon(icon: Component) {
       </div>
 
       <div flex items-center gap-4>
-        <n-button
-          v-if="account === 'admin'"
-          text
-          @click="router.push('/admin')"
-        >
+        <n-button v-if="verify" text @click="router.push('/admin')">
           <template #icon>
             <Icon>
               <Settings />
