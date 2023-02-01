@@ -59,6 +59,12 @@ function validateForm(formValue: Form): boolean {
     return false
   }
 
+  // eslint-disable-next-line prefer-regex-literals
+  const regExp = new RegExp('[\u4E00-\u9FA5\uFE30-\uFFA0]')
+  if (regExp.test(formValue.account)) {
+    window.$message?.error('用户名中不能包含中文')
+    return false
+  }
   return true
 }
 </script>
