@@ -3,18 +3,15 @@
 import VueDragResize from 'vue-drag-resize'
 import DashboardService from '@/service/dashboards'
 import { useRoute } from 'vue-router'
-import { decode } from 'base-64'
 import { useDataStore } from '@/store'
 
 const store = useDataStore()
 
 const route = useRoute()
 
-const token: string = decode(route.path.split('/').at(-1) as string)
-const owner = JSON.parse(token).id
-const dashboardName = JSON.parse(token).dashboardName
+const token: string = route.path.split('/').at(-1) as string
 
-const res = await DashboardService.getSharedDashboard(owner, dashboardName)
+const res = await DashboardService.getSharedDashboard(token)
 
 if (res.data.code === 1) {
   window.$message?.error(res.data.message)

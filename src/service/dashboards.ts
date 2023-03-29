@@ -42,12 +42,9 @@ class DashboardsService {
     return await http.post(`${this.api}/share`, { id, value })
   }
 
-  async getSharedDashboard(
-    owner: number,
-    dashboardName: string
-  ): Promise<AxiosRequestConfig> {
+  async getSharedDashboard(token: string): Promise<AxiosRequestConfig> {
     return await http.get(`${this.api}/share`, {
-      params: { owner, dashboardName }
+      params: { token }
     })
   }
 }
