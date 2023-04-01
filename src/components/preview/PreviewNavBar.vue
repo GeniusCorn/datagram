@@ -46,7 +46,7 @@ function exportCanvas(): void {
     w-full
     fixed
   >
-    <n-button type="info" @click="exportCanvas">导出</n-button>
+    <n-button type="info" z-100 @click="exportCanvas">导出</n-button>
   </div>
 </template>
 
